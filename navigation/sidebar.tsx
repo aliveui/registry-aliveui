@@ -2,6 +2,7 @@
 
 import * as React from "react";
 import Link from "next/link";
+import { ChevronDown, ChevronRight, Search } from "lucide-react";
 
 import { cn } from "../registry/lib/utils";
 
@@ -22,30 +23,95 @@ export function SidebarNav({
   activeHref,
   ...props
 }: SidebarNavProps) {
+  const [openCategories, setOpenCategories] = React.useState<
+    Record<string, boolean>
+  >({});
+  const [searchQuery, setSearchQuery] = React.useState("");
+
+  // Initialize all categories as open
+  React.useEffect(() => {
+    const initialState: Record<string, boolean> = {};
+    items.forEach((category) => {
+      initialState[category.category] = true;
+    });
+    setOpenCategories(initialState);
+  }, [items]);
+
+  const toggleCategory = (category: string) => {
+    setOpenCategories((prev) => ({
+      ...prev,
+      [category]: !prev[category],
+    }));
+  };
+
+  const filteredItems = React.useMemo(() => {
+    if (!searchQuery.trim()) return items;
+
+    return items
+      .map((category) => ({
+        ...category,
+        items: category.items.filter((item) =>
+          item.title.toLowerCase().includes(searchQuery.toLowerCase())
+        ),
+      }))
+      .filter((category) => category.items.length > 0);
+  }, [items, searchQuery]);
+
   return (
-    <nav className={cn("flex flex-col space-y-6", className)} {...props}>
-      {items.map((category) => (
-        <div key={category.category} className="space-y-2">
-          <h4 className="text-sm font-semibold">{category.category}</h4>
-          <div className="grid grid-flow-row auto-rows-max space-y-1">
-            {category.items.map((item) => (
-              <Link
-                key={item.href}
-                href={item.href}
-                className={cn(
-                  "flex w-full items-center rounded-md p-2 text-sm font-medium hover:bg-accent hover:text-accent-foreground",
-                  item.href === activeHref
-                    ? "bg-accent text-accent-foreground"
-                    : "transparent"
+    <div className="flex flex-col h-full space-y-4">
+      <div className="relative">
+        <Search className="absolute left-2 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground" />
+        <input
+          type="text"
+          placeholder="Search components..."
+          className="w-full rounded-md border pl-8 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-primary"
+          value={searchQuery}
+          onChange={(e) => setSearchQuery(e.target.value)}
+        />
+      </div>
+
+      <nav className={cn("flex flex-col space-y-1", className)} {...props}>
+        {filteredItems.map((category) => (
+          <div key={category.category} className="space-y-1">
+            <button
+              onClick={() => toggleCategory(category.category)}
+              className="flex w-full items-center justify-between rounded-md p-2 text-sm font-semibold hover:bg-muted"
+            >
+              <div className="flex items-center">
+                {openCategories[category.category] ? (
+                  <ChevronDown className="h-4 w-4 mr-1" />
+                ) : (
+                  <ChevronRight className="h-4 w-4 mr-1" />
                 )}
-              >
-                {item.title}
-              </Link>
-            ))}
+                {category.category}
+                <span className="ml-2 text-xs text-muted-foreground rounded-full bg-muted px-2 py-0.5">
+                  {category.items.length}
+                </span>
+              </div>
+            </button>
+
+            {openCategories[category.category] && (
+              <div className="grid grid-flow-row auto-rows-max space-y-1 ml-4 mt-1">
+                {category.items.map((item) => (
+                  <Link
+                    key={item.href}
+                    href={item.href}
+                    className={cn(
+                      "flex w-full items-center rounded-md p-2 text-sm font-medium hover:bg-accent hover:text-accent-foreground",
+                      item.href === activeHref
+                        ? "bg-accent text-accent-foreground"
+                        : "transparent"
+                    )}
+                  >
+                    {item.title}
+                  </Link>
+                ))}
+              </div>
+            )}
           </div>
-        </div>
-      ))}
-    </nav>
+        ))}
+      </nav>
+    </div>
   );
 }
 
