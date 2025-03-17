@@ -1,5 +1,4 @@
 import * as React from "react";
-import { OpenInV0Button } from "@/components/open-in-v0-button";
 import { HelloWorld } from "@/registry/new-york/hello-world/hello-world";
 import { ExampleForm } from "@/registry/new-york/example-form/example-form";
 import PokemonPage from "@/registry/new-york/complex-component/page";
@@ -23,7 +22,6 @@ export default function Home() {
             <h2 className="text-sm text-muted-foreground sm:pl-3">
               A simple hello world component
             </h2>
-            <OpenInV0Button name="hello-world" className="w-fit" />
           </div>
           <div className="flex items-center justify-center min-h-[400px] relative">
             <HelloWorld />
@@ -55,7 +53,6 @@ export default function Home() {
             <h2 className="text-sm text-muted-foreground sm:pl-3">
               A contact form with Zod validation.
             </h2>
-            <OpenInV0Button name="example-form" className="w-fit" />
           </div>
           <div className="flex items-center justify-center min-h-[500px] relative">
             <ExampleForm />
@@ -67,7 +64,6 @@ export default function Home() {
             <h2 className="text-sm text-muted-foreground sm:pl-3">
               A complex component showing hooks, libs and components.
             </h2>
-            <OpenInV0Button name="complex-component" className="w-fit" />
           </div>
           <div className="flex items-center justify-center min-h-[400px] relative">
             <PokemonPage />
