@@ -1,0 +1,109 @@
+# Label
+
+The Label component is an atom in the AliveUI component library. It's used to provide accessible labels for form controls.
+
+## Usage
+
+```tsx
+import { Label } from "@aliveui/ui";
+
+export default function LabelExample() {
+  return (
+    <div>
+      <Label htmlFor="email">Email</Label>
+      <input id="email" type="email" />
+    </div>
+  );
+}
+```
+
+## API Reference
+
+The Label component is built on top of the Radix UI Label primitive.
+
+### Properties
+
+| Property   | Type        | Default | Description                     |
+| ---------- | ----------- | ------- | ------------------------------- |
+| `htmlFor`  | `string`    | -       | The id of the element it labels |
+| `children` | `ReactNode` | -       | The content of the label        |
+
+## Examples
+
+### Basic Label
+
+```tsx
+<Label htmlFor="email">Email</Label>
+```
+
+### Label with Form Control
+
+```tsx
+import { Input } from "@aliveui/ui";
+
+<div className="grid w-full max-w-sm items-center gap-1.5">
+  <Label htmlFor="email">Email</Label>
+  <Input type="email" id="email" placeholder="Email" />
+</div>;
+```
+
+### Required Label
+
+```tsx
+<div className="grid w-full max-w-sm items-center gap-1.5">
+  <Label htmlFor="username">
+    Username <span className="text-destructive">*</span>
+  </Label>
+  <Input id="username" required />
+</div>
+```
+
+### Disabled Label
+
+```tsx
+<div className="grid w-full max-w-sm items-center gap-1.5">
+  <Label htmlFor="disabled" className="text-muted-foreground">
+    Disabled
+  </Label>
+  <Input id="disabled" disabled />
+</div>
+```
+
+### With Checkbox
+
+```tsx
+import { Checkbox } from "@aliveui/ui";
+
+<div className="flex items-center space-x-2">
+  <Checkbox id="terms" />
+  <Label htmlFor="terms">Accept terms and conditions</Label>
+</div>;
+```
+
+### With Multiple Form Controls
+
+```tsx
+<div className="grid w-full max-w-sm items-center gap-4">
+  <div className="space-y-1.5">
+    <Label htmlFor="name">Name</Label>
+    <Input id="name" placeholder="Your name" />
+  </div>
+  <div className="space-y-1.5">
+    <Label htmlFor="email">Email</Label>
+    <Input id="email" placeholder="Your email" />
+  </div>
+</div>
+```
+
+## Accessibility
+
+The Label component follows accessibility best practices:
+
+- Uses the native HTML `<label>` element
+- Supports the `htmlFor` attribute to associate with form controls
+- Provides proper visual styling for different states (default, disabled)
+- Maintains proper text contrast
+
+## Implementation Details
+
+The Label component is built on top of Radix UI's Label primitive, ensuring robust accessibility and consistent behavior across browsers. It's styled with Tailwind CSS and is fully customizable through className props.

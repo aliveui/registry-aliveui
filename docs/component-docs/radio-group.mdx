@@ -1,0 +1,144 @@
+# Radio Group
+
+The Radio Group component is an atom in the AliveUI component library. It allows users to select a single option from a set of predefined options.
+
+## Usage
+
+```tsx
+import { RadioGroup, RadioGroupItem } from "@aliveui/ui";
+import { Label } from "@aliveui/ui";
+
+export default function RadioGroupExample() {
+  return (
+    <RadioGroup defaultValue="option-one">
+      <div className="flex items-center space-x-2">
+        <RadioGroupItem value="option-one" id="option-one" />
+        <Label htmlFor="option-one">Option One</Label>
+      </div>
+      <div className="flex items-center space-x-2">
+        <RadioGroupItem value="option-two" id="option-two" />
+        <Label htmlFor="option-two">Option Two</Label>
+      </div>
+    </RadioGroup>
+  );
+}
+```
+
+## API Reference
+
+The Radio Group component is composed of two parts: RadioGroup and RadioGroupItem.
+
+### RadioGroup
+
+The root container for radio items.
+
+| Property        | Type       | Default | Description                                                                                   |
+| --------------- | ---------- | ------- | --------------------------------------------------------------------------------------------- |
+| `value`         | `string`   | -       | The controlled value of the radio item to check                                               |
+| `defaultValue`  | `string`   | -       | The value of the radio item to check by default                                               |
+| `onValueChange` | `function` | -       | Event handler called when the value changes                                                   |
+| `disabled`      | `boolean`  | `false` | When `true`, prevents the user from interacting with radio items                              |
+| `required`      | `boolean`  | `false` | When `true`, indicates that the user must check a radio item before the form can be submitted |
+| `name`          | `string`   | -       | The name of the radio group. Submitted with its owning form as part of a name/value pair      |
+
+### RadioGroupItem
+
+An individual radio item.
+
+| Property   | Type      | Default      | Description                                                                                     |
+| ---------- | --------- | ------------ | ----------------------------------------------------------------------------------------------- |
+| `value`    | `string`  | **Required** | The unique value of the radio item                                                              |
+| `disabled` | `boolean` | `false`      | When `true`, prevents the user from interacting with the radio item                             |
+| `required` | `boolean` | `false`      | When `true`, indicates that the user must check the radio item before the form can be submitted |
+
+## Examples
+
+### Basic Radio Group
+
+```tsx
+<RadioGroup defaultValue="option-one">
+  <div className="flex items-center space-x-2">
+    <RadioGroupItem value="option-one" id="option-one" />
+    <Label htmlFor="option-one">Option One</Label>
+  </div>
+  <div className="flex items-center space-x-2">
+    <RadioGroupItem value="option-two" id="option-two" />
+    <Label htmlFor="option-two">Option Two</Label>
+  </div>
+</RadioGroup>
+```
+
+### Radio Group with Different Layout
+
+```tsx
+<RadioGroup defaultValue="option-one" className="flex flex-col space-y-1">
+  <div className="flex items-center space-x-2">
+    <RadioGroupItem value="option-one" id="r1" />
+    <Label htmlFor="r1">Default</Label>
+  </div>
+  <div className="flex items-center space-x-2">
+    <RadioGroupItem value="option-two" id="r2" />
+    <Label htmlFor="r2">Comfortable</Label>
+  </div>
+  <div className="flex items-center space-x-2">
+    <RadioGroupItem value="option-three" id="r3" />
+    <Label htmlFor="r3">Compact</Label>
+  </div>
+</RadioGroup>
+```
+
+### Disabled Radio Group
+
+```tsx
+<RadioGroup disabled>
+  <div className="flex items-center space-x-2">
+    <RadioGroupItem value="option-one" id="d-option-one" />
+    <Label htmlFor="d-option-one">Option One</Label>
+  </div>
+  <div className="flex items-center space-x-2">
+    <RadioGroupItem value="option-two" id="d-option-two" />
+    <Label htmlFor="d-option-two">Option Two</Label>
+  </div>
+</RadioGroup>
+```
+
+### Controlled Radio Group
+
+```tsx
+import { useState } from "react";
+
+function ControlledRadioGroup() {
+  const [value, setValue] = useState("option-one");
+
+  return (
+    <div className="space-y-2">
+      <RadioGroup value={value} onValueChange={setValue}>
+        <div className="flex items-center space-x-2">
+          <RadioGroupItem value="option-one" id="controlled-one" />
+          <Label htmlFor="controlled-one">Option One</Label>
+        </div>
+        <div className="flex items-center space-x-2">
+          <RadioGroupItem value="option-two" id="controlled-two" />
+          <Label htmlFor="controlled-two">Option Two</Label>
+        </div>
+      </RadioGroup>
+      <div>Selected value: {value}</div>
+    </div>
+  );
+}
+```
+
+## Accessibility
+
+The Radio Group component follows accessibility best practices:
+
+- Uses Radix UI's accessible radio group primitive
+- Supports keyboard navigation (Tab to focus on the group, arrow keys to navigate between options)
+- Associates labels with radio items using the `htmlFor` attribute
+- Supports disabled states
+- Includes proper ARIA attributes
+- Maintains sufficient color contrast
+
+## Implementation Details
+
+The Radio Group component is built on top of Radix UI's Radio Group primitive, ensuring robust accessibility and consistent behavior across browsers. It's styled with Tailwind CSS and is fully customizable through className props.

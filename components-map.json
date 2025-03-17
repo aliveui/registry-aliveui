@@ -12,7 +12,7 @@
       "shadcnPath": "components/ui/avatar.tsx",
       "aliveUIPath": "registry/atoms/avatar/index.tsx",
       "dependencies": ["@radix-ui/react-avatar"],
-      "status": "not-started"
+      "status": "implemented"
     },
     {
       "name": "Badge",
@@ -26,7 +26,7 @@
       "shadcnPath": "components/ui/checkbox.tsx",
       "aliveUIPath": "registry/atoms/checkbox/index.tsx",
       "dependencies": ["@radix-ui/react-checkbox"],
-      "status": "not-started"
+      "status": "implemented"
     },
     {
       "name": "Input",
@@ -40,14 +40,14 @@
       "shadcnPath": "components/ui/label.tsx",
       "aliveUIPath": "registry/atoms/label/index.tsx",
       "dependencies": ["@radix-ui/react-label"],
-      "status": "not-started"
+      "status": "implemented"
     },
     {
       "name": "Radio",
       "shadcnPath": "components/ui/radio-group.tsx",
       "aliveUIPath": "registry/atoms/radio-group/index.tsx",
       "dependencies": ["@radix-ui/react-radio-group"],
-      "status": "not-started"
+      "status": "implemented"
     },
     {
       "name": "Select",
@@ -61,35 +61,35 @@
       "shadcnPath": "components/ui/switch.tsx",
       "aliveUIPath": "registry/atoms/switch/index.tsx",
       "dependencies": ["@radix-ui/react-switch"],
-      "status": "not-started"
+      "status": "implemented"
     },
     {
       "name": "Textarea",
       "shadcnPath": "components/ui/textarea.tsx",
       "aliveUIPath": "registry/atoms/textarea/index.tsx",
       "dependencies": [],
-      "status": "not-started"
+      "status": "implemented"
     },
     {
       "name": "Separator",
       "shadcnPath": "components/ui/separator.tsx",
       "aliveUIPath": "registry/atoms/separator/index.tsx",
       "dependencies": ["@radix-ui/react-separator"],
-      "status": "not-started"
+      "status": "implemented"
     },
     {
       "name": "Skeleton",
       "shadcnPath": "components/ui/skeleton.tsx",
       "aliveUIPath": "registry/atoms/skeleton/index.tsx",
       "dependencies": [],
-      "status": "not-started"
+      "status": "implemented"
     },
     {
       "name": "Progress",
       "shadcnPath": "components/ui/progress.tsx",
       "aliveUIPath": "registry/atoms/progress/index.tsx",
       "dependencies": ["@radix-ui/react-progress"],
-      "status": "not-started"
+      "status": "implemented"
     },
     {
       "name": "Tooltip",

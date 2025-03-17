@@ -1,0 +1,162 @@
+# Separator
+
+The Separator component is an atom in the AliveUI component library. It's used to create a visual separation between content, helping to define distinct sections on a page.
+
+## Usage
+
+```tsx
+import { Separator } from "@aliveui/ui";
+
+export default function SeparatorExample() {
+  return (
+    <div>
+      <div className="space-y-1">
+        <h4 className="text-sm font-medium leading-none">First Section</h4>
+        <p className="text-sm text-muted-foreground">
+          This is the first section of the content.
+        </p>
+      </div>
+      <Separator className="my-4" />
+      <div className="space-y-1">
+        <h4 className="text-sm font-medium leading-none">Second Section</h4>
+        <p className="text-sm text-muted-foreground">
+          This is the second section of the content.
+        </p>
+      </div>
+    </div>
+  );
+}
+```
+
+## API Reference
+
+The Separator component is built on top of the Radix UI Separator primitive.
+
+### Properties
+
+| Property      | Type                         | Default        | Description                                                                                                                                                                       |
+| ------------- | ---------------------------- | -------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `orientation` | `"horizontal" \| "vertical"` | `"horizontal"` | The orientation of the separator                                                                                                                                                  |
+| `decorative`  | `boolean`                    | `true`         | When `true`, indicates that the separator is purely visual and does not represent a thematic break in content. This helps screen readers determine how to announce the separator. |
+
+## Examples
+
+### Horizontal Separator (Default)
+
+```tsx
+<div>
+  <h2>Section One</h2>
+  <p>Content for section one</p>
+  <Separator className="my-4" />
+  <h2>Section Two</h2>
+  <p>Content for section two</p>
+</div>
+```
+
+### Vertical Separator
+
+```tsx
+<div className="flex h-5 items-center space-x-4 text-sm">
+  <div>Item One</div>
+  <Separator orientation="vertical" />
+  <div>Item Two</div>
+  <Separator orientation="vertical" />
+  <div>Item Three</div>
+</div>
+```
+
+### Custom Styling
+
+```tsx
+<div>
+  <h2>Section One</h2>
+  <p>Content for section one</p>
+  <Separator className="my-4 bg-primary" />
+  <h2>Section Two</h2>
+  <p>Content for section two</p>
+</div>
+```
+
+### In a Form
+
+```tsx
+import { Label } from "@aliveui/ui";
+import { Input } from "@aliveui/ui";
+import { Button } from "@aliveui/ui";
+
+function SeparatorInForm() {
+  return (
+    <form className="space-y-4 w-full max-w-md">
+      <div className="space-y-2">
+        <Label htmlFor="name">Name</Label>
+        <Input id="name" placeholder="Enter your name" />
+      </div>
+      <div className="space-y-2">
+        <Label htmlFor="email">Email</Label>
+        <Input id="email" type="email" placeholder="Enter your email" />
+      </div>
+
+      <Separator className="my-6" />
+
+      <div className="space-y-2">
+        <Label htmlFor="address">Address</Label>
+        <Input id="address" placeholder="Enter your address" />
+      </div>
+      <div className="space-y-2">
+        <Label htmlFor="city">City</Label>
+        <Input id="city" placeholder="Enter your city" />
+      </div>
+
+      <Separator className="my-6" />
+
+      <Button type="submit">Submit</Button>
+    </form>
+  );
+}
+```
+
+### Multiple Separators with Different Styles
+
+```tsx
+<div className="space-y-6">
+  <div>
+    <h3>Section One</h3>
+    <p>Content for section one</p>
+  </div>
+
+  <Separator className="bg-primary" />
+
+  <div>
+    <h3>Section Two</h3>
+    <p>Content for section two</p>
+  </div>
+
+  <Separator className="bg-secondary" />
+
+  <div>
+    <h3>Section Three</h3>
+    <p>Content for section three</p>
+  </div>
+
+  <Separator className="bg-destructive" />
+
+  <div>
+    <h3>Section Four</h3>
+    <p>Content for section four</p>
+  </div>
+</div>
+```
+
+## Accessibility
+
+The Separator component follows accessibility best practices:
+
+- Uses Radix UI's accessible separator primitive
+- Implements appropriate ARIA roles (`separator`) by default
+- The `decorative` prop allows you to specify whether the separator is purely visual or represents a thematic break in content (important for screen readers)
+- When `decorative` is set to `true`, the separator is marked with `aria-hidden="true"` to hide it from screen readers
+- When the separator is vertical, it's marked with `aria-orientation="vertical"` to indicate its orientation to screen readers
+
+## Implementation Details
+
+The Separator component is built on top of Radix UI's Separator primitive, ensuring robust accessibility and consistent behavior across browsers. It's styled with Tailwind CSS and supports both horizontal and vertical orientations.

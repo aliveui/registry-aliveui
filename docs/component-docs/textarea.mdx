@@ -1,0 +1,183 @@
+# Textarea
+
+The Textarea component is an atom in the AliveUI component library. It's used for multi-line text input.
+
+## Usage
+
+```tsx
+import { Textarea } from "@aliveui/ui";
+
+export default function TextareaExample() {
+  return <Textarea placeholder="Type your message here." />;
+}
+```
+
+## API Reference
+
+The Textarea component extends the HTML textarea element.
+
+### Properties
+
+The Textarea component accepts all properties of the HTML textarea element.
+
+| Property       | Type       | Default | Description                                                                                      |
+| -------------- | ---------- | ------- | ------------------------------------------------------------------------------------------------ | --- | ------------------------------------ |
+| `placeholder`  | `string`   | -       | Text displayed when the textarea is empty                                                        |
+| `value`        | `string`   | -       | The controlled value of the textarea                                                             |
+| `defaultValue` | `string`   | -       | The default value of the textarea when it is initially rendered                                  |
+| `onChange`     | `function` | -       | Event handler called when the input value changes                                                |
+| `disabled`     | `boolean`  | `false` | When `true`, prevents the user from interacting with the textarea                                |
+| `required`     | `boolean`  | `false` | When `true`, indicates that the user must fill out the textarea before the form can be submitted |
+| `readOnly`     | `boolean`  | `false` | When `true`, makes the textarea not mutable, focusable, and selectable                           |
+| `rows`         | `number`   | -       | Specifies the visible height of the textarea in rows                                             |
+| `cols`         | `number`   | -       | Specifies the visible width of the textarea in average character widths                          |
+| `maxLength`    | `number`   | -       | Maximum number of characters allowed                                                             |
+| `minLength`    | `number`   | -       | Minimum number of characters required                                                            |
+| `name`         | `string`   | -       | The name of the textarea, used when submitting a form                                            |
+| `autoComplete` | `string`   | -       | Hint for form autofill feature                                                                   |
+| `autoFocus`    | `boolean`  | `false` | When `true`, the textarea automatically gets focus when the page loads                           |
+| `form`         | `string`   | -       | Associates the textarea with a form                                                              |
+| `wrap`         | `"hard"    | "soft"  | "off"`                                                                                           | -   | Indicates how the control wraps text |
+
+## Examples
+
+### Basic Textarea
+
+```tsx
+<Textarea placeholder="Type your message here." />
+```
+
+### Disabled Textarea
+
+```tsx
+<Textarea placeholder="This textarea is disabled." disabled />
+```
+
+### With Default Value
+
+```tsx
+<Textarea defaultValue="This textarea has a default value." />
+```
+
+### Setting Rows
+
+```tsx
+<Textarea placeholder="Type your message here." rows={10} />
+```
+
+### With Character Limit
+
+```tsx
+<Textarea placeholder="Type your message here." maxLength={100} />
+```
+
+### Form Integration
+
+```tsx
+import { Button } from "@aliveui/ui";
+import { Label } from "@aliveui/ui";
+
+function TextareaForm() {
+  return (
+    <form
+      onSubmit={(e) => {
+        e.preventDefault();
+        const formData = new FormData(e.target);
+        const message = formData.get("message");
+        console.log(`Message: ${message}`);
+      }}
+      className="space-y-4"
+    >
+      <div className="space-y-2">
+        <Label htmlFor="message">Your message</Label>
+        <Textarea
+          id="message"
+          name="message"
+          placeholder="Type your message here."
+          required
+        />
+      </div>
+      <Button type="submit">Send message</Button>
+    </form>
+  );
+}
+```
+
+### Controlled Textarea
+
+```tsx
+import { useState } from "react";
+
+function ControlledTextarea() {
+  const [value, setValue] = useState("");
+  const maxLength = 100;
+
+  return (
+    <div className="space-y-2">
+      <div className="flex justify-between">
+        <Label htmlFor="controlled-textarea">Your message</Label>
+        <span className="text-sm text-muted-foreground">
+          {value.length}/{maxLength}
+        </span>
+      </div>
+      <Textarea
+        id="controlled-textarea"
+        placeholder="Type your message here."
+        value={value}
+        onChange={(e) => setValue(e.target.value)}
+        maxLength={maxLength}
+      />
+    </div>
+  );
+}
+```
+
+### With Validation
+
+```tsx
+import { useState } from "react";
+
+function ValidatedTextarea() {
+  const [value, setValue] = useState("");
+  const [error, setError] = useState("");
+  const minLength = 10;
+
+  const handleChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+    const newValue = e.target.value;
+    setValue(newValue);
+
+    if (newValue.length < minLength && newValue.length > 0) {
+      setError(`Message must be at least ${minLength} characters`);
+    } else {
+      setError("");
+    }
+  };
+
+  return (
+    <div className="space-y-2">
+      <Label htmlFor="validated-textarea">Your message</Label>
+      <Textarea
+        id="validated-textarea"
+        placeholder="Type your message here."
+        value={value}
+        onChange={handleChange}
+        className={error ? "border-red-500" : ""}
+      />
+      {error && <p className="text-sm text-red-500">{error}</p>}
+    </div>
+  );
+}
+```
+
+## Accessibility
+
+The Textarea component follows accessibility best practices:
+
+- Associates with a label using `htmlFor` and `id` attributes
+- Supports keyboard navigation
+- Inherits native form control accessibility features
+- Supports aria attributes for enhanced accessibility
+
+## Implementation Details
+
+The Textarea component is a styled wrapper around the native HTML textarea element, styled with Tailwind CSS. It inherits all the native functionality of the textarea element while providing a consistent look and feel with the rest of the AliveUI component library.

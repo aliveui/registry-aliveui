@@ -1,0 +1,213 @@
+# Progress
+
+The Progress component is an atom in the AliveUI component library. It's used to display the completion progress of a task or operation.
+
+## Usage
+
+```tsx
+import { Progress } from "@aliveui/ui";
+
+export default function ProgressExample() {
+  return <Progress value={33} />;
+}
+```
+
+## API Reference
+
+The Progress component is built on top of the Radix UI Progress primitive.
+
+### Properties
+
+| Property        | Type       | Default | Description                                                                         |
+| --------------- | ---------- | ------- | ----------------------------------------------------------------------------------- |
+| `value`         | `number`   | `0`     | The progress value between 0 and 100                                                |
+| `max`           | `number`   | `100`   | The maximum progress value                                                          |
+| `getValueLabel` | `function` | -       | A function to generate an accessible label based on the current value and max value |
+
+## Examples
+
+### Basic Progress
+
+```tsx
+<Progress value={33} />
+```
+
+### Custom Color
+
+```tsx
+<Progress value={50} className="bg-gray-200 [&>div]:bg-blue-500" />
+```
+
+### Different Sizes
+
+```tsx
+<div className="space-y-4">
+  <Progress value={33} className="h-2" />
+  <Progress value={33} className="h-4" />
+  <Progress value={33} className="h-6" />
+</div>
+```
+
+### Animated Progress
+
+```tsx
+import { useState, useEffect } from "react";
+
+function AnimatedProgress() {
+  const [progress, setProgress] = useState(0);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setProgress((prevProgress) => {
+        if (prevProgress >= 100) {
+          return 0;
+        }
+        return prevProgress + 10;
+      });
+    }, 500);
+
+    return () => clearTimeout(timer);
+  }, [progress]);
+
+  return <Progress value={progress} />;
+}
+```
+
+### Progress with Label
+
+```tsx
+function ProgressWithLabel({ value }: { value: number }) {
+  return (
+    <div className="space-y-2">
+      <div className="flex justify-between">
+        <span className="text-sm font-medium">Progress</span>
+        <span className="text-sm font-medium">{value}%</span>
+      </div>
+      <Progress value={value} />
+    </div>
+  );
+}
+
+// Usage
+<ProgressWithLabel value={33} />;
+```
+
+### File Upload Progress
+
+```tsx
+import { useState } from "react";
+import { Button } from "@aliveui/ui";
+
+function FileUploadProgress() {
+  const [progress, setProgress] = useState(0);
+  const [isUploading, setIsUploading] = useState(false);
+
+  const startUpload = () => {
+    setIsUploading(true);
+    setProgress(0);
+
+    const interval = setInterval(() => {
+      setProgress((prevProgress) => {
+        if (prevProgress >= 100) {
+          clearInterval(interval);
+          setIsUploading(false);
+          return 100;
+        }
+        return prevProgress + 10;
+      });
+    }, 500);
+  };
+
+  return (
+    <div className="space-y-4 w-full max-w-md">
+      <div className="space-y-2">
+        <div className="flex justify-between">
+          <span className="text-sm font-medium">
+            {isUploading
+              ? "Uploading..."
+              : progress === 100
+              ? "Uploaded"
+              : "Ready to upload"}
+          </span>
+          <span className="text-sm font-medium">{progress}%</span>
+        </div>
+        <Progress value={progress} />
+      </div>
+
+      <Button onClick={startUpload} disabled={isUploading}>
+        {progress === 100 ? "Upload Another File" : "Start Upload"}
+      </Button>
+    </div>
+  );
+}
+```
+
+### Multi-Step Progress
+
+```tsx
+import { useState } from "react";
+import { Button } from "@aliveui/ui";
+
+function MultiStepProgress() {
+  const steps = ["Account", "Personal", "Review", "Complete"];
+  const [currentStep, setCurrentStep] = useState(0);
+
+  const progress = (currentStep / (steps.length - 1)) * 100;
+
+  const handleNext = () => {
+    if (currentStep < steps.length - 1) {
+      setCurrentStep((prev) => prev + 1);
+    }
+  };
+
+  const handleBack = () => {
+    if (currentStep > 0) {
+      setCurrentStep((prev) => prev - 1);
+    }
+  };
+
+  return (
+    <div className="space-y-6 w-full max-w-md">
+      <div className="space-y-2">
+        <Progress value={progress} />
+        <div className="flex justify-between">
+          {steps.map((step, index) => (
+            <div key={step} className="text-xs font-medium">
+              {step}
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <div className="flex justify-between">
+        <Button
+          variant="outline"
+          onClick={handleBack}
+          disabled={currentStep === 0}
+        >
+          Back
+        </Button>
+        <Button
+          onClick={handleNext}
+          disabled={currentStep === steps.length - 1}
+        >
+          {currentStep === steps.length - 1 ? "Complete" : "Next"}
+        </Button>
+      </div>
+    </div>
+  );
+}
+```
+
+## Accessibility
+
+The Progress component follows accessibility best practices:
+
+- Uses Radix UI's accessible progress primitive
+- Implements appropriate ARIA attributes (`role="progressbar"`, `aria-valuenow`, `aria-valuemin`, `aria-valuemax`)
+- Provides accessible labels via the `getValueLabel` prop
+- Updates ARIA attributes as the progress value changes
+
+## Implementation Details
+
+The Progress component is built on top of Radix UI's Progress primitive, ensuring robust accessibility and consistent behavior across browsers. It's styled with Tailwind CSS and provides a visual indicator of progress with a smooth animation to indicate changes.

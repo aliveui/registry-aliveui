@@ -1,0 +1,121 @@
+# Avatar
+
+The Avatar component is an atom in the AliveUI component library. It's used to display a user's profile picture, initials, or a fallback image.
+
+## Usage
+
+```tsx
+import { Avatar, AvatarImage, AvatarFallback } from "@aliveui/ui";
+
+export default function AvatarExample() {
+  return (
+    <Avatar>
+      <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
+      <AvatarFallback>CN</AvatarFallback>
+    </Avatar>
+  );
+}
+```
+
+## API Reference
+
+The Avatar component is composed of three parts: Avatar, AvatarImage, and AvatarFallback.
+
+### Avatar
+
+Root component that wraps the image and fallback.
+
+| Property   | Type        | Default | Description                               |
+| ---------- | ----------- | ------- | ----------------------------------------- |
+| `children` | `ReactNode` | -       | AvatarImage and AvatarFallback components |
+
+### AvatarImage
+
+Displays the image for the avatar.
+
+| Property | Type     | Default | Description            |
+| -------- | -------- | ------- | ---------------------- |
+| `src`    | `string` | -       | URL of the image       |
+| `alt`    | `string` | -       | Alt text for the image |
+
+### AvatarFallback
+
+Displays a fallback when the image fails to load or is not provided.
+
+| Property   | Type        | Default | Description                       |
+| ---------- | ----------- | ------- | --------------------------------- |
+| `children` | `ReactNode` | -       | Content to display as fallback    |
+| `delayMs`  | `number`    | -       | Delay before showing the fallback |
+
+## Examples
+
+### Basic Avatar
+
+```tsx
+<Avatar>
+  <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
+  <AvatarFallback>CN</AvatarFallback>
+</Avatar>
+```
+
+### Avatar with Initials
+
+```tsx
+<Avatar>
+  <AvatarFallback>JD</AvatarFallback>
+</Avatar>
+```
+
+### Avatar Sizes
+
+You can adjust the size of the avatar by adding custom classes:
+
+```tsx
+<div className="flex gap-4">
+  <Avatar className="h-8 w-8">
+    <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
+    <AvatarFallback>S</AvatarFallback>
+  </Avatar>
+  <Avatar>
+    <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
+    <AvatarFallback>S</AvatarFallback>
+  </Avatar>
+  <Avatar className="h-14 w-14">
+    <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
+    <AvatarFallback>S</AvatarFallback>
+  </Avatar>
+</div>
+```
+
+### Avatar with Border
+
+```tsx
+<Avatar className="border-2 border-primary">
+  <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
+  <AvatarFallback>S</AvatarFallback>
+</Avatar>
+```
+
+### Fallback with Delayed Display
+
+```tsx
+<Avatar>
+  <AvatarImage src="https://example.com/broken-image.jpg" alt="Broken" />
+  <AvatarFallback delayMs={600}>
+    <Spinner /> {/* Show spinner while waiting for image */}
+  </AvatarFallback>
+</Avatar>
+```
+
+## Accessibility
+
+The Avatar component follows accessibility best practices:
+
+- Uses proper HTML semantics
+- Requires alt text for images
+- Provides a fallback for when images don't load
+- Maintains proper contrast for text fallbacks
+
+## Implementation Details
+
+The Avatar component is built on top of Radix UI's Avatar primitive, ensuring robust accessibility and consistent behavior across browsers. It's styled with Tailwind CSS and is fully customizable through className props.

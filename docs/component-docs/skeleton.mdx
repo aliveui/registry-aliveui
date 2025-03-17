@@ -1,0 +1,171 @@
+# Skeleton
+
+The Skeleton component is an atom in the AliveUI component library. It's used to create placeholder loading states that visually represent content that's still loading.
+
+## Usage
+
+```tsx
+import { Skeleton } from "@aliveui/ui";
+
+export default function SkeletonExample() {
+  return (
+    <div className="flex items-center space-x-4">
+      <Skeleton className="h-12 w-12 rounded-full" />
+      <div className="space-y-2">
+        <Skeleton className="h-4 w-[250px]" />
+        <Skeleton className="h-4 w-[200px]" />
+      </div>
+    </div>
+  );
+}
+```
+
+## API Reference
+
+### Properties
+
+The Skeleton component extends the HTML div element and accepts all div properties.
+
+| Property    | Type     | Default | Description                                     |
+| ----------- | -------- | ------- | ----------------------------------------------- |
+| `className` | `string` | -       | Additional CSS classes to apply to the skeleton |
+
+## Examples
+
+### Basic Skeleton
+
+```tsx
+<Skeleton className="h-4 w-[200px]" />
+```
+
+### Card Skeleton
+
+```tsx
+<div className="flex flex-col space-y-3">
+  <Skeleton className="h-[125px] w-[250px] rounded-xl" />
+  <div className="space-y-2">
+    <Skeleton className="h-4 w-[250px]" />
+    <Skeleton className="h-4 w-[200px]" />
+  </div>
+</div>
+```
+
+### Avatar with Text Skeleton
+
+```tsx
+<div className="flex items-center space-x-4">
+  <Skeleton className="h-12 w-12 rounded-full" />
+  <div className="space-y-2">
+    <Skeleton className="h-4 w-[250px]" />
+    <Skeleton className="h-4 w-[200px]" />
+  </div>
+</div>
+```
+
+### Table Skeleton
+
+```tsx
+<div className="flex flex-col space-y-3">
+  <Skeleton className="h-8 w-full" />
+  <Skeleton className="h-8 w-full" />
+  <Skeleton className="h-8 w-full" />
+  <Skeleton className="h-8 w-full" />
+  <Skeleton className="h-8 w-full" />
+</div>
+```
+
+### Article Skeleton
+
+```tsx
+<div className="space-y-4">
+  <Skeleton className="h-8 w-3/4" />
+  <Skeleton className="h-4 w-full" />
+  <Skeleton className="h-4 w-full" />
+  <Skeleton className="h-4 w-full" />
+  <Skeleton className="h-4 w-4/5" />
+  <Skeleton className="h-64 w-full rounded-lg" />
+  <Skeleton className="h-4 w-full" />
+  <Skeleton className="h-4 w-full" />
+  <Skeleton className="h-4 w-4/5" />
+</div>
+```
+
+### Grid of Skeletons
+
+```tsx
+<div className="grid grid-cols-3 gap-4">
+  <Skeleton className="h-32 rounded-md" />
+  <Skeleton className="h-32 rounded-md" />
+  <Skeleton className="h-32 rounded-md" />
+  <Skeleton className="h-32 rounded-md" />
+  <Skeleton className="h-32 rounded-md" />
+  <Skeleton className="h-32 rounded-md" />
+</div>
+```
+
+### Loading Form Skeleton
+
+```tsx
+<div className="space-y-6">
+  <div className="space-y-2">
+    <Skeleton className="h-4 w-[100px]" />
+    <Skeleton className="h-10 w-full" />
+  </div>
+  <div className="space-y-2">
+    <Skeleton className="h-4 w-[100px]" />
+    <Skeleton className="h-10 w-full" />
+  </div>
+  <div className="space-y-2">
+    <Skeleton className="h-4 w-[100px]" />
+    <Skeleton className="h-20 w-full" />
+  </div>
+  <Skeleton className="h-10 w-[100px]" />
+</div>
+```
+
+### Conditional Skeleton
+
+```tsx
+import { useState, useEffect } from "react";
+
+function ConditionalSkeleton() {
+  const [isLoading, setIsLoading] = useState(true);
+  const [data, setData] = useState(null);
+
+  useEffect(() => {
+    // Simulate data fetching
+    const timer = setTimeout(() => {
+      setData("Content loaded!");
+      setIsLoading(false);
+    }, 3000);
+
+    return () => clearTimeout(timer);
+  }, []);
+
+  return (
+    <div className="h-[100px] w-[300px] rounded-md border p-4">
+      {isLoading ? (
+        <div className="space-y-2">
+          <Skeleton className="h-4 w-full" />
+          <Skeleton className="h-4 w-4/5" />
+          <Skeleton className="h-4 w-3/5" />
+        </div>
+      ) : (
+        <div>{data}</div>
+      )}
+    </div>
+  );
+}
+```
+
+## Accessibility
+
+The Skeleton component follows accessibility best practices:
+
+- Uses appropriate ARIA attributes to communicate loading state
+- The pulse animation is subtle to avoid causing issues for users with vestibular disorders or photosensitivity
+- The animation can be disabled using the prefers-reduced-motion media query
+
+## Implementation Details
+
+The Skeleton component is a simple div styled with Tailwind CSS to have a pulsing animation. It's a lightweight component that provides a uniform loading state throughout the application. The component uses the `animate-pulse` class from Tailwind CSS for the animation.
