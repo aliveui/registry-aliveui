@@ -1,0 +1,78 @@
+# Badge
+
+The Badge component is an atom in the AliveUI component library. It's used to highlight status, show counts, or categorize items with short text labels.
+
+## Usage
+
+```tsx
+import { Badge } from "@aliveui/ui";
+
+export default function BadgeExample() {
+  return <Badge>Badge</Badge>;
+}
+```
+
+## API Reference
+
+Badge is a `<div>` element with specific styling options.
+
+### Properties
+
+| Property  | Type                                                     | Default     | Description                    |
+| --------- | -------------------------------------------------------- | ----------- | ------------------------------ |
+| `variant` | `"default" \| "secondary" \| "destructive" \| "outline"` | `"default"` | The visual style of the badge. |
+
+### Variants
+
+- `default`: The primary badge style.
+- `secondary`: A badge with a secondary color.
+- `destructive`: Used for error or warning states.
+- `outline`: A badge with a border and transparent background.
+
+## Examples
+
+### Basic Badge
+
+```tsx
+<Badge>Badge</Badge>
+```
+
+### Badge Variants
+
+```tsx
+<div className="flex flex-wrap gap-2">
+  <Badge variant="default">Default</Badge>
+  <Badge variant="secondary">Secondary</Badge>
+  <Badge variant="destructive">Destructive</Badge>
+  <Badge variant="outline">Outline</Badge>
+</div>
+```
+
+### With Icons
+
+```tsx
+import { Check } from "lucide-react";
+
+<Badge>
+  <Check className="mr-1 h-3 w-3" />
+  Completed
+</Badge>;
+```
+
+### Custom Colors
+
+```tsx
+<Badge className="bg-blue-500 hover:bg-blue-600">Custom</Badge>
+```
+
+## Accessibility
+
+Badge components should:
+
+- Have sufficient color contrast
+- Not rely solely on color to convey meaning
+- Include relevant text for screen readers
+
+## Implementation Details
+
+The Badge component uses class-variance-authority (cva) for styling variants, allowing for consistent styling and easy theme customization.

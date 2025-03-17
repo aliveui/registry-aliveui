@@ -1,0 +1,122 @@
+# Button
+
+The Button component is a fundamental atom in the AliveUI component library. It is used to trigger an action or event, such as submitting a form, opening a dialog, or performing a delete operation.
+
+## Usage
+
+```tsx
+import { Button } from "@aliveui/ui";
+
+export default function ButtonExample() {
+  return <Button variant="default">Click me</Button>;
+}
+```
+
+## API Reference
+
+Button extends the HTML `<button>` element with additional styling options.
+
+### Properties
+
+| Property  | Type                                                                          | Default     | Description                                                                       |
+| --------- | ----------------------------------------------------------------------------- | ----------- | --------------------------------------------------------------------------------- |
+| `variant` | `"default" \| "destructive" \| "outline" \| "secondary" \| "ghost" \| "link"` | `"default"` | The visual style of the button.                                                   |
+| `size`    | `"default" \| "sm" \| "lg" \| "icon"`                                         | `"default"` | The size of the button.                                                           |
+| `asChild` | `boolean`                                                                     | `false`     | When `true`, the component will render as its child rather than a button element. |
+
+### Variants
+
+- `default`: The primary button style.
+- `destructive`: Used for destructive actions like delete or remove.
+- `outline`: A button with a border and transparent background.
+- `secondary`: A button with a secondary color.
+- `ghost`: A button with no background until hovered.
+- `link`: A button that looks like a link.
+
+### Sizes
+
+- `default`: The default button size.
+- `sm`: A small button.
+- `lg`: A large button.
+- `icon`: A button sized to fit an icon.
+
+## Examples
+
+### Basic Button
+
+```tsx
+<Button>Default Button</Button>
+```
+
+### Button Variants
+
+```tsx
+<div className="flex flex-wrap gap-2">
+  <Button variant="default">Default</Button>
+  <Button variant="destructive">Destructive</Button>
+  <Button variant="outline">Outline</Button>
+  <Button variant="secondary">Secondary</Button>
+  <Button variant="ghost">Ghost</Button>
+  <Button variant="link">Link</Button>
+</div>
+```
+
+### Button Sizes
+
+```tsx
+<div className="flex flex-wrap items-center gap-2">
+  <Button size="default">Default</Button>
+  <Button size="sm">Small</Button>
+  <Button size="lg">Large</Button>
+  <Button size="icon">
+    <PlusIcon className="h-4 w-4" />
+  </Button>
+</div>
+```
+
+### With Icon
+
+```tsx
+import { Mail } from "lucide-react";
+
+<Button>
+  <Mail className="mr-2 h-4 w-4" />
+  Login with Email
+</Button>;
+```
+
+### Loading State
+
+```tsx
+import { Loader2 } from "lucide-react";
+
+<Button disabled>
+  <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+  Please wait
+</Button>;
+```
+
+### As Child
+
+Using the `asChild` prop to render the Button as a different element.
+
+```tsx
+import { Link } from "next/link";
+
+<Button asChild>
+  <Link href="/dashboard">Dashboard</Link>
+</Button>;
+```
+
+## Accessibility
+
+Button follows the WAI-ARIA design pattern for buttons:
+
+- Uses native `<button>` element when `asChild` is false
+- Includes appropriate role, tabIndex, and keyboard event handlers
+- Supports disabled states
+- Has sufficient color contrast
+
+## Implementation Details
+
+The Button component uses class-variance-authority (cva) for styling variants and sizes, and is built upon Radix UI's Slot primitive to support the `asChild` pattern.

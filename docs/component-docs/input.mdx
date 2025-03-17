@@ -1,0 +1,108 @@
+# Input
+
+The Input component is an atom in the AliveUI component library. It is a styled input element that accepts user text input.
+
+## Usage
+
+```tsx
+import { Input } from "@aliveui/ui";
+
+export default function InputExample() {
+  return <Input placeholder="Enter your name" />;
+}
+```
+
+## API Reference
+
+Input extends the HTML `<input>` element with additional styling.
+
+### Properties
+
+Input accepts all standard HTML input properties:
+
+| Property      | Type       | Default  | Description                                           |
+| ------------- | ---------- | -------- | ----------------------------------------------------- |
+| `type`        | `string`   | `"text"` | The type of input (`text`, `password`, `email`, etc.) |
+| `disabled`    | `boolean`  | `false`  | Whether the input is disabled                         |
+| `placeholder` | `string`   | -        | Placeholder text to display                           |
+| `value`       | `string`   | -        | The controlled value of the input                     |
+| `onChange`    | `function` | -        | Callback when the input value changes                 |
+
+## Examples
+
+### Basic Input
+
+```tsx
+<Input placeholder="Basic input" />
+```
+
+### Input Types
+
+```tsx
+<div className="flex flex-col gap-4">
+  <Input type="text" placeholder="Text" />
+  <Input type="email" placeholder="Email" />
+  <Input type="password" placeholder="Password" />
+  <Input type="number" placeholder="Number" />
+  <Input type="tel" placeholder="Telephone" />
+  <Input type="url" placeholder="URL" />
+  <Input type="date" />
+  <Input type="time" />
+</div>
+```
+
+### Disabled Input
+
+```tsx
+<Input disabled placeholder="Disabled input" />
+```
+
+### With Label
+
+```tsx
+import { Label } from "@aliveui/ui";
+
+<div className="grid w-full max-w-sm items-center gap-1.5">
+  <Label htmlFor="email">Email</Label>
+  <Input type="email" id="email" placeholder="Enter your email" />
+</div>;
+```
+
+### With Icon
+
+```tsx
+import { Search } from "lucide-react";
+
+<div className="relative">
+  <Search className="absolute left-2.5 top-2.5 h-4 w-4 text-muted-foreground" />
+  <Input className="pl-8" type="search" placeholder="Search..." />
+</div>;
+```
+
+### Form Input
+
+```tsx
+<form onSubmit={(e) => e.preventDefault()}>
+  <div className="grid w-full max-w-sm items-center gap-1.5">
+    <Label htmlFor="name">Name</Label>
+    <Input id="name" placeholder="Your name" />
+  </div>
+  <Button type="submit" className="mt-3">
+    Submit
+  </Button>
+</form>
+```
+
+## Accessibility
+
+Input follows accessibility best practices:
+
+- Uses native HTML `<input>` element
+- Supports keyboard navigation
+- Can be linked with labels using the `id` attribute
+- Supports disabled states
+- Provides visual feedback for focus states
+
+## Implementation Details
+
+The Input component is a lightweight wrapper around the HTML `<input>` element with consistent styling using Tailwind CSS. It's designed to be used as a controlled or uncontrolled input component in forms.

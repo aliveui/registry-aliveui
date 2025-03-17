@@ -1,0 +1,338 @@
+{
+  "atoms": [
+    {
+      "name": "Button",
+      "shadcnPath": "components/ui/button.tsx",
+      "aliveUIPath": "registry/atoms/button/index.tsx",
+      "dependencies": ["@radix-ui/react-slot"],
+      "status": "implemented"
+    },
+    {
+      "name": "Avatar",
+      "shadcnPath": "components/ui/avatar.tsx",
+      "aliveUIPath": "registry/atoms/avatar/index.tsx",
+      "dependencies": ["@radix-ui/react-avatar"],
+      "status": "not-started"
+    },
+    {
+      "name": "Badge",
+      "shadcnPath": "components/ui/badge.tsx",
+      "aliveUIPath": "registry/atoms/badge/index.tsx",
+      "dependencies": [],
+      "status": "implemented"
+    },
+    {
+      "name": "Checkbox",
+      "shadcnPath": "components/ui/checkbox.tsx",
+      "aliveUIPath": "registry/atoms/checkbox/index.tsx",
+      "dependencies": ["@radix-ui/react-checkbox"],
+      "status": "not-started"
+    },
+    {
+      "name": "Input",
+      "shadcnPath": "components/ui/input.tsx",
+      "aliveUIPath": "registry/atoms/input/index.tsx",
+      "dependencies": [],
+      "status": "implemented"
+    },
+    {
+      "name": "Label",
+      "shadcnPath": "components/ui/label.tsx",
+      "aliveUIPath": "registry/atoms/label/index.tsx",
+      "dependencies": ["@radix-ui/react-label"],
+      "status": "not-started"
+    },
+    {
+      "name": "Radio",
+      "shadcnPath": "components/ui/radio-group.tsx",
+      "aliveUIPath": "registry/atoms/radio-group/index.tsx",
+      "dependencies": ["@radix-ui/react-radio-group"],
+      "status": "not-started"
+    },
+    {
+      "name": "Select",
+      "shadcnPath": "components/ui/select.tsx",
+      "aliveUIPath": "registry/atoms/select/index.tsx",
+      "dependencies": ["@radix-ui/react-select"],
+      "status": "not-started"
+    },
+    {
+      "name": "Switch",
+      "shadcnPath": "components/ui/switch.tsx",
+      "aliveUIPath": "registry/atoms/switch/index.tsx",
+      "dependencies": ["@radix-ui/react-switch"],
+      "status": "not-started"
+    },
+    {
+      "name": "Textarea",
+      "shadcnPath": "components/ui/textarea.tsx",
+      "aliveUIPath": "registry/atoms/textarea/index.tsx",
+      "dependencies": [],
+      "status": "not-started"
+    },
+    {
+      "name": "Separator",
+      "shadcnPath": "components/ui/separator.tsx",
+      "aliveUIPath": "registry/atoms/separator/index.tsx",
+      "dependencies": ["@radix-ui/react-separator"],
+      "status": "not-started"
+    },
+    {
+      "name": "Skeleton",
+      "shadcnPath": "components/ui/skeleton.tsx",
+      "aliveUIPath": "registry/atoms/skeleton/index.tsx",
+      "dependencies": [],
+      "status": "not-started"
+    },
+    {
+      "name": "Progress",
+      "shadcnPath": "components/ui/progress.tsx",
+      "aliveUIPath": "registry/atoms/progress/index.tsx",
+      "dependencies": ["@radix-ui/react-progress"],
+      "status": "not-started"
+    },
+    {
+      "name": "Tooltip",
+      "shadcnPath": "components/ui/tooltip.tsx",
+      "aliveUIPath": "registry/atoms/tooltip/index.tsx",
+      "dependencies": ["@radix-ui/react-tooltip"],
+      "status": "not-started"
+    },
+    {
+      "name": "Scroll Area",
+      "shadcnPath": "components/ui/scroll-area.tsx",
+      "aliveUIPath": "registry/atoms/scroll-area/index.tsx",
+      "dependencies": ["@radix-ui/react-scroll-area"],
+      "status": "not-started"
+    }
+  ],
+  "molecules": [
+    {
+      "name": "Accordion",
+      "shadcnPath": "components/ui/accordion.tsx",
+      "aliveUIPath": "registry/molecules/accordion/index.tsx",
+      "dependencies": ["@radix-ui/react-accordion"],
+      "status": "not-started"
+    },
+    {
+      "name": "Alert",
+      "shadcnPath": "components/ui/alert.tsx",
+      "aliveUIPath": "registry/molecules/alert/index.tsx",
+      "dependencies": [],
+      "status": "not-started"
+    },
+    {
+      "name": "Alert Dialog",
+      "shadcnPath": "components/ui/alert-dialog.tsx",
+      "aliveUIPath": "registry/molecules/alert-dialog/index.tsx",
+      "dependencies": ["@radix-ui/react-alert-dialog"],
+      "status": "not-started"
+    },
+    {
+      "name": "Aspect Ratio",
+      "shadcnPath": "components/ui/aspect-ratio.tsx",
+      "aliveUIPath": "registry/molecules/aspect-ratio/index.tsx",
+      "dependencies": ["@radix-ui/react-aspect-ratio"],
+      "status": "not-started"
+    },
+    {
+      "name": "Card",
+      "shadcnPath": "components/ui/card.tsx",
+      "aliveUIPath": "registry/molecules/card/index.tsx",
+      "dependencies": [],
+      "status": "not-started"
+    },
+    {
+      "name": "Collapsible",
+      "shadcnPath": "components/ui/collapsible.tsx",
+      "aliveUIPath": "registry/molecules/collapsible/index.tsx",
+      "dependencies": ["@radix-ui/react-collapsible"],
+      "status": "not-started"
+    },
+    {
+      "name": "Command",
+      "shadcnPath": "components/ui/command.tsx",
+      "aliveUIPath": "registry/molecules/command/index.tsx",
+      "dependencies": ["cmdk"],
+      "status": "not-started"
+    },
+    {
+      "name": "Context Menu",
+      "shadcnPath": "components/ui/context-menu.tsx",
+      "aliveUIPath": "registry/molecules/context-menu/index.tsx",
+      "dependencies": ["@radix-ui/react-context-menu"],
+      "status": "not-started"
+    },
+    {
+      "name": "Dialog",
+      "shadcnPath": "components/ui/dialog.tsx",
+      "aliveUIPath": "registry/molecules/dialog/index.tsx",
+      "dependencies": ["@radix-ui/react-dialog"],
+      "status": "not-started"
+    },
+    {
+      "name": "Dropdown Menu",
+      "shadcnPath": "components/ui/dropdown-menu.tsx",
+      "aliveUIPath": "registry/molecules/dropdown-menu/index.tsx",
+      "dependencies": ["@radix-ui/react-dropdown-menu"],
+      "status": "not-started"
+    },
+    {
+      "name": "Hover Card",
+      "shadcnPath": "components/ui/hover-card.tsx",
+      "aliveUIPath": "registry/molecules/hover-card/index.tsx",
+      "dependencies": ["@radix-ui/react-hover-card"],
+      "status": "not-started"
+    },
+    {
+      "name": "Menubar",
+      "shadcnPath": "components/ui/menubar.tsx",
+      "aliveUIPath": "registry/molecules/menubar/index.tsx",
+      "dependencies": ["@radix-ui/react-menubar"],
+      "status": "not-started"
+    },
+    {
+      "name": "Navigation Menu",
+      "shadcnPath": "components/ui/navigation-menu.tsx",
+      "aliveUIPath": "registry/molecules/navigation-menu/index.tsx",
+      "dependencies": ["@radix-ui/react-navigation-menu"],
+      "status": "not-started"
+    },
+    {
+      "name": "Popover",
+      "shadcnPath": "components/ui/popover.tsx",
+      "aliveUIPath": "registry/molecules/popover/index.tsx",
+      "dependencies": ["@radix-ui/react-popover"],
+      "status": "not-started"
+    },
+    {
+      "name": "Sheet",
+      "shadcnPath": "components/ui/sheet.tsx",
+      "aliveUIPath": "registry/molecules/sheet/index.tsx",
+      "dependencies": ["@radix-ui/react-dialog"],
+      "status": "not-started"
+    },
+    {
+      "name": "Tabs",
+      "shadcnPath": "components/ui/tabs.tsx",
+      "aliveUIPath": "registry/molecules/tabs/index.tsx",
+      "dependencies": ["@radix-ui/react-tabs"],
+      "status": "not-started"
+    },
+    {
+      "name": "Toaster",
+      "shadcnPath": "components/ui/toaster.tsx",
+      "aliveUIPath": "registry/molecules/toaster/index.tsx",
+      "dependencies": ["@radix-ui/react-toast"],
+      "status": "not-started"
+    }
+  ],
+  "organisms": [
+    {
+      "name": "Data Table",
+      "shadcnPath": "components/ui/data-table.tsx",
+      "aliveUIPath": "registry/organisms/data-table/index.tsx",
+      "dependencies": ["@tanstack/react-table"],
+      "status": "not-started"
+    },
+    {
+      "name": "Calendar",
+      "shadcnPath": "components/ui/calendar.tsx",
+      "aliveUIPath": "registry/organisms/calendar/index.tsx",
+      "dependencies": ["react-day-picker", "date-fns"],
+      "status": "not-started"
+    },
+    {
+      "name": "Combobox",
+      "shadcnPath": "components/ui/combobox.tsx",
+      "aliveUIPath": "registry/organisms/combobox/index.tsx",
+      "dependencies": ["@radix-ui/react-popover", "cmdk"],
+      "status": "not-started"
+    },
+    {
+      "name": "Date Picker",
+      "shadcnPath": "components/ui/date-picker.tsx",
+      "aliveUIPath": "registry/organisms/date-picker/index.tsx",
+      "dependencies": ["react-day-picker", "date-fns"],
+      "status": "not-started"
+    },
+    {
+      "name": "Form",
+      "shadcnPath": "components/ui/form.tsx",
+      "aliveUIPath": "registry/organisms/form/index.tsx",
+      "dependencies": ["react-hook-form", "@hookform/resolvers"],
+      "status": "not-started"
+    },
+    {
+      "name": "Carousel",
+      "shadcnPath": "components/ui/carousel.tsx",
+      "aliveUIPath": "registry/organisms/carousel/index.tsx",
+      "dependencies": ["embla-carousel-react"],
+      "status": "not-started"
+    }
+  ],
+  "templates": [
+    {
+      "name": "Dashboard Layout",
+      "aliveUIPath": "registry/templates/dashboard-layout/index.tsx",
+      "uses": ["sidebar", "header", "main-content"],
+      "status": "not-started"
+    },
+    {
+      "name": "Settings Layout",
+      "aliveUIPath": "registry/templates/settings-layout/index.tsx",
+      "uses": ["sidebar", "main-content"],
+      "status": "not-started"
+    },
+    {
+      "name": "Auth Layout",
+      "aliveUIPath": "registry/templates/auth-layout/index.tsx",
+      "uses": ["card", "form"],
+      "status": "not-started"
+    },
+    {
+      "name": "Marketing Layout",
+      "aliveUIPath": "registry/templates/marketing-layout/index.tsx",
+      "uses": ["header", "main-content", "footer"],
+      "status": "not-started"
+    },
+    {
+      "name": "Documentation Layout",
+      "aliveUIPath": "registry/templates/documentation-layout/index.tsx",
+      "uses": ["navigation", "main-content", "table-of-contents"],
+      "status": "not-started"
+    }
+  ],
+  "pages": [
+    {
+      "name": "Dashboard Page",
+      "aliveUIPath": "registry/pages/dashboard/index.tsx",
+      "uses": ["Dashboard Layout", "data-display", "cards"],
+      "status": "not-started"
+    },
+    {
+      "name": "Login Page",
+      "aliveUIPath": "registry/pages/login/index.tsx",
+      "uses": ["Auth Layout", "form"],
+      "status": "not-started"
+    },
+    {
+      "name": "Settings Page",
+      "aliveUIPath": "registry/pages/settings/index.tsx",
+      "uses": ["Settings Layout", "form"],
+      "status": "not-started"
+    },
+    {
+      "name": "Profile Page",
+      "aliveUIPath": "registry/pages/profile/index.tsx",
+      "uses": ["Settings Layout", "form", "avatar"],
+      "status": "not-started"
+    },
+    {
+      "name": "Landing Page",
+      "aliveUIPath": "registry/pages/landing/index.tsx",
+      "uses": ["Marketing Layout"],
+      "status": "not-started"
+    }
+  ]
+}

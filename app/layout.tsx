@@ -1,21 +1,11 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { GeistSans } from "geist/font/sans";
+import { GeistMono } from "geist/font/mono";
 import "./globals.css";
 
 import { ThemeProvider } from "@/components/theme-provider";
 import { Navbar } from "@/components/navbar";
 import { TailwindIndicator } from "@/components/tailwind-indicator";
-import { cn } from "@/lib/utils";
-
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
 
 export const metadata: Metadata = {
   title: "Registry UI Components",
@@ -28,11 +18,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html
-      lang="en"
-      suppressHydrationWarning
-      className={cn(geistSans.variable, geistMono.variable)}
-    >
+    <html lang="en" suppressHydrationWarning className={GeistSans.className}>
       <body className="flex min-h-screen flex-col bg-background font-sans text-foreground antialiased">
         <ThemeProvider>
           <div className="flex min-h-screen flex-col">
