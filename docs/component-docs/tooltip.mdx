@@ -1,0 +1,225 @@
+# Tooltip
+
+The Tooltip component is an atom in the AliveUI component library. It's used to provide additional information when a user hovers over or focuses on an element.
+
+## Usage
+
+```tsx
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "@aliveui/ui";
+
+export default function TooltipExample() {
+  return (
+    <TooltipProvider>
+      <Tooltip>
+        <TooltipTrigger>Hover me</TooltipTrigger>
+        <TooltipContent>
+          <p>This is a tooltip</p>
+        </TooltipContent>
+      </Tooltip>
+    </TooltipProvider>
+  );
+}
+```
+
+## API Reference
+
+The Tooltip component is composed of four parts: `Tooltip`, `TooltipTrigger`, `TooltipContent`, and `TooltipProvider`.
+
+### TooltipProvider
+
+The provider component that manages the tooltip state. It's recommended to wrap your application or section with a tooltip provider.
+
+### Tooltip
+
+The root component that contains all the parts of a tooltip.
+
+| Property                  | Type       | Default | Description                                                                     |
+| ------------------------- | ---------- | ------- | ------------------------------------------------------------------------------- |
+| `defaultOpen`             | `boolean`  | `false` | The default open state when initially rendered                                  |
+| `open`                    | `boolean`  | -       | The controlled open state of the tooltip                                        |
+| `onOpenChange`            | `function` | -       | Event handler called when the open state changes                                |
+| `delayDuration`           | `number`   | `700`   | The delay in milliseconds before the tooltip appears                            |
+| `disableHoverableContent` | `boolean`  | `false` | When `true`, prevents the tooltip content from remaining open when hovered over |
+
+### TooltipTrigger
+
+The element that will trigger the tooltip when hovered or focused.
+
+### TooltipContent
+
+The component that renders the tooltip content. It's positioned relative to the trigger.
+
+| Property          | Type                                     | Default     | Description                                                 |
+| ----------------- | ---------------------------------------- | ----------- | ----------------------------------------------------------- |
+| `side`            | `"top" \| "right" \| "bottom" \| "left"` | `"top"`     | The preferred side of the trigger to render against         |
+| `sideOffset`      | `number`                                 | `4`         | Distance in pixels from the trigger                         |
+| `align`           | `"start" \| "center" \| "end"`           | `"center"`  | The preferred alignment against the trigger                 |
+| `alignOffset`     | `number`                                 | `0`         | An offset in pixels from the alignment edge                 |
+| `avoidCollisions` | `boolean`                                | `true`      | When `true`, attempts to avoid collisions with window edges |
+| `sticky`          | `"partial" \| "always"`                  | `"partial"` | The sticky behavior on the align axis                       |
+
+## Examples
+
+### Basic Tooltip
+
+```tsx
+<TooltipProvider>
+  <Tooltip>
+    <TooltipTrigger>Hover me</TooltipTrigger>
+    <TooltipContent>
+      <p>This is a tooltip</p>
+    </TooltipContent>
+  </Tooltip>
+</TooltipProvider>
+```
+
+### Tooltip with Button
+
+```tsx
+import { Button } from "@aliveui/ui";
+
+<TooltipProvider>
+  <Tooltip>
+    <TooltipTrigger asChild>
+      <Button variant="outline">Hover me</Button>
+    </TooltipTrigger>
+    <TooltipContent>
+      <p>Add to library</p>
+    </TooltipContent>
+  </Tooltip>
+</TooltipProvider>;
+```
+
+### Tooltip with Icon
+
+```tsx
+import { InfoCircledIcon } from "@radix-ui/react-icons";
+
+<TooltipProvider>
+  <Tooltip>
+    <TooltipTrigger asChild>
+      <InfoCircledIcon className="h-4 w-4 cursor-help" />
+    </TooltipTrigger>
+    <TooltipContent>
+      <p>Help information for this feature</p>
+    </TooltipContent>
+  </Tooltip>
+</TooltipProvider>;
+```
+
+### Positioning
+
+```tsx
+<div className="flex gap-5 items-center justify-center">
+  <TooltipProvider>
+    <Tooltip>
+      <TooltipTrigger asChild>
+        <Button variant="outline">Top</Button>
+      </TooltipTrigger>
+      <TooltipContent side="top">
+        <p>This tooltip appears on top</p>
+      </TooltipContent>
+    </Tooltip>
+  </TooltipProvider>
+
+  <TooltipProvider>
+    <Tooltip>
+      <TooltipTrigger asChild>
+        <Button variant="outline">Right</Button>
+      </TooltipTrigger>
+      <TooltipContent side="right">
+        <p>This tooltip appears on the right</p>
+      </TooltipContent>
+    </Tooltip>
+  </TooltipProvider>
+
+  <TooltipProvider>
+    <Tooltip>
+      <TooltipTrigger asChild>
+        <Button variant="outline">Bottom</Button>
+      </TooltipTrigger>
+      <TooltipContent side="bottom">
+        <p>This tooltip appears on the bottom</p>
+      </TooltipContent>
+    </Tooltip>
+  </TooltipProvider>
+
+  <TooltipProvider>
+    <Tooltip>
+      <TooltipTrigger asChild>
+        <Button variant="outline">Left</Button>
+      </TooltipTrigger>
+      <TooltipContent side="left">
+        <p>This tooltip appears on the left</p>
+      </TooltipContent>
+    </Tooltip>
+  </TooltipProvider>
+</div>
+```
+
+### With Different Delay
+
+```tsx
+<TooltipProvider delayDuration={1500}>
+  <Tooltip>
+    <TooltipTrigger asChild>
+      <Button variant="outline">Longer Delay</Button>
+    </TooltipTrigger>
+    <TooltipContent>
+      <p>This tooltip has a 1.5s delay</p>
+    </TooltipContent>
+  </Tooltip>
+</TooltipProvider>
+```
+
+### Rich Content
+
+```tsx
+<TooltipProvider>
+  <Tooltip>
+    <TooltipTrigger asChild>
+      <Button variant="outline">User Profile</Button>
+    </TooltipTrigger>
+    <TooltipContent className="w-80">
+      <div className="flex flex-col gap-2">
+        <div className="flex items-center gap-2">
+          <img
+            src="https://github.com/shadcn.png"
+            className="h-9 w-9 rounded-full"
+            alt="User"
+          />
+          <div>
+            <p className="font-medium">@shadcn</p>
+            <p className="text-muted-foreground text-xs">Developer</p>
+          </div>
+        </div>
+        <p className="text-sm">
+          UI components for the modern web. Built with Radix UI and Tailwind
+          CSS.
+        </p>
+      </div>
+    </TooltipContent>
+  </Tooltip>
+</TooltipProvider>
+```
+
+## Accessibility
+
+The Tooltip component follows accessibility best practices:
+
+- Uses Radix UI's accessible tooltip primitive
+- Properly manages focus
+- Supports keyboard navigation
+- Provides proper ARIA attributes
+- Follows the WAI-ARIA design pattern for tooltips
+- Has appropriate timing delays to avoid accidental triggering
+- Can be disabled when using touch interfaces (via media queries)
+
+## Implementation Details
+
+The Tooltip component is built on top of Radix UI's Tooltip primitive, ensuring robust accessibility and consistent behavior across browsers. It's styled with Tailwind CSS and supports customization through className props.

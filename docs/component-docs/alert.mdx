@@ -1,0 +1,201 @@
+# Alert
+
+The Alert component is a molecule in the AliveUI component library. It's used to display important messages or notifications to users.
+
+## Usage
+
+```tsx
+import { Alert, AlertDescription, AlertTitle } from "@aliveui/ui";
+
+export default function AlertExample() {
+  return (
+    <Alert>
+      <AlertTitle>Heads up!</AlertTitle>
+      <AlertDescription>
+        You can add components and dependencies to your app using the cli.
+      </AlertDescription>
+    </Alert>
+  );
+}
+```
+
+## API Reference
+
+The Alert component consists of three parts: `Alert`, `AlertTitle`, and `AlertDescription`.
+
+### Alert
+
+The main wrapper component for the alert.
+
+| Property  | Type                         | Default     | Description                            |
+| --------- | ---------------------------- | ----------- | -------------------------------------- |
+| `variant` | `"default" \| "destructive"` | `"default"` | Controls the visual style of the alert |
+
+### AlertTitle
+
+The title component for the alert.
+
+### AlertDescription
+
+The description component for the alert.
+
+## Examples
+
+### Default Alert
+
+```tsx
+<Alert>
+  <AlertTitle>Heads up!</AlertTitle>
+  <AlertDescription>
+    You can add components and dependencies to your app using the cli.
+  </AlertDescription>
+</Alert>
+```
+
+### Destructive Alert
+
+```tsx
+<Alert variant="destructive">
+  <AlertTitle>Error</AlertTitle>
+  <AlertDescription>
+    Your session has expired. Please log in again.
+  </AlertDescription>
+</Alert>
+```
+
+### Alert with Icon
+
+```tsx
+import { InfoIcon } from "lucide-react";
+
+<Alert>
+  <InfoIcon className="h-4 w-4" />
+  <AlertTitle>Information</AlertTitle>
+  <AlertDescription>
+    This alert has an icon to help draw attention.
+  </AlertDescription>
+</Alert>;
+```
+
+### Alert with Custom Styling
+
+```tsx
+<Alert className="border-blue-400 bg-blue-50 text-blue-800 dark:border-blue-500 dark:bg-blue-950 dark:text-blue-300">
+  <AlertTitle className="text-blue-800 dark:text-blue-300">Note</AlertTitle>
+  <AlertDescription className="text-blue-700 dark:text-blue-400">
+    This alert has custom styling.
+  </AlertDescription>
+</Alert>
+```
+
+### Success Alert
+
+```tsx
+import { CheckCircleIcon } from "lucide-react";
+
+<Alert className="border-green-400 bg-green-50 text-green-800 dark:border-green-500 dark:bg-green-950 dark:text-green-300">
+  <CheckCircleIcon className="h-4 w-4 text-green-600 dark:text-green-400" />
+  <AlertTitle>Success</AlertTitle>
+  <AlertDescription>
+    Your changes have been saved successfully.
+  </AlertDescription>
+</Alert>;
+```
+
+### Warning Alert
+
+```tsx
+import { AlertTriangleIcon } from "lucide-react";
+
+<Alert className="border-yellow-400 bg-yellow-50 text-yellow-800 dark:border-yellow-500 dark:bg-yellow-950 dark:text-yellow-300">
+  <AlertTriangleIcon className="h-4 w-4 text-yellow-600 dark:text-yellow-400" />
+  <AlertTitle>Warning</AlertTitle>
+  <AlertDescription>
+    This action cannot be undone. Please proceed with caution.
+  </AlertDescription>
+</Alert>;
+```
+
+### Alert with Actions
+
+```tsx
+import { AlertCircleIcon } from "lucide-react";
+import { Button } from "@aliveui/ui";
+
+<Alert>
+  <AlertCircleIcon className="h-4 w-4" />
+  <AlertTitle>Pending Changes</AlertTitle>
+  <AlertDescription className="mt-2">
+    <p className="mb-2">
+      You have unsaved changes. Save or discard them before leaving.
+    </p>
+    <div className="mt-4 flex gap-2">
+      <Button size="sm" variant="outline">
+        Discard
+      </Button>
+      <Button size="sm">Save Changes</Button>
+    </div>
+  </AlertDescription>
+</Alert>;
+```
+
+### Alert with Link
+
+```tsx
+import { LinkIcon } from "lucide-react";
+
+<Alert>
+  <LinkIcon className="h-4 w-4" />
+  <AlertTitle>New Integration Available</AlertTitle>
+  <AlertDescription>
+    <p>
+      A new integration with API v2 is now available.{" "}
+      <a href="#" className="font-medium underline underline-offset-2">
+        Check documentation
+      </a>{" "}
+      for more details.
+    </p>
+  </AlertDescription>
+</Alert>;
+```
+
+### Dismissible Alert
+
+```tsx
+import { useState } from "react";
+import { XIcon } from "lucide-react";
+
+function DismissibleAlert() {
+  const [isVisible, setIsVisible] = useState(true);
+
+  if (!isVisible) return null;
+
+  return (
+    <Alert className="relative">
+      <AlertTitle>Notification</AlertTitle>
+      <AlertDescription>This alert can be dismissed.</AlertDescription>
+      <button
+        onClick={() => setIsVisible(false)}
+        className="absolute top-4 right-4 text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-50"
+      >
+        <XIcon className="h-4 w-4" />
+        <span className="sr-only">Dismiss</span>
+      </button>
+    </Alert>
+  );
+}
+```
+
+## Accessibility
+
+The Alert component follows accessibility best practices:
+
+- Uses the appropriate `role="alert"` attribute to indicate importance
+- Maintains sufficient color contrast for text and background
+- Provides a clear visual hierarchy with title and description
+- Supports keyboard navigation when interactive elements are added
+- When used for non-critical information, consider using `role="status"` instead
+
+## Implementation Details
+
+The Alert component is built with Tailwind CSS and provides a flexible structure for displaying messages to users. It supports different variants (default and destructive) and can be customized with additional icons, actions, or styling. The component is designed to be easily identifiable and to help draw attention to important information.

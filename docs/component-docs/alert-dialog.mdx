@@ -1,0 +1,296 @@
+# Alert Dialog
+
+The Alert Dialog component is a molecule in the AliveUI component library. It's used to interrupt the user with important content and require confirmation or acknowledgement.
+
+## Usage
+
+```tsx
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+  AlertDialogTrigger,
+} from "@aliveui/ui";
+
+export default function AlertDialogExample() {
+  return (
+    <AlertDialog>
+      <AlertDialogTrigger>Open</AlertDialogTrigger>
+      <AlertDialogContent>
+        <AlertDialogHeader>
+          <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
+          <AlertDialogDescription>
+            This action cannot be undone. This will permanently delete your
+            account and remove your data from our servers.
+          </AlertDialogDescription>
+        </AlertDialogHeader>
+        <AlertDialogFooter>
+          <AlertDialogCancel>Cancel</AlertDialogCancel>
+          <AlertDialogAction>Continue</AlertDialogAction>
+        </AlertDialogFooter>
+      </AlertDialogContent>
+    </AlertDialog>
+  );
+}
+```
+
+## API Reference
+
+The Alert Dialog component is built on top of the Radix UI Alert Dialog primitive and consists of several parts.
+
+### AlertDialog
+
+The root component that contains all the parts of an alert dialog.
+
+| Property       | Type       | Default | Description                                                    |
+| -------------- | ---------- | ------- | -------------------------------------------------------------- |
+| `defaultOpen`  | `boolean`  | `false` | The open state of the dialog when it is initially rendered     |
+| `open`         | `boolean`  | -       | The controlled open state of the dialog                        |
+| `onOpenChange` | `function` | -       | Event handler called when the open state of the dialog changes |
+
+### AlertDialogTrigger
+
+The button that opens the dialog.
+
+### AlertDialogContent
+
+The component that contains the content for the dialog.
+
+### AlertDialogHeader
+
+The component that contains the title and description of the dialog.
+
+### AlertDialogFooter
+
+The component that contains the actions for the dialog.
+
+### AlertDialogTitle
+
+The title of the dialog that is announced by screen readers.
+
+### AlertDialogDescription
+
+The description of the dialog that is announced by screen readers.
+
+### AlertDialogAction
+
+The button that confirms the action.
+
+### AlertDialogCancel
+
+The button that cancels the action.
+
+## Examples
+
+### Basic Alert Dialog
+
+```tsx
+<AlertDialog>
+  <AlertDialogTrigger>Open</AlertDialogTrigger>
+  <AlertDialogContent>
+    <AlertDialogHeader>
+      <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
+      <AlertDialogDescription>
+        This action cannot be undone. This will permanently delete your account
+        and remove your data from our servers.
+      </AlertDialogDescription>
+    </AlertDialogHeader>
+    <AlertDialogFooter>
+      <AlertDialogCancel>Cancel</AlertDialogCancel>
+      <AlertDialogAction>Continue</AlertDialogAction>
+    </AlertDialogFooter>
+  </AlertDialogContent>
+</AlertDialog>
+```
+
+### Alert Dialog with Custom Trigger
+
+```tsx
+import { Button } from "@aliveui/ui";
+
+<AlertDialog>
+  <AlertDialogTrigger asChild>
+    <Button variant="destructive">Delete Account</Button>
+  </AlertDialogTrigger>
+  <AlertDialogContent>
+    <AlertDialogHeader>
+      <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
+      <AlertDialogDescription>
+        This action cannot be undone. This will permanently delete your account
+        and remove your data from our servers.
+      </AlertDialogDescription>
+    </AlertDialogHeader>
+    <AlertDialogFooter>
+      <AlertDialogCancel>Cancel</AlertDialogCancel>
+      <AlertDialogAction>Delete Account</AlertDialogAction>
+    </AlertDialogFooter>
+  </AlertDialogContent>
+</AlertDialog>;
+```
+
+### Controlled Alert Dialog
+
+```tsx
+import { useState } from "react";
+import { Button } from "@aliveui/ui";
+
+function ControlledAlertDialog() {
+  const [open, setOpen] = useState(false);
+
+  return (
+    <>
+      <Button variant="outline" onClick={() => setOpen(true)}>
+        Show Alert Dialog
+      </Button>
+      <AlertDialog open={open} onOpenChange={setOpen}>
+        <AlertDialogContent>
+          <AlertDialogHeader>
+            <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
+            <AlertDialogDescription>
+              This action cannot be undone. This will permanently delete your
+              account and remove your data from our servers.
+            </AlertDialogDescription>
+          </AlertDialogHeader>
+          <AlertDialogFooter>
+            <AlertDialogCancel>Cancel</AlertDialogCancel>
+            <AlertDialogAction>Continue</AlertDialogAction>
+          </AlertDialogFooter>
+        </AlertDialogContent>
+      </AlertDialog>
+    </>
+  );
+}
+```
+
+### Confirmation with Additional Information
+
+```tsx
+<AlertDialog>
+  <AlertDialogTrigger asChild>
+    <Button variant="outline">Delete Files</Button>
+  </AlertDialogTrigger>
+  <AlertDialogContent>
+    <AlertDialogHeader>
+      <AlertDialogTitle>Delete Files</AlertDialogTitle>
+      <AlertDialogDescription>
+        <p className="mb-4">
+          You are about to delete 15 files. This action cannot be undone.
+        </p>
+        <div className="rounded-md bg-muted p-4 mb-4">
+          <ul className="text-sm list-disc pl-4 space-y-1">
+            <li>document1.pdf</li>
+            <li>image2.jpg</li>
+            <li>spreadsheet3.xlsx</li>
+            <li>and 12 more files...</li>
+          </ul>
+        </div>
+        <p>
+          By confirming, these files will be permanently removed from your
+          storage.
+        </p>
+      </AlertDialogDescription>
+    </AlertDialogHeader>
+    <AlertDialogFooter>
+      <AlertDialogCancel>Cancel</AlertDialogCancel>
+      <AlertDialogAction variant="destructive">Delete Files</AlertDialogAction>
+    </AlertDialogFooter>
+  </AlertDialogContent>
+</AlertDialog>
+```
+
+### Alert Dialog with Form
+
+```tsx
+import { Label } from "@aliveui/ui";
+import { Input } from "@aliveui/ui";
+
+<AlertDialog>
+  <AlertDialogTrigger asChild>
+    <Button>Invite Team Member</Button>
+  </AlertDialogTrigger>
+  <AlertDialogContent>
+    <AlertDialogHeader>
+      <AlertDialogTitle>Invite Team Member</AlertDialogTitle>
+      <AlertDialogDescription>
+        Add a new member to your team by sending them an invitation email.
+      </AlertDialogDescription>
+    </AlertDialogHeader>
+    <div className="space-y-4 py-2">
+      <div className="space-y-2">
+        <Label htmlFor="email">Email</Label>
+        <Input id="email" placeholder="colleague@example.com" />
+      </div>
+      <div className="space-y-2">
+        <Label htmlFor="role">Role</Label>
+        <select
+          id="role"
+          className="w-full rounded-md border border-input bg-background px-3 py-2 text-sm"
+        >
+          <option value="viewer">Viewer</option>
+          <option value="editor">Editor</option>
+          <option value="admin">Admin</option>
+        </select>
+      </div>
+    </div>
+    <AlertDialogFooter>
+      <AlertDialogCancel>Cancel</AlertDialogCancel>
+      <AlertDialogAction>Send Invitation</AlertDialogAction>
+    </AlertDialogFooter>
+  </AlertDialogContent>
+</AlertDialog>;
+```
+
+### Custom Actions Alert Dialog
+
+```tsx
+<AlertDialog>
+  <AlertDialogTrigger asChild>
+    <Button variant="outline">Action Required</Button>
+  </AlertDialogTrigger>
+  <AlertDialogContent>
+    <AlertDialogHeader>
+      <AlertDialogTitle>License Expiring</AlertDialogTitle>
+      <AlertDialogDescription>
+        Your license will expire in 3 days. Please take action to avoid service
+        interruption.
+      </AlertDialogDescription>
+    </AlertDialogHeader>
+    <AlertDialogFooter className="flex-col sm:flex-row gap-2 sm:gap-0">
+      <AlertDialogCancel className="sm:w-auto w-full">
+        Remind Me Later
+      </AlertDialogCancel>
+      <Button
+        variant="outline"
+        className="sm:ml-2 sm:w-auto w-full"
+        onClick={() => window.open("https://example.com/docs", "_blank")}
+      >
+        View Documentation
+      </Button>
+      <AlertDialogAction className="sm:ml-2 sm:w-auto w-full">
+        Renew License
+      </AlertDialogAction>
+    </AlertDialogFooter>
+  </AlertDialogContent>
+</AlertDialog>
+```
+
+## Accessibility
+
+The Alert Dialog component follows accessibility best practices:
+
+- Uses Radix UI's accessible alert dialog primitive
+- Alert dialogs are announced properly to screen readers
+- Users are prevented from interacting with other content while the alert dialog is open
+- Focus is automatically trapped within the dialog and restored to the trigger when closed
+- The escape key is supported for closing the dialog
+- Properly implements the `alertdialog` role
+- Properly implements `aria-labelledby` and `aria-describedby` for screen readers
+
+## Implementation Details
+
+The Alert Dialog component is built on top of Radix UI's Alert Dialog primitive, ensuring robust accessibility and consistent behavior across browsers. It's styled with Tailwind CSS and is fully customizable through className props. The component includes animations for opening and closing the dialog, and is designed to be responsive across different screen sizes.

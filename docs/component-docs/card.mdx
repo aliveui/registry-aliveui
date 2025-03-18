@@ -1,0 +1,283 @@
+# Card
+
+The Card component is a molecule in the AliveUI component library. It provides a flexible container for grouping and displaying content in a clear and concise format.
+
+## Usage
+
+```tsx
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@aliveui/ui";
+
+export default function CardExample() {
+  return (
+    <Card>
+      <CardHeader>
+        <CardTitle>Card Title</CardTitle>
+        <CardDescription>Card Description</CardDescription>
+      </CardHeader>
+      <CardContent>
+        <p>Card Content</p>
+      </CardContent>
+      <CardFooter>
+        <p>Card Footer</p>
+      </CardFooter>
+    </Card>
+  );
+}
+```
+
+## API Reference
+
+The Card component consists of several parts that can be composed together.
+
+### Card
+
+The main container component.
+
+### CardHeader
+
+Container for the card title and description.
+
+### CardTitle
+
+The title of the card, usually the main heading.
+
+### CardDescription
+
+The description of the card, usually a subtitle or short summary.
+
+### CardContent
+
+The main content area of the card.
+
+### CardFooter
+
+The footer of the card, usually contains actions or additional information.
+
+## Examples
+
+### Simple Card
+
+```tsx
+<Card className="w-[350px]">
+  <CardHeader>
+    <CardTitle>Notification Settings</CardTitle>
+    <CardDescription>Configure how you receive notifications.</CardDescription>
+  </CardHeader>
+  <CardContent>
+    <p>Choose which notifications you want to receive.</p>
+  </CardContent>
+  <CardFooter>
+    <p className="text-sm text-muted-foreground">Last updated 2 days ago</p>
+  </CardFooter>
+</Card>
+```
+
+### Card with Form
+
+```tsx
+import { Button } from "@aliveui/ui";
+import { Input } from "@aliveui/ui";
+import { Label } from "@aliveui/ui";
+
+<Card className="w-[350px]">
+  <CardHeader>
+    <CardTitle>Create project</CardTitle>
+    <CardDescription>Deploy your new project in one-click.</CardDescription>
+  </CardHeader>
+  <CardContent>
+    <form>
+      <div className="grid w-full items-center gap-4">
+        <div className="flex flex-col space-y-1.5">
+          <Label htmlFor="name">Name</Label>
+          <Input id="name" placeholder="Name of your project" />
+        </div>
+        <div className="flex flex-col space-y-1.5">
+          <Label htmlFor="framework">Framework</Label>
+          <select
+            id="framework"
+            className="rounded-md border border-input bg-background px-3 py-2"
+          >
+            <option value="next">Next.js</option>
+            <option value="sveltekit">SvelteKit</option>
+            <option value="astro">Astro</option>
+            <option value="nuxt">Nuxt.js</option>
+          </select>
+        </div>
+      </div>
+    </form>
+  </CardContent>
+  <CardFooter className="flex justify-between">
+    <Button variant="outline">Cancel</Button>
+    <Button>Deploy</Button>
+  </CardFooter>
+</Card>;
+```
+
+### Card with Image
+
+```tsx
+import Image from "next/image";
+import { AspectRatio } from "@aliveui/ui";
+
+<Card className="w-[350px] overflow-hidden">
+  <AspectRatio ratio={16 / 9}>
+    <Image
+      src="https://images.unsplash.com/photo-1605460375648-278bcbd579a6"
+      alt="A beautiful landscape"
+      fill
+      className="object-cover"
+    />
+  </AspectRatio>
+  <CardHeader>
+    <CardTitle>Beautiful Landscapes</CardTitle>
+    <CardDescription>Captured by professional photographers</CardDescription>
+  </CardHeader>
+  <CardContent>
+    <p>
+      Explore the most stunning natural landscapes from around the world, all in
+      one place.
+    </p>
+  </CardContent>
+  <CardFooter>
+    <Button size="sm">View Gallery</Button>
+  </CardFooter>
+</Card>;
+```
+
+### Card with Actions
+
+```tsx
+import { Button } from "@aliveui/ui";
+import { Badge } from "@aliveui/ui";
+
+<Card className="w-[350px]">
+  <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+    <div className="space-y-1">
+      <CardTitle>Project Status</CardTitle>
+      <CardDescription>Current project overview</CardDescription>
+    </div>
+    <Badge>Active</Badge>
+  </CardHeader>
+  <CardContent>
+    <div className="mb-4 grid gap-2">
+      <div className="flex items-center justify-between">
+        <p className="text-sm font-medium">Progress</p>
+        <p className="text-sm text-muted-foreground">75%</p>
+      </div>
+      <div className="h-2 w-full rounded-full bg-muted">
+        <div className="h-full w-3/4 rounded-full bg-primary"></div>
+      </div>
+    </div>
+    <div className="grid gap-2">
+      <div className="flex items-center">
+        <div className="mr-2 h-2 w-2 rounded-full bg-green-500"></div>
+        <p className="text-sm">On schedule</p>
+      </div>
+      <div className="flex items-center">
+        <div className="mr-2 h-2 w-2 rounded-full bg-yellow-500"></div>
+        <p className="text-sm">2 pending tasks</p>
+      </div>
+    </div>
+  </CardContent>
+  <CardFooter className="justify-between">
+    <Button variant="ghost" size="sm">
+      View Details
+    </Button>
+    <Button size="sm">Update Status</Button>
+  </CardFooter>
+</Card>;
+```
+
+### Interactive Card
+
+```tsx
+import { Button } from "@aliveui/ui";
+import { Badge } from "@aliveui/ui";
+
+<Card className="w-[350px] transition-all hover:shadow-md">
+  <CardHeader>
+    <div className="flex items-center justify-between">
+      <CardTitle>Product Overview</CardTitle>
+      <Badge variant="outline">New</Badge>
+    </div>
+    <CardDescription>Latest product statistics</CardDescription>
+  </CardHeader>
+  <CardContent>
+    <div className="grid grid-cols-2 gap-4">
+      <div className="space-y-1 rounded-lg bg-muted p-3">
+        <p className="text-sm font-medium leading-none">Total Sales</p>
+        <p className="text-2xl font-bold">$12,345</p>
+        <p className="text-xs text-muted-foreground">+12% from last month</p>
+      </div>
+      <div className="space-y-1 rounded-lg bg-muted p-3">
+        <p className="text-sm font-medium leading-none">Customers</p>
+        <p className="text-2xl font-bold">1,234</p>
+        <p className="text-xs text-muted-foreground">+5% from last month</p>
+      </div>
+    </div>
+  </CardContent>
+  <CardFooter>
+    <Button className="w-full">View Detailed Report</Button>
+  </CardFooter>
+</Card>;
+```
+
+### Card Grid Layout
+
+```tsx
+<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+  <Card>
+    <CardHeader>
+      <CardTitle>Card 1</CardTitle>
+      <CardDescription>Description for Card 1</CardDescription>
+    </CardHeader>
+    <CardContent>
+      <p>Content for Card 1</p>
+    </CardContent>
+  </Card>
+  <Card>
+    <CardHeader>
+      <CardTitle>Card 2</CardTitle>
+      <CardDescription>Description for Card 2</CardDescription>
+    </CardHeader>
+    <CardContent>
+      <p>Content for Card 2</p>
+    </CardContent>
+  </Card>
+  <Card>
+    <CardHeader>
+      <CardTitle>Card 3</CardTitle>
+      <CardDescription>Description for Card 3</CardDescription>
+    </CardHeader>
+    <CardContent>
+      <p>Content for Card 3</p>
+    </CardContent>
+  </Card>
+</div>
+```
+
+## Accessibility
+
+The Card component follows these accessibility best practices:
+
+- Semantic HTML structure for proper content hierarchy
+- Color contrast to ensure readability
+- Interactive elements within cards are focusable and have proper keyboard support
+- Cards use proper heading levels for titles
+
+When using the Card component, ensure that:
+
+- Card titles use appropriate heading levels in the page hierarchy
+- Interactive elements inside cards are properly keyboard accessible
+- Related cards are grouped semantically when appropriate
+
+## Implementation Details
+
+The Card component is built with Tailwind CSS and offers a flexible container for organizing content. It uses a clean, minimal design that adapts to various content types and can be customized through className props. The component is structured to provide a consistent layout with designated areas for headers, content, and footers.

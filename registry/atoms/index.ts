@@ -14,5 +14,24 @@ export { Textarea } from "./textarea/index";
 export { Separator } from "./separator/index";
 export { Skeleton } from "./skeleton/index";
 export { Progress } from "./progress/index";
+export {
+  Tooltip,
+  TooltipTrigger,
+  TooltipContent,
+  TooltipProvider,
+} from "./tooltip/index";
+export { ScrollArea, ScrollBar } from "./scroll-area/index";
+export {
+  Select,
+  SelectGroup,
+  SelectValue,
+  SelectTrigger,
+  SelectContent,
+  SelectLabel,
+  SelectItem,
+  SelectSeparator,
+  SelectScrollUpButton,
+  SelectScrollDownButton,
+} from "./select/index";
 
 export { Button };

@@ -61,7 +61,7 @@
       "shadcnPath": "components/ui/select.tsx",
       "aliveUIPath": "registry/atoms/select/index.tsx",
       "dependencies": ["@radix-ui/react-select"],
-      "status": "not-started",
+      "status": "implemented",
       "hasPage": false
     },
     {
@@ -109,7 +109,7 @@
       "shadcnPath": "components/ui/tooltip.tsx",
       "aliveUIPath": "registry/atoms/tooltip/index.tsx",
       "dependencies": ["@radix-ui/react-tooltip"],
-      "status": "not-started",
+      "status": "implemented",
       "hasPage": false
     },
     {
@@ -117,7 +117,7 @@
       "shadcnPath": "components/ui/scroll-area.tsx",
       "aliveUIPath": "registry/atoms/scroll-area/index.tsx",
       "dependencies": ["@radix-ui/react-scroll-area"],
-      "status": "not-started",
+      "status": "implemented",
       "hasPage": false
     }
   ],
@@ -127,7 +127,7 @@
       "shadcnPath": "components/ui/accordion.tsx",
       "aliveUIPath": "registry/molecules/accordion/index.tsx",
       "dependencies": ["@radix-ui/react-accordion"],
-      "status": "not-started",
+      "status": "implemented",
       "hasPage": false
     },
     {
@@ -135,7 +135,7 @@
       "shadcnPath": "components/ui/alert.tsx",
       "aliveUIPath": "registry/molecules/alert/index.tsx",
       "dependencies": [],
-      "status": "not-started",
+      "status": "implemented",
       "hasPage": false
     },
     {
@@ -143,7 +143,7 @@
       "shadcnPath": "components/ui/alert-dialog.tsx",
       "aliveUIPath": "registry/molecules/alert-dialog/index.tsx",
       "dependencies": ["@radix-ui/react-alert-dialog"],
-      "status": "not-started",
+      "status": "implemented",
       "hasPage": false
     },
     {
@@ -151,7 +151,7 @@
       "shadcnPath": "components/ui/aspect-ratio.tsx",
       "aliveUIPath": "registry/molecules/aspect-ratio/index.tsx",
       "dependencies": ["@radix-ui/react-aspect-ratio"],
-      "status": "not-started",
+      "status": "implemented",
       "hasPage": false
     },
     {
@@ -159,7 +159,7 @@
       "shadcnPath": "components/ui/card.tsx",
       "aliveUIPath": "registry/molecules/card/index.tsx",
       "dependencies": [],
-      "status": "not-started",
+      "status": "implemented",
       "hasPage": true
     },
     {
@@ -167,7 +167,7 @@
       "shadcnPath": "components/ui/collapsible.tsx",
       "aliveUIPath": "registry/molecules/collapsible/index.tsx",
       "dependencies": ["@radix-ui/react-collapsible"],
-      "status": "not-started",
+      "status": "implemented",
       "hasPage": false
     },
     {

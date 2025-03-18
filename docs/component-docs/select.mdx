@@ -1,0 +1,265 @@
+# Select
+
+The Select component is an atom in the AliveUI component library. It allows users to select an option from a dropdown menu.
+
+## Usage
+
+```tsx
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@aliveui/ui";
+
+export default function SelectExample() {
+  return (
+    <Select>
+      <SelectTrigger className="w-[180px]">
+        <SelectValue placeholder="Select a fruit" />
+      </SelectTrigger>
+      <SelectContent>
+        <SelectItem value="apple">Apple</SelectItem>
+        <SelectItem value="banana">Banana</SelectItem>
+        <SelectItem value="orange">Orange</SelectItem>
+      </SelectContent>
+    </Select>
+  );
+}
+```
+
+## API Reference
+
+The Select component is composed of multiple parts: `Select`, `SelectTrigger`, `SelectValue`, `SelectContent`, `SelectItem`, `SelectGroup`, `SelectLabel`, `SelectSeparator`, `SelectScrollUpButton`, and `SelectScrollDownButton`.
+
+### Select
+
+The root component that contains all the parts of a select.
+
+| Property        | Type             | Default | Description                                                                |
+| --------------- | ---------------- | ------- | -------------------------------------------------------------------------- |
+| `defaultValue`  | `string`         | -       | The default value of the select                                            |
+| `value`         | `string`         | -       | The controlled value of the select                                         |
+| `onValueChange` | `function`       | -       | Event handler called when the value changes                                |
+| `open`          | `boolean`        | -       | The controlled open state of the select                                    |
+| `onOpenChange`  | `function`       | -       | Event handler called when the open state changes                           |
+| `disabled`      | `boolean`        | `false` | When `true`, prevents the user from interacting with the select            |
+| `name`          | `string`         | -       | The name of the select for use in forms                                    |
+| `required`      | `boolean`        | `false` | When `true`, the user must select a value before the form can be submitted |
+| `dir`           | `"ltr" \| "rtl"` | -       | The reading direction of the select                                        |
+
+### SelectTrigger
+
+The button that triggers the select dropdown.
+
+| Property  | Type      | Default | Description                                                                                          |
+| --------- | --------- | ------- | ---------------------------------------------------------------------------------------------------- |
+| `asChild` | `boolean` | `false` | When `true`, the component will use its children as the trigger instead of rendering its own element |
+
+### SelectValue
+
+The component that displays the selected value.
+
+| Property      | Type     | Default | Description                                   |
+| ------------- | -------- | ------- | --------------------------------------------- |
+| `placeholder` | `string` | -       | The text to display when no value is selected |
+
+### SelectContent
+
+The dropdown content that holds the select items.
+
+| Property          | Type                                     | Default    | Description                                         |
+| ----------------- | ---------------------------------------- | ---------- | --------------------------------------------------- |
+| `position`        | `"item" \| "popper"`                     | `"popper"` | The positioning mode of the content                 |
+| `side`            | `"top" \| "right" \| "bottom" \| "left"` | `"bottom"` | The preferred side of the trigger to render against |
+| `sideOffset`      | `number`                                 | `4`        | Distance in pixels from the trigger                 |
+| `align`           | `"start" \| "center" \| "end"`           | `"center"` | The preferred alignment against the trigger         |
+| `alignOffset`     | `number`                                 | `0`        | An offset in pixels from the alignment edge         |
+| `avoidCollisions` | `boolean`                                | `true`     | When `true`, avoids collisions with window edges    |
+
+### SelectItem
+
+A select item represents an option that can be selected.
+
+| Property    | Type      | Default      | Description                                            |
+| ----------- | --------- | ------------ | ------------------------------------------------------ |
+| `value`     | `string`  | **Required** | The value of the select item                           |
+| `disabled`  | `boolean` | `false`      | When `true`, prevents the user from selecting the item |
+| `textValue` | `string`  | -            | An optional text used for type-ahead filtering         |
+
+### Other Components
+
+- `SelectGroup`: Groups related items together
+- `SelectLabel`: A label for a group of items
+- `SelectSeparator`: A visual separator between items or groups
+- `SelectScrollUpButton` and `SelectScrollDownButton`: Buttons for scrolling up/down when there are many items
+
+## Examples
+
+### Basic Select
+
+```tsx
+<Select>
+  <SelectTrigger className="w-[180px]">
+    <SelectValue placeholder="Select a fruit" />
+  </SelectTrigger>
+  <SelectContent>
+    <SelectItem value="apple">Apple</SelectItem>
+    <SelectItem value="banana">Banana</SelectItem>
+    <SelectItem value="orange">Orange</SelectItem>
+  </SelectContent>
+</Select>
+```
+
+### Select with Groups
+
+```tsx
+<Select>
+  <SelectTrigger className="w-[180px]">
+    <SelectValue placeholder="Select a food" />
+  </SelectTrigger>
+  <SelectContent>
+    <SelectGroup>
+      <SelectLabel>Fruits</SelectLabel>
+      <SelectItem value="apple">Apple</SelectItem>
+      <SelectItem value="banana">Banana</SelectItem>
+      <SelectItem value="orange">Orange</SelectItem>
+    </SelectGroup>
+    <SelectSeparator />
+    <SelectGroup>
+      <SelectLabel>Vegetables</SelectLabel>
+      <SelectItem value="carrot">Carrot</SelectItem>
+      <SelectItem value="broccoli">Broccoli</SelectItem>
+      <SelectItem value="spinach">Spinach</SelectItem>
+    </SelectGroup>
+  </SelectContent>
+</Select>
+```
+
+### Disabled Select
+
+```tsx
+<Select disabled>
+  <SelectTrigger className="w-[180px]">
+    <SelectValue placeholder="Select a fruit" />
+  </SelectTrigger>
+  <SelectContent>
+    <SelectItem value="apple">Apple</SelectItem>
+    <SelectItem value="banana">Banana</SelectItem>
+    <SelectItem value="orange">Orange</SelectItem>
+  </SelectContent>
+</Select>
+```
+
+### Disabled Item
+
+```tsx
+<Select>
+  <SelectTrigger className="w-[180px]">
+    <SelectValue placeholder="Select a fruit" />
+  </SelectTrigger>
+  <SelectContent>
+    <SelectItem value="apple">Apple</SelectItem>
+    <SelectItem value="banana" disabled>
+      Banana
+    </SelectItem>
+    <SelectItem value="orange">Orange</SelectItem>
+  </SelectContent>
+</Select>
+```
+
+### Controlled Select
+
+```tsx
+import { useState } from "react";
+
+function ControlledSelect() {
+  const [value, setValue] = useState("");
+
+  return (
+    <div className="space-y-2">
+      <Select value={value} onValueChange={setValue}>
+        <SelectTrigger className="w-[180px]">
+          <SelectValue placeholder="Select a fruit" />
+        </SelectTrigger>
+        <SelectContent>
+          <SelectItem value="apple">Apple</SelectItem>
+          <SelectItem value="banana">Banana</SelectItem>
+          <SelectItem value="orange">Orange</SelectItem>
+        </SelectContent>
+      </Select>
+      <div>Selected fruit: {value}</div>
+    </div>
+  );
+}
+```
+
+### Form Integration
+
+```tsx
+import { Button } from "@aliveui/ui";
+import { Label } from "@aliveui/ui";
+
+function SelectForm() {
+  return (
+    <form
+      onSubmit={(e) => {
+        e.preventDefault();
+        const formData = new FormData(e.target);
+        const fruit = formData.get("fruit");
+        console.log(`Selected fruit: ${fruit}`);
+      }}
+      className="space-y-4"
+    >
+      <div className="space-y-2">
+        <Label htmlFor="fruit">Favorite Fruit</Label>
+        <Select name="fruit" required>
+          <SelectTrigger id="fruit" className="w-full">
+            <SelectValue placeholder="Select a fruit" />
+          </SelectTrigger>
+          <SelectContent>
+            <SelectItem value="apple">Apple</SelectItem>
+            <SelectItem value="banana">Banana</SelectItem>
+            <SelectItem value="orange">Orange</SelectItem>
+          </SelectContent>
+        </Select>
+      </div>
+      <Button type="submit">Submit</Button>
+    </form>
+  );
+}
+```
+
+### Positioning
+
+```tsx
+<Select>
+  <SelectTrigger className="w-[180px]">
+    <SelectValue placeholder="Select a fruit" />
+  </SelectTrigger>
+  <SelectContent position="popper" side="top" align="start">
+    <SelectItem value="apple">Apple</SelectItem>
+    <SelectItem value="banana">Banana</SelectItem>
+    <SelectItem value="orange">Orange</SelectItem>
+  </SelectContent>
+</Select>
+```
+
+## Accessibility
+
+The Select component follows accessibility best practices:
+
+- Uses Radix UI's accessible select primitive
+- Supports keyboard navigation (Arrow keys to navigate, Enter to select)
+- Properly announces state changes to screen readers
+- Manages focus states properly
+- Follows the WAI-ARIA design pattern for select widgets
+- Supports form association
+- Implements proper ARIA attributes
+- Uses appropriate labels
+- Maintains sufficient color contrast
+
+## Implementation Details
+
+The Select component is built on top of Radix UI's Select primitive, ensuring robust accessibility and consistent behavior across browsers. It's styled with Tailwind CSS and is fully customizable through className props.

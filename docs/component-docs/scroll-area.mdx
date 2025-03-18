@@ -1,0 +1,202 @@
+# Scroll Area
+
+The Scroll Area component is an atom in the AliveUI component library. It's used to create a scrollable container with custom-styled scrollbars.
+
+## Usage
+
+```tsx
+import { ScrollArea } from "@aliveui/ui";
+
+export default function ScrollAreaExample() {
+  return (
+    <ScrollArea className="h-[200px] w-[350px] rounded-md border p-4">
+      <div>
+        <p>Long content that will cause scrolling...</p>
+        {/* Add lengthy content here */}
+      </div>
+    </ScrollArea>
+  );
+}
+```
+
+## API Reference
+
+The Scroll Area component is built on top of the Radix UI Scroll Area primitive.
+
+### ScrollArea
+
+| Property          | Type                                        | Default   | Description                                                                         |
+| ----------------- | ------------------------------------------- | --------- | ----------------------------------------------------------------------------------- |
+| `type`            | `"auto" \| "always" \| "scroll" \| "hover"` | `"hover"` | Describes the nature of scrollbar visibility                                        |
+| `scrollHideDelay` | `number`                                    | `600`     | Delay in milliseconds before the scrollbar is hidden after the user stops scrolling |
+| `dir`             | `"ltr" \| "rtl"`                            | -         | The reading direction of the scroll area                                            |
+| `asChild`         | `boolean`                                   | `false`   | When `true`, the component will render as its child                                 |
+
+### ScrollBar
+
+| Property      | Type                         | Default      | Description                        |
+| ------------- | ---------------------------- | ------------ | ---------------------------------- |
+| `orientation` | `"horizontal" \| "vertical"` | `"vertical"` | The orientation of the scrollbar   |
+| `forceMount`  | `boolean`                    | `false`      | Forces the scrollbar to be visible |
+
+## Examples
+
+### Basic Scroll Area
+
+```tsx
+<ScrollArea className="h-[200px] w-[350px] rounded-md border p-4">
+  <div>
+    <h4 className="mb-4 text-sm font-medium leading-none">Tags</h4>
+    {Array.from({ length: 50 }).map((_, i) => (
+      <div key={i} className="text-sm">
+        Tag {i + 1}
+      </div>
+    ))}
+  </div>
+</ScrollArea>
+```
+
+### Scroll Area with Custom Style
+
+```tsx
+<ScrollArea className="h-72 w-48 rounded-md border">
+  <div className="p-4">
+    <h4 className="mb-4 text-sm font-medium leading-none">Channels</h4>
+    {Array.from({ length: 30 }).map((_, i) => (
+      <div
+        key={i}
+        className="text-sm my-2 flex items-center gap-2 rounded-md p-2 hover:bg-muted/50 cursor-pointer"
+      >
+        <div className="h-2 w-2 rounded-full bg-primary" />
+        <span>Channel {i + 1}</span>
+      </div>
+    ))}
+  </div>
+</ScrollArea>
+```
+
+### Horizontal Scroll Area
+
+```tsx
+<ScrollArea className="w-96 whitespace-nowrap rounded-md border">
+  <div className="flex w-max p-4">
+    {Array.from({ length: 20 }).map((_, i) => (
+      <div
+        key={i}
+        className="w-48 h-32 flex-shrink-0 rounded-md border p-4 mr-4 bg-muted/20"
+      >
+        <div className="font-semibold">Card {i + 1}</div>
+        <div className="text-sm text-muted-foreground">
+          This is a horizontally scrollable card.
+        </div>
+      </div>
+    ))}
+  </div>
+</ScrollArea>
+```
+
+### Scroll Area with Custom Content
+
+```tsx
+<ScrollArea className="h-[400px] w-full max-w-[600px] rounded-md border p-4">
+  <h2 className="text-2xl font-bold mb-4">Lorem Ipsum</h2>
+  <p className="mb-4">
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod
+    tempor incididunt ut labore et dolore magna aliqua.
+  </p>
+  <h3 className="text-xl font-semibold mb-2">Section 1</h3>
+  <p className="mb-4">
+    Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+    aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in
+    voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+  </p>
+  <h3 className="text-xl font-semibold mb-2">Section 2</h3>
+  <p className="mb-4">
+    Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
+    deserunt mollit anim id est laborum. Sed ut perspiciatis unde omnis iste
+    natus error sit voluptatem accusantium doloremque laudantium.
+  </p>
+  <h3 className="text-xl font-semibold mb-2">Section 3</h3>
+  <p className="mb-4">
+    Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit,
+    sed quia consequuntur magni dolores eos qui ratione voluptatem sequi
+    nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet.
+  </p>
+  {/* Add more content to make it scrollable */}
+</ScrollArea>
+```
+
+### Scroll Area with a Fixed Height List
+
+```tsx
+<ScrollArea className="h-60 w-full max-w-[400px] rounded-md border">
+  <div className="p-4">
+    <h4 className="mb-4 text-sm font-medium">Notifications</h4>
+    <div className="space-y-2">
+      {Array.from({ length: 20 }).map((_, i) => (
+        <div
+          key={i}
+          className="flex items-start gap-3 rounded-md p-2 hover:bg-muted/50"
+        >
+          <div className="h-8 w-8 rounded-full bg-primary/10 flex items-center justify-center text-primary">
+            {i + 1}
+          </div>
+          <div>
+            <p className="text-sm font-medium">Notification {i + 1}</p>
+            <p className="text-sm text-muted-foreground">
+              This is a notification message that may require your attention.
+            </p>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</ScrollArea>
+```
+
+### Scroll Area in a Dialog
+
+```tsx
+import { Dialog, DialogContent, DialogTrigger } from "@aliveui/ui";
+import { Button } from "@aliveui/ui";
+
+<Dialog>
+  <DialogTrigger asChild>
+    <Button variant="outline">Open Dialog with Scroll Area</Button>
+  </DialogTrigger>
+  <DialogContent className="max-w-md">
+    <h2 className="text-lg font-semibold mb-2">Terms of Service</h2>
+    <ScrollArea className="h-[60vh] pr-4">
+      <div className="space-y-4">
+        <p>
+          Please read these terms and conditions carefully before using the
+          service.
+        </p>
+        {/* Add a lot of content to make it scroll */}
+        {Array.from({ length: 20 }).map((_, i) => (
+          <p key={i}>
+            Section {i + 1}: Lorem ipsum dolor sit amet, consectetur adipiscing
+            elit. Sed do eiusmod tempor incididunt ut labore et dolore magna
+            aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
+            laboris nisi ut aliquip ex ea commodo consequat.
+          </p>
+        ))}
+      </div>
+    </ScrollArea>
+  </DialogContent>
+</Dialog>;
+```
+
+## Accessibility
+
+The Scroll Area component follows accessibility best practices:
+
+- Uses Radix UI's accessible scroll area primitive
+- Automatically hides scrollbars when not in use, but keeps them accessible via keyboard
+- Provides a native scrolling experience that respects the user's system preferences
+- Scrollbars are visible when needed and don't interfere with content
+- Maintains keyboard navigation compatibility
+
+## Implementation Details
+
+The Scroll Area component is built on top of Radix UI's Scroll Area primitive, ensuring robust accessibility and consistent behavior across browsers. It's styled with Tailwind CSS and designed to provide a custom scrollbar that's visually consistent with the rest of the UI while maintaining native scrolling behavior.

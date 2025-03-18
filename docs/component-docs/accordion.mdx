@@ -1,0 +1,256 @@
+# Accordion
+
+The Accordion component is a molecule in the AliveUI component library. It allows users to toggle the visibility of sections of content, displaying one or multiple panels at a time.
+
+## Usage
+
+```tsx
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@aliveui/ui";
+
+export default function AccordionExample() {
+  return (
+    <Accordion type="single" collapsible>
+      <AccordionItem value="item-1">
+        <AccordionTrigger>Is it accessible?</AccordionTrigger>
+        <AccordionContent>
+          Yes. It adheres to the WAI-ARIA design pattern.
+        </AccordionContent>
+      </AccordionItem>
+      <AccordionItem value="item-2">
+        <AccordionTrigger>Is it styled?</AccordionTrigger>
+        <AccordionContent>
+          Yes. It comes with default styles that match the other components in
+          the library.
+        </AccordionContent>
+      </AccordionItem>
+      <AccordionItem value="item-3">
+        <AccordionTrigger>Is it animated?</AccordionTrigger>
+        <AccordionContent>
+          Yes. It's animated by default, but you can disable it if you prefer.
+        </AccordionContent>
+      </AccordionItem>
+    </Accordion>
+  );
+}
+```
+
+## API Reference
+
+The Accordion component is built on top of the Radix UI Accordion primitive and consists of four main parts: `Accordion`, `AccordionItem`, `AccordionTrigger`, and `AccordionContent`.
+
+### Accordion
+
+The main wrapper component that contains all the accordion items.
+
+| Property        | Type                     | Default    | Description                                                                 |
+| --------------- | ------------------------ | ---------- | --------------------------------------------------------------------------- |
+| `type`          | `"single" \| "multiple"` | `"single"` | Determines whether one or multiple items can be opened at the same time     |
+| `collapsible`   | `boolean`                | `false`    | When `type` is `"single"`, allows closing content when clicking the trigger |
+| `defaultValue`  | `string \| string[]`     | -          | The value of the item(s) that should be open when initially rendered        |
+| `value`         | `string \| string[]`     | -          | The controlled open state of the accordion item(s)                          |
+| `onValueChange` | `function`               | -          | Event handler called when the value changes                                 |
+
+### AccordionItem
+
+A single accordion item that contains a trigger and content.
+
+| Property   | Type      | Default      | Description                                                   |
+| ---------- | --------- | ------------ | ------------------------------------------------------------- |
+| `value`    | `string`  | **Required** | A unique identifier for the accordion item                    |
+| `disabled` | `boolean` | `false`      | When `true`, prevents the user from interacting with the item |
+
+### AccordionTrigger
+
+The button that expands/collapses the accordion content.
+
+### AccordionContent
+
+The panel that contains the content for the accordion item.
+
+## Examples
+
+### Basic Accordion (Single Item)
+
+```tsx
+<Accordion type="single" collapsible>
+  <AccordionItem value="item-1">
+    <AccordionTrigger>Is it accessible?</AccordionTrigger>
+    <AccordionContent>
+      Yes. It adheres to the WAI-ARIA design pattern.
+    </AccordionContent>
+  </AccordionItem>
+  <AccordionItem value="item-2">
+    <AccordionTrigger>Is it styled?</AccordionTrigger>
+    <AccordionContent>
+      Yes. It comes with default styles that match the other components in the
+      library.
+    </AccordionContent>
+  </AccordionItem>
+</Accordion>
+```
+
+### Multiple Expanded Items
+
+```tsx
+<Accordion type="multiple">
+  <AccordionItem value="item-1">
+    <AccordionTrigger>Item 1</AccordionTrigger>
+    <AccordionContent>Content for item 1</AccordionContent>
+  </AccordionItem>
+  <AccordionItem value="item-2">
+    <AccordionTrigger>Item 2</AccordionTrigger>
+    <AccordionContent>Content for item 2</AccordionContent>
+  </AccordionItem>
+  <AccordionItem value="item-3">
+    <AccordionTrigger>Item 3</AccordionTrigger>
+    <AccordionContent>Content for item 3</AccordionContent>
+  </AccordionItem>
+</Accordion>
+```
+
+### Default Expanded Item
+
+```tsx
+<Accordion type="single" defaultValue="item-2" collapsible>
+  <AccordionItem value="item-1">
+    <AccordionTrigger>Item 1</AccordionTrigger>
+    <AccordionContent>Content for item 1</AccordionContent>
+  </AccordionItem>
+  <AccordionItem value="item-2">
+    <AccordionTrigger>Item 2 (Default Expanded)</AccordionTrigger>
+    <AccordionContent>Content for item 2</AccordionContent>
+  </AccordionItem>
+</Accordion>
+```
+
+### Disabled Item
+
+```tsx
+<Accordion type="single" collapsible>
+  <AccordionItem value="item-1">
+    <AccordionTrigger>Item 1</AccordionTrigger>
+    <AccordionContent>Content for item 1</AccordionContent>
+  </AccordionItem>
+  <AccordionItem value="item-2" disabled>
+    <AccordionTrigger>Item 2 (Disabled)</AccordionTrigger>
+    <AccordionContent>Content for item 2</AccordionContent>
+  </AccordionItem>
+</Accordion>
+```
+
+### Custom Styling
+
+```tsx
+<Accordion type="single" collapsible className="w-full">
+  <AccordionItem
+    value="item-1"
+    className="border-b-0 bg-muted/50 rounded-md mb-2"
+  >
+    <AccordionTrigger className="px-4 py-3 text-sm font-semibold">
+      Custom Styled Item 1
+    </AccordionTrigger>
+    <AccordionContent className="px-4 pb-3 pt-0">
+      This accordion item has custom styling.
+    </AccordionContent>
+  </AccordionItem>
+  <AccordionItem value="item-2" className="border-b-0 bg-muted/50 rounded-md">
+    <AccordionTrigger className="px-4 py-3 text-sm font-semibold">
+      Custom Styled Item 2
+    </AccordionTrigger>
+    <AccordionContent className="px-4 pb-3 pt-0">
+      This accordion item also has custom styling.
+    </AccordionContent>
+  </AccordionItem>
+</Accordion>
+```
+
+### Controlled Accordion
+
+```tsx
+import { useState } from "react";
+
+function ControlledAccordion() {
+  const [value, setValue] = useState<string | undefined>("item-1");
+
+  return (
+    <div className="space-y-4">
+      <div className="flex space-x-2">
+        <button
+          onClick={() => setValue("item-1")}
+          className="px-3 py-1 rounded-md bg-muted"
+        >
+          Open Item 1
+        </button>
+        <button
+          onClick={() => setValue("item-2")}
+          className="px-3 py-1 rounded-md bg-muted"
+        >
+          Open Item 2
+        </button>
+        <button
+          onClick={() => setValue(undefined)}
+          className="px-3 py-1 rounded-md bg-muted"
+        >
+          Close All
+        </button>
+      </div>
+      <Accordion
+        type="single"
+        collapsible
+        value={value}
+        onValueChange={setValue}
+      >
+        <AccordionItem value="item-1">
+          <AccordionTrigger>Item 1</AccordionTrigger>
+          <AccordionContent>Content for item 1</AccordionContent>
+        </AccordionItem>
+        <AccordionItem value="item-2">
+          <AccordionTrigger>Item 2</AccordionTrigger>
+          <AccordionContent>Content for item 2</AccordionContent>
+        </AccordionItem>
+      </Accordion>
+    </div>
+  );
+}
+```
+
+### Nested Content
+
+```tsx
+<Accordion type="single" collapsible>
+  <AccordionItem value="item-1">
+    <AccordionTrigger>Item with Rich Content</AccordionTrigger>
+    <AccordionContent>
+      <div className="space-y-4">
+        <h4 className="text-sm font-medium">Nested Heading</h4>
+        <p className="text-sm text-muted-foreground">
+          This content can contain any components or HTML elements.
+        </p>
+        <div className="rounded-md bg-muted p-4">
+          <code>Some code snippet here</code>
+        </div>
+      </div>
+    </AccordionContent>
+  </AccordionItem>
+</Accordion>
+```
+
+## Accessibility
+
+The Accordion component follows accessibility best practices:
+
+- Uses Radix UI's accessible accordion primitive
+- Follows the WAI-ARIA design pattern for accordions
+- Properly manages focus states
+- Supports keyboard navigation (Tab to navigate, Space/Enter to toggle)
+- Provides proper ARIA attributes automatically
+- Maintains appropriate keyboard interactions
+
+## Implementation Details
+
+The Accordion component is built on top of Radix UI's Accordion primitive, ensuring robust accessibility and consistent behavior across browsers. It's styled with Tailwind CSS and includes animations for expanding and collapsing content. The component is designed to be flexible, allowing for both single and multiple expanded sections, with options for controlling the expanded state.
