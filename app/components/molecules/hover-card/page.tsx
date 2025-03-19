@@ -41,7 +41,7 @@ export default function HoverCardPage() {
           </p>
           <div className="flex items-center mt-6">
             <Link
-              href="/examples/molecules/hover-card"
+              href="/components/molecules/hover-card/examples"
               className="inline-flex items-center text-primary hover:underline"
             >
               View Examples

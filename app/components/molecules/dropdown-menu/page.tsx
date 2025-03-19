@@ -51,7 +51,7 @@ export default function DropdownMenuPage() {
           </p>
           <div className="flex items-center mt-6">
             <Link
-              href="/examples/molecules/dropdown-menu"
+              href="/components/molecules/dropdown-menu/examples"
               className="inline-flex items-center text-primary hover:underline"
             >
               View Examples

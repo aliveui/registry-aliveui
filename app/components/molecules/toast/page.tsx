@@ -40,7 +40,7 @@ export default function ToastPage() {
           </p>
           <div className="flex items-center mt-6">
             <Link
-              href="/examples/molecules/toast"
+              href="/components/molecules/toast/examples"
               className="inline-flex items-center text-primary hover:underline"
             >
               View Examples

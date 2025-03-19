@@ -44,7 +44,7 @@ export default function DrawerPage() {
           </p>
           <div className="flex items-center mt-6">
             <Link
-              href="/examples/molecules/drawer"
+              href="/components/molecules/drawer/examples"
               className="inline-flex items-center text-primary hover:underline"
             >
               View Examples

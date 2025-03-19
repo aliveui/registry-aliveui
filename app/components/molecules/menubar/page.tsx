@@ -44,7 +44,7 @@ export default function MenubarPage() {
           </p>
           <div className="flex items-center mt-6">
             <Link
-              href="/examples/molecules/menubar"
+              href="/components/molecules/menubar/examples"
               className="inline-flex items-center text-primary hover:underline"
             >
               View Examples

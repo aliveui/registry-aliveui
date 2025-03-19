@@ -20,7 +20,7 @@ import {
   SelectValue,
   Separator,
   Switch,
-  Textarea,
+  // Textarea,
 } from "@/registry/atoms";
 import {
   Music,
@@ -69,7 +69,7 @@ export default function TabsExamplesPage() {
                   <CardHeader>
                     <CardTitle>Account</CardTitle>
                     <CardDescription>
-                      Make changes to your account here. Click save when you're
+                      Make changes to your account here. Click save when youre
                       done.
                     </CardDescription>
                   </CardHeader>
@@ -93,7 +93,7 @@ export default function TabsExamplesPage() {
                   <CardHeader>
                     <CardTitle>Password</CardTitle>
                     <CardDescription>
-                      Change your password here. After saving, you'll be logged
+                      Change your password here. After saving, youll be logged
                       out.
                     </CardDescription>
                   </CardHeader>

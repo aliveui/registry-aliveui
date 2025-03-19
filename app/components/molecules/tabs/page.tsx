@@ -49,7 +49,7 @@ export default function TabsPage() {
           </p>
           <div className="flex items-center mt-6">
             <Link
-              href="/examples/molecules/tabs"
+              href="/components/molecules/tabs/examples"
               className="inline-flex items-center text-primary hover:underline"
             >
               View Examples

@@ -166,7 +166,7 @@ export function CommandExample() {
             reference, examples, and implementation details:
           </p>
           <div>
-            <Link href="/examples/molecules/command">
+            <Link href="/components/molecules/command/examples">
               <Button>
                 View Documentation
                 <ArrowRight className="ml-2 h-4 w-4" />

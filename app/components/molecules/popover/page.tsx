@@ -38,7 +38,7 @@ export default function PopoverPage() {
           </p>
           <div className="flex items-center mt-6">
             <Link
-              href="/examples/molecules/popover"
+              href="/components/molecules/popover/examples"
               className="inline-flex items-center text-primary hover:underline"
             >
               View Examples

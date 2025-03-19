@@ -45,7 +45,7 @@ export default function NavigationMenuPage() {
           </p>
           <div className="flex items-center mt-6">
             <Link
-              href="/examples/molecules/navigation-menu"
+              href="/components/molecules/navigation-menu/examples"
               className="inline-flex items-center text-primary hover:underline"
             >
               View Examples

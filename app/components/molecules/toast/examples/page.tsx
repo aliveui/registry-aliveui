@@ -1,3 +1,5 @@
+"use client";
+
 import React from "react";
 import { Metadata } from "next";
 import { useToast, ToastAction, Toaster } from "@/registry/molecules";
@@ -11,7 +13,7 @@ import {
 import { Button } from "@/registry/atoms";
 import {
   Check,
-  X,
+  // X,
   Download,
   RefreshCw,
   AlertTriangle,
@@ -296,6 +298,7 @@ function ProgrammaticDismissalExample() {
   const { toast } = useToast();
   const [downloadToastId, setDownloadToastId] = React.useState<string>("");
 
+  console.log("downloadToastId", downloadToastId);
   const startDownload = () => {
     const { id } = toast({
       title: "Download Started",
