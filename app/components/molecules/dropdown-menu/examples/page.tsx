@@ -1,5 +1,5 @@
+"use client";
 import React from "react";
-import { Metadata } from "next";
 import {
   User,
   CreditCard,
@@ -31,10 +31,6 @@ import {
 } from "@/registry/molecules";
 import { Button } from "@/registry/atoms";
 
-export const metadata: Metadata = {
-  title: "Dropdown Menu Examples - AliveUI",
-  description: "Interactive examples of the Dropdown Menu component",
-};
 
 export default function DropdownMenuExamplesPage() {
   return (

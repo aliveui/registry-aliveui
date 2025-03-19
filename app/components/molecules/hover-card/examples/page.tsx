@@ -1,5 +1,5 @@
+"use client";
 import React from "react";
-import { Metadata } from "next";
 import {
   CalendarIcon,
   FileIcon,
@@ -21,10 +21,6 @@ import {
   Badge,
 } from "@/registry/atoms";
 
-export const metadata: Metadata = {
-  title: "Hover Card Examples - AliveUI",
-  description: "Interactive examples of the Hover Card component",
-};
 
 export default function HoverCardExamplesPage() {
   return (

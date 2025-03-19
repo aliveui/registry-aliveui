@@ -1,5 +1,5 @@
+"use client";
 import React from "react";
-import { Metadata } from "next";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/registry/molecules";
 import {
   Card,
@@ -35,10 +35,6 @@ import {
   LayoutGrid,
 } from "lucide-react";
 
-export const metadata: Metadata = {
-  title: "Tabs Examples - AliveUI",
-  description: "Examples of the Tabs component in different use cases",
-};
 
 export default function TabsExamplesPage() {
   return (

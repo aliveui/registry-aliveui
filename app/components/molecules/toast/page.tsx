@@ -1,15 +1,10 @@
+"use client";
+
 import React from "react";
-import { Metadata } from "next";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { useToast } from "@/registry/molecules";
 import { Button } from "@/registry/atoms";
-
-export const metadata: Metadata = {
-  title: "Toast Component - AliveUI",
-  description:
-    "A brief, non-intrusive notification that appears at the edge of the screen",
-};
 
 export default function ToastPage() {
   return (

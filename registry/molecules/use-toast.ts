@@ -1,3 +1,5 @@
+"use client";
+
 import * as React from "react";
 
 import type { ToastActionElement, ToastProps } from "./toast";
@@ -136,7 +138,13 @@ function dispatch(action: Action) {
 
 type Toast = Omit<ToasterToast, "id">;
 
-function toast({ ...props }: Toast) {
+interface ToastReturn {
+  id: string;
+  dismiss: () => void;
+  update: (props: Toast) => void;
+}
+
+function toast({ ...props }: Toast): ToastReturn {
   const id = genId();
 
   const update = (props: Toast) =>
@@ -160,7 +168,7 @@ function toast({ ...props }: Toast) {
   });
 
   return {
-    id: id,
+    id,
     dismiss,
     update,
   };

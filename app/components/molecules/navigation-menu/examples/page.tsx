@@ -1,5 +1,5 @@
+"use client";
 import React from "react";
-import { Metadata } from "next";
 import {
   NavigationMenu,
   NavigationMenuContent,
@@ -27,11 +27,6 @@ import {
 } from "lucide-react";
 import Link from "next/link";
 
-export const metadata: Metadata = {
-  title: "Navigation Menu Examples - AliveUI",
-  description:
-    "Examples of the Navigation Menu component in different use cases",
-};
 
 export default function NavigationMenuExamplesPage() {
   return (

@@ -1,5 +1,5 @@
+"use client";
 import React from "react";
-import { Metadata } from "next";
 import {
   Sheet,
   SheetContent,
@@ -20,10 +20,6 @@ import {
 import { Button, Input, Label, Separator, Textarea } from "@/registry/atoms";
 import { Settings, ShoppingCart, UserPlus, Menu, X, Users } from "lucide-react";
 
-export const metadata: Metadata = {
-  title: "Sheet Examples - AliveUI",
-  description: "Examples of the Sheet component in different use cases",
-};
 
 export default function SheetExamplesPage() {
   return (

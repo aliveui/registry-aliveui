@@ -1,5 +1,5 @@
+"use client";
 import React from "react";
-import { Metadata } from "next";
 import { Popover, PopoverContent, PopoverTrigger } from "@/registry/molecules";
 import {
   Card,
@@ -11,10 +11,6 @@ import {
 import { Button, Input, Label, Checkbox } from "@/registry/atoms";
 import { Settings, X } from "lucide-react";
 
-export const metadata: Metadata = {
-  title: "Popover Examples - AliveUI",
-  description: "Examples of the Popover component in different use cases",
-};
 
 export default function PopoverExamplesPage() {
   return (

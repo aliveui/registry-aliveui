@@ -1,7 +1,6 @@
 "use client";
 
 import React from "react";
-import { Metadata } from "next";
 import { useToast, ToastAction, Toaster } from "@/registry/molecules";
 import {
   Card,
@@ -19,11 +18,6 @@ import {
   AlertTriangle,
   Info,
 } from "lucide-react";
-
-export const metadata: Metadata = {
-  title: "Toast Examples - AliveUI",
-  description: "Examples of the Toast component in different use cases",
-};
 
 export default function ToastExamplesPage() {
   return (
@@ -298,7 +292,6 @@ function ProgrammaticDismissalExample() {
   const { toast } = useToast();
   const [downloadToastId, setDownloadToastId] = React.useState<string>("");
 
-  console.log("downloadToastId", downloadToastId);
   const startDownload = () => {
     const { id } = toast({
       title: "Download Started",

@@ -1,5 +1,6 @@
+"use client";
+
 import React from "react";
-import { Metadata } from "next";
 import {
   Drawer,
   DrawerContent,
@@ -10,11 +11,6 @@ import {
   DrawerTrigger,
 } from "@/registry/molecules";
 import { Button } from "@/registry/atoms";
-
-export const metadata: Metadata = {
-  title: "Drawer Component - AliveUI",
-  description: "A panel that slides in from the edge of the screen",
-};
 
 export default function DrawerPage() {
   return (

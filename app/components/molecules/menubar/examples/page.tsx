@@ -1,5 +1,5 @@
+"use client";
 import React from "react";
-import { Metadata } from "next";
 import {
   Menubar,
   MenubarMenu,
@@ -26,10 +26,6 @@ import {
 } from "@/registry/molecules/card";
 import { Check, Grid, LayoutGrid, List, Settings } from "lucide-react";
 
-export const metadata: Metadata = {
-  title: "Menubar Examples - AliveUI",
-  description: "Examples of the Menubar component in different use cases",
-};
 
 export default function MenubarExamplesPage() {
   return (
