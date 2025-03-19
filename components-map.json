@@ -174,8 +174,8 @@
       "name": "Command",
       "shadcnPath": "components/ui/command.tsx",
       "aliveUIPath": "registry/molecules/command/index.tsx",
-      "dependencies": ["cmdk"],
-      "status": "not-started",
+      "dependencies": ["cmdk", "@radix-ui/react-dialog"],
+      "status": "implemented",
       "hasPage": false
     },
     {
@@ -191,7 +191,7 @@
       "shadcnPath": "components/ui/dialog.tsx",
       "aliveUIPath": "registry/molecules/dialog/index.tsx",
       "dependencies": ["@radix-ui/react-dialog"],
-      "status": "not-started",
+      "status": "implemented",
       "hasPage": false
     },
     {
@@ -199,7 +199,7 @@
       "shadcnPath": "components/ui/dropdown-menu.tsx",
       "aliveUIPath": "registry/molecules/dropdown-menu/index.tsx",
       "dependencies": ["@radix-ui/react-dropdown-menu"],
-      "status": "not-started",
+      "status": "implemented",
       "hasPage": false
     },
     {
@@ -207,7 +207,7 @@
       "shadcnPath": "components/ui/hover-card.tsx",
       "aliveUIPath": "registry/molecules/hover-card/index.tsx",
       "dependencies": ["@radix-ui/react-hover-card"],
-      "status": "not-started",
+      "status": "implemented",
       "hasPage": false
     },
     {
@@ -215,7 +215,7 @@
       "shadcnPath": "components/ui/menubar.tsx",
       "aliveUIPath": "registry/molecules/menubar/index.tsx",
       "dependencies": ["@radix-ui/react-menubar"],
-      "status": "not-started",
+      "status": "implemented",
       "hasPage": false
     },
     {
@@ -223,7 +223,7 @@
       "shadcnPath": "components/ui/navigation-menu.tsx",
       "aliveUIPath": "registry/molecules/navigation-menu/index.tsx",
       "dependencies": ["@radix-ui/react-navigation-menu"],
-      "status": "not-started",
+      "status": "implemented",
       "hasPage": false
     },
     {
@@ -231,7 +231,7 @@
       "shadcnPath": "components/ui/popover.tsx",
       "aliveUIPath": "registry/molecules/popover/index.tsx",
       "dependencies": ["@radix-ui/react-popover"],
-      "status": "not-started",
+      "status": "implemented",
       "hasPage": false
     },
     {
@@ -239,7 +239,7 @@
       "shadcnPath": "components/ui/sheet.tsx",
       "aliveUIPath": "registry/molecules/sheet/index.tsx",
       "dependencies": ["@radix-ui/react-dialog"],
-      "status": "not-started",
+      "status": "implemented",
       "hasPage": false
     },
     {
@@ -247,7 +247,7 @@
       "shadcnPath": "components/ui/tabs.tsx",
       "aliveUIPath": "registry/molecules/tabs/index.tsx",
       "dependencies": ["@radix-ui/react-tabs"],
-      "status": "not-started",
+      "status": "implemented",
       "hasPage": false
     },
     {
@@ -255,8 +255,16 @@
       "shadcnPath": "components/ui/toaster.tsx",
       "aliveUIPath": "registry/molecules/toaster/index.tsx",
       "dependencies": ["@radix-ui/react-toast"],
-      "status": "not-started",
+      "status": "implemented",
       "hasPage": false
+    },
+    {
+      "name": "Drawer",
+      "shadcnPath": "components/ui/drawer.tsx",
+      "aliveUIPath": "registry/molecules/drawer/index.tsx",
+      "dependencies": ["vaul"],
+      "status": "implemented",
+      "hasPage": true
     }
   ],
   "organisms": [

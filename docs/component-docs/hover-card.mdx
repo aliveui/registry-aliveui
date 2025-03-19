@@ -1,0 +1,233 @@
+# Hover Card
+
+The Hover Card component is a molecule in the AliveUI component library. It displays additional information in a floating card when a user hovers over a trigger element.
+
+## Usage
+
+```tsx
+import { HoverCard, HoverCardTrigger, HoverCardContent } from "@aliveui/ui";
+import { Avatar } from "@aliveui/ui";
+
+export function HoverCardDemo() {
+  return (
+    <HoverCard>
+      <HoverCardTrigger asChild>
+        <a href="#" className="text-blue-500 underline">
+          @johndoe
+        </a>
+      </HoverCardTrigger>
+      <HoverCardContent className="w-80">
+        <div className="flex justify-between space-x-4">
+          <Avatar src="https://github.com/johndoe.png" fallback="JD" />
+          <div className="space-y-1">
+            <h4 className="text-sm font-semibold">@johndoe</h4>
+            <p className="text-sm">UI/UX designer and full-stack developer</p>
+            <div className="flex items-center pt-2">
+              <span className="text-xs text-muted-foreground">
+                Joined December 2023
+              </span>
+            </div>
+          </div>
+        </div>
+      </HoverCardContent>
+    </HoverCard>
+  );
+}
+```
+
+## API Reference
+
+The Hover Card component is built on top of Radix UI's Hover Card primitive.
+
+### HoverCard
+
+The root component that wraps the hover card trigger and content.
+
+| Property       | Type       | Default | Description                                    |
+| -------------- | ---------- | ------- | ---------------------------------------------- |
+| `defaultOpen`  | `boolean`  | -       | The default open state when initially rendered |
+| `open`         | `boolean`  | -       | The controlled open state of the hover card    |
+| `onOpenChange` | `function` | -       | Event handler called when open state changes   |
+| `openDelay`    | `number`   | `700`   | The delay in ms before the hover card opens    |
+| `closeDelay`   | `number`   | `300`   | The delay in ms before the hover card closes   |
+
+### HoverCardTrigger
+
+The element that triggers the hover card when hovered. By using `asChild`, it can be rendered as any element.
+
+### HoverCardContent
+
+The component that contains the hover card content.
+
+| Property          | Type                                     | Default    | Description                                                |
+| ----------------- | ---------------------------------------- | ---------- | ---------------------------------------------------------- |
+| `align`           | `string`                                 | `"center"` | The alignment of the hover card relative to the trigger    |
+| `sideOffset`      | `number`                                 | `4`        | The distance in pixels from the trigger                    |
+| `alignOffset`     | `number`                                 | -          | The offset in pixels from the aligned edge                 |
+| `side`            | `"top" \| "right" \| "bottom" \| "left"` | -          | The preferred side of the trigger to render the hover card |
+| `avoidCollisions` | `boolean`                                | `true`     | Whether to avoid collisions with boundaries                |
+
+## Examples
+
+### Basic Hover Card
+
+```tsx
+<HoverCard>
+  <HoverCardTrigger asChild>
+    <Button variant="link">Hover over me</Button>
+  </HoverCardTrigger>
+  <HoverCardContent>
+    <div className="space-y-2">
+      <h4 className="text-sm font-semibold">Information</h4>
+      <p className="text-sm">
+        This is a simple hover card that displays additional information on
+        hover.
+      </p>
+    </div>
+  </HoverCardContent>
+</HoverCard>
+```
+
+### User Profile Card
+
+```tsx
+<HoverCard>
+  <HoverCardTrigger asChild>
+    <a href="#" className="text-blue-500 underline">
+      @johndoe
+    </a>
+  </HoverCardTrigger>
+  <HoverCardContent className="w-80">
+    <div className="flex justify-between space-x-4">
+      <Avatar src="https://github.com/johndoe.png" fallback="JD" />
+      <div className="space-y-1">
+        <h4 className="text-sm font-semibold">John Doe</h4>
+        <p className="text-sm">
+          UI/UX designer and full-stack developer based in San Francisco.
+        </p>
+        <div className="flex items-center pt-2">
+          <CalendarIcon className="mr-2 h-4 w-4 opacity-70" />
+          <span className="text-xs text-muted-foreground">
+            Joined December 2023
+          </span>
+        </div>
+      </div>
+    </div>
+  </HoverCardContent>
+</HoverCard>
+```
+
+### Image Preview
+
+```tsx
+<HoverCard>
+  <HoverCardTrigger asChild>
+    <a href="#" className="text-blue-500 underline">
+      View image
+    </a>
+  </HoverCardTrigger>
+  <HoverCardContent className="w-80">
+    <div className="space-y-2">
+      <img
+        src="https://images.unsplash.com/photo-1685428960782-851a7e0c2f8e"
+        alt="Preview"
+        className="w-full h-auto rounded-md"
+      />
+      <p className="text-xs text-muted-foreground">
+        Click to see full resolution image
+      </p>
+    </div>
+  </HoverCardContent>
+</HoverCard>
+```
+
+### Product Information
+
+```tsx
+<HoverCard>
+  <HoverCardTrigger asChild>
+    <Button variant="outline">Product Details</Button>
+  </HoverCardTrigger>
+  <HoverCardContent className="w-80">
+    <div className="space-y-2">
+      <h4 className="text-sm font-semibold">AliveUI Pro Package</h4>
+      <div className="flex justify-between items-center">
+        <span className="text-sm font-bold">$99.00</span>
+        <Badge>New</Badge>
+      </div>
+      <p className="text-sm">
+        Complete UI package with 200+ components, advanced theming, and premium
+        support.
+      </p>
+      <div className="flex items-center pt-2">
+        <span className="text-xs text-muted-foreground">
+          Released: January 2024
+        </span>
+      </div>
+    </div>
+  </HoverCardContent>
+</HoverCard>
+```
+
+### Custom Positioning
+
+```tsx
+<HoverCard>
+  <HoverCardTrigger asChild>
+    <Button variant="outline">Hover Me</Button>
+  </HoverCardTrigger>
+  <HoverCardContent side="right" align="start" className="w-80">
+    <div className="space-y-2">
+      <h4 className="text-sm font-semibold">Custom Positioning</h4>
+      <p className="text-sm">
+        This hover card is positioned to the right of the trigger with start
+        alignment.
+      </p>
+    </div>
+  </HoverCardContent>
+</HoverCard>
+```
+
+### With Arrow
+
+```tsx
+<HoverCard>
+  <HoverCardTrigger asChild>
+    <Button variant="outline">Hover with Arrow</Button>
+  </HoverCardTrigger>
+  <HoverCardContent className="w-80">
+    <div className="space-y-2">
+      <div className="absolute left-1/2 -top-2 h-2 w-4 -translate-x-1/2 overflow-hidden">
+        <div className="absolute inset-0 translate-y-1/2 transform-gpu rounded-full bg-popover" />
+      </div>
+      <h4 className="text-sm font-semibold">Hover Card with Arrow</h4>
+      <p className="text-sm">
+        This hover card has a custom arrow indicator pointing to the trigger
+        element.
+      </p>
+    </div>
+  </HoverCardContent>
+</HoverCard>
+```
+
+## Accessibility
+
+The Hover Card component follows these accessibility best practices:
+
+- Proper keyboard focus management
+- Appropriate ARIA attributes for screen readers
+- Adheres to WAI-ARIA design patterns
+- Timed delays to prevent accidental triggering
+- Mouse and touch events are handled appropriately
+
+## Implementation Details
+
+The Hover Card component is built on top of Radix UI's Hover Card primitive, providing a robust and accessible implementation. It is styled with Tailwind CSS and includes the following features:
+
+- Customizable open and close delays
+- Flexible positioning options
+- Seamless integration with other AliveUI components
+- Smooth animations for opening and closing
+- Responsive design that works across different device sizes
+
+Hover cards are ideal for providing additional context without requiring a click or taking the user away from their current task. They're commonly used for user profiles, tooltips, preview cards, and contextual help.

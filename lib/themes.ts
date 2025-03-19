@@ -35,7 +35,7 @@ export const themeColorValues: Record<ThemeColor, string> = {
   [ThemeColor.GREEN]: "142 71% 45%",
   [ThemeColor.VIOLET]: "262 83% 58%",
   [ThemeColor.ROSE]: "346 77% 49%",
-  [ThemeColor.ORANGE]: "24 95% 53%",
+  [ThemeColor.ORANGE]: "24 100% 55%",
   [ThemeColor.RED]: "0 84% 60%",
   [ThemeColor.YELLOW]: "48 96% 53%",
 };

@@ -1,0 +1,360 @@
+# Sheet
+
+The Sheet component is a molecule in the AliveUI component library. It provides a side-anchored panel that slides in from the edge of the screen, similar to a drawer or sidebar, allowing for additional content or controls.
+
+## Usage
+
+```tsx
+import {
+  Sheet,
+  SheetContent,
+  SheetDescription,
+  SheetHeader,
+  SheetTitle,
+  SheetTrigger,
+} from "@aliveui/ui";
+
+export function SheetDemo() {
+  return (
+    <Sheet>
+      <SheetTrigger>Open Sheet</SheetTrigger>
+      <SheetContent>
+        <SheetHeader>
+          <SheetTitle>Sheet Title</SheetTitle>
+          <SheetDescription>
+            This is a description for the sheet.
+          </SheetDescription>
+        </SheetHeader>
+        <div className="py-4">{/* Your sheet content here */}</div>
+      </SheetContent>
+    </Sheet>
+  );
+}
+```
+
+## API Reference
+
+### Sheet
+
+The root component that manages the state of the sheet.
+
+```tsx
+<Sheet>{/* SheetTrigger and SheetContent */}</Sheet>
+```
+
+### SheetTrigger
+
+The button that opens the sheet when clicked.
+
+```tsx
+<SheetTrigger>Open Sheet</SheetTrigger>
+```
+
+### SheetContent
+
+The content of the sheet that appears when it's opened. Supports different sides for the sheet to appear from.
+
+```tsx
+<SheetContent side="right">{/* Sheet content */}</SheetContent>
+```
+
+**Props**
+
+- `side`: The side from which the sheet will appear. Options: `"top"`, `"right"`, `"bottom"`, `"left"`. Default: `"right"`.
+
+### SheetHeader
+
+A container for the sheet's header content, typically containing the title and description.
+
+```tsx
+<SheetHeader>
+  <SheetTitle>Sheet Title</SheetTitle>
+  <SheetDescription>Sheet description</SheetDescription>
+</SheetHeader>
+```
+
+### SheetTitle
+
+The title of the sheet.
+
+```tsx
+<SheetTitle>Sheet Title</SheetTitle>
+```
+
+### SheetDescription
+
+A description for the sheet, typically explaining its purpose.
+
+```tsx
+<SheetDescription>This is a description for the sheet.</SheetDescription>
+```
+
+### SheetFooter
+
+A container for the sheet's footer content, typically containing action buttons.
+
+```tsx
+<SheetFooter>
+  <Button>Action</Button>
+</SheetFooter>
+```
+
+### SheetClose
+
+A component that can be used to close the sheet when clicked.
+
+```tsx
+<SheetClose>
+  <Button>Close</Button>
+</SheetClose>
+```
+
+## Examples
+
+### Basic Sheet
+
+```tsx
+<Sheet>
+  <SheetTrigger asChild>
+    <Button variant="outline">Open Sheet</Button>
+  </SheetTrigger>
+  <SheetContent>
+    <SheetHeader>
+      <SheetTitle>Edit Profile</SheetTitle>
+      <SheetDescription>
+        Make changes to your profile here. Click save when you're done.
+      </SheetDescription>
+    </SheetHeader>
+    <div className="grid gap-4 py-4">
+      <div className="grid grid-cols-4 items-center gap-4">
+        <Label htmlFor="name" className="text-right">
+          Name
+        </Label>
+        <Input id="name" value="John Doe" className="col-span-3" />
+      </div>
+      <div className="grid grid-cols-4 items-center gap-4">
+        <Label htmlFor="username" className="text-right">
+          Username
+        </Label>
+        <Input id="username" value="@johndoe" className="col-span-3" />
+      </div>
+    </div>
+    <SheetFooter>
+      <Button type="submit">Save changes</Button>
+    </SheetFooter>
+  </SheetContent>
+</Sheet>
+```
+
+### Sheet from Different Sides
+
+```tsx
+<div className="flex space-x-2">
+  <Sheet>
+    <SheetTrigger asChild>
+      <Button variant="outline">Top Sheet</Button>
+    </SheetTrigger>
+    <SheetContent side="top" className="h-1/3">
+      <SheetHeader>
+        <SheetTitle>Top Sheet</SheetTitle>
+        <SheetDescription>
+          This sheet slides down from the top of the screen.
+        </SheetDescription>
+      </SheetHeader>
+    </SheetContent>
+  </Sheet>
+
+  <Sheet>
+    <SheetTrigger asChild>
+      <Button variant="outline">Right Sheet</Button>
+    </SheetTrigger>
+    <SheetContent side="right">
+      <SheetHeader>
+        <SheetTitle>Right Sheet</SheetTitle>
+        <SheetDescription>
+          This sheet slides in from the right side of the screen.
+        </SheetDescription>
+      </SheetHeader>
+    </SheetContent>
+  </Sheet>
+
+  <Sheet>
+    <SheetTrigger asChild>
+      <Button variant="outline">Bottom Sheet</Button>
+    </SheetTrigger>
+    <SheetContent side="bottom" className="h-1/3">
+      <SheetHeader>
+        <SheetTitle>Bottom Sheet</SheetTitle>
+        <SheetDescription>
+          This sheet slides up from the bottom of the screen.
+        </SheetDescription>
+      </SheetHeader>
+    </SheetContent>
+  </Sheet>
+
+  <Sheet>
+    <SheetTrigger asChild>
+      <Button variant="outline">Left Sheet</Button>
+    </SheetTrigger>
+    <SheetContent side="left">
+      <SheetHeader>
+        <SheetTitle>Left Sheet</SheetTitle>
+        <SheetDescription>
+          This sheet slides in from the left side of the screen.
+        </SheetDescription>
+      </SheetHeader>
+    </SheetContent>
+  </Sheet>
+</div>
+```
+
+### Sheet with Form
+
+```tsx
+<Sheet>
+  <SheetTrigger asChild>
+    <Button>Create New Task</Button>
+  </SheetTrigger>
+  <SheetContent>
+    <SheetHeader>
+      <SheetTitle>New Task</SheetTitle>
+      <SheetDescription>
+        Add a new task to your task list. Fill out the information below.
+      </SheetDescription>
+    </SheetHeader>
+    <form className="space-y-4 py-4">
+      <div className="space-y-2">
+        <Label htmlFor="title">Task Title</Label>
+        <Input id="title" placeholder="Enter task title" />
+      </div>
+      <div className="space-y-2">
+        <Label htmlFor="description">Description</Label>
+        <Textarea id="description" placeholder="Enter task description" />
+      </div>
+      <div className="space-y-2">
+        <Label htmlFor="dueDate">Due Date</Label>
+        <Input id="dueDate" type="date" />
+      </div>
+      <div className="space-y-2">
+        <Label>Priority</Label>
+        <RadioGroup defaultValue="medium">
+          <div className="flex items-center space-x-2">
+            <RadioGroupItem value="low" id="low" />
+            <Label htmlFor="low">Low</Label>
+          </div>
+          <div className="flex items-center space-x-2">
+            <RadioGroupItem value="medium" id="medium" />
+            <Label htmlFor="medium">Medium</Label>
+          </div>
+          <div className="flex items-center space-x-2">
+            <RadioGroupItem value="high" id="high" />
+            <Label htmlFor="high">High</Label>
+          </div>
+        </RadioGroup>
+      </div>
+      <SheetFooter>
+        <SheetClose asChild>
+          <Button variant="outline">Cancel</Button>
+        </SheetClose>
+        <Button type="submit">Create Task</Button>
+      </SheetFooter>
+    </form>
+  </SheetContent>
+</Sheet>
+```
+
+### Sheet with Sections
+
+```tsx
+<Sheet>
+  <SheetTrigger asChild>
+    <Button variant="outline">View Details</Button>
+  </SheetTrigger>
+  <SheetContent className="w-[400px] sm:w-[540px]">
+    <SheetHeader>
+      <SheetTitle>Product Details</SheetTitle>
+      <SheetDescription>
+        View complete information about this product.
+      </SheetDescription>
+    </SheetHeader>
+    <div className="py-4">
+      <div className="space-y-1 mb-4">
+        <h3 className="text-md font-medium">Basic Information</h3>
+        <Separator />
+      </div>
+      <dl className="grid grid-cols-4 gap-2 text-sm">
+        <dt className="col-span-1 font-medium">Name:</dt>
+        <dd className="col-span-3">Premium Headphones</dd>
+        <dt className="col-span-1 font-medium">SKU:</dt>
+        <dd className="col-span-3">HD-12345-BLK</dd>
+        <dt className="col-span-1 font-medium">Price:</dt>
+        <dd className="col-span-3">$299.99</dd>
+      </dl>
+    </div>
+    <div className="py-4">
+      <div className="space-y-1 mb-4">
+        <h3 className="text-md font-medium">Technical Specifications</h3>
+        <Separator />
+      </div>
+      <dl className="grid grid-cols-4 gap-2 text-sm">
+        <dt className="col-span-1 font-medium">Type:</dt>
+        <dd className="col-span-3">Over-ear headphones</dd>
+        <dt className="col-span-1 font-medium">Connectivity:</dt>
+        <dd className="col-span-3">Bluetooth 5.0, 3.5mm jack</dd>
+        <dt className="col-span-1 font-medium">Battery:</dt>
+        <dd className="col-span-3">Up to 30 hours playtime</dd>
+      </dl>
+    </div>
+    <SheetFooter>
+      <Button>Add to Cart</Button>
+    </SheetFooter>
+  </SheetContent>
+</Sheet>
+```
+
+### Custom Width Sheet
+
+```tsx
+<Sheet>
+  <SheetTrigger asChild>
+    <Button variant="outline">Open Wide Sheet</Button>
+  </SheetTrigger>
+  <SheetContent className="sm:max-w-md">
+    <SheetHeader>
+      <SheetTitle>Wide Sheet</SheetTitle>
+      <SheetDescription>
+        This sheet has a custom width (sm:max-w-md).
+      </SheetDescription>
+    </SheetHeader>
+    <div className="py-4">
+      <p>This sheet is wider than the default size.</p>
+    </div>
+  </SheetContent>
+</Sheet>
+```
+
+## Accessibility
+
+The Sheet component is built on top of Radix UI's Dialog primitive, ensuring excellent accessibility:
+
+- Follows the [WAI-ARIA Dialog Modal Pattern](https://www.w3.org/WAI/ARIA/apg/patterns/dialogmodal/)
+- Focus is automatically trapped within the sheet when opened
+- Proper ARIA attributes and roles for screen readers
+- Keyboard navigation - close with Escape key
+- Click-outside behavior to dismiss
+- Focus is returned to the trigger when the sheet is closed
+
+## Implementation Details
+
+The Sheet component is built using Radix UI's Dialog primitive and Tailwind CSS for styling. It provides a versatile way to present secondary content or controls that don't need to occupy the entire screen.
+
+The component supports:
+
+- Multiple positions (top, right, bottom, left)
+- Smooth animations
+- Backdrop blur
+- Responsive widths
+- Focus management
+- Keyboard interaction
+
+The implementation can be used for a variety of use cases such as navigation menus, settings panels, forms, and detail views.

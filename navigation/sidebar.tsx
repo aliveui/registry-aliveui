@@ -148,6 +148,7 @@ export const atomicDesignCategories = [
       { href: "/components/molecules/command", title: "Command" },
       { href: "/components/molecules/context-menu", title: "Context Menu" },
       { href: "/components/molecules/dialog", title: "Dialog" },
+      { href: "/components/molecules/drawer", title: "Drawer" },
       { href: "/components/molecules/dropdown-menu", title: "Dropdown Menu" },
       { href: "/components/molecules/hover-card", title: "Hover Card" },
       { href: "/components/molecules/menubar", title: "Menubar" },

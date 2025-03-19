@@ -1,0 +1,503 @@
+# Menubar
+
+The Menubar component is a molecule in the AliveUI component library. It provides a horizontal menu system commonly used in application headers, offering dropdown menus with various item types and keyboard navigation.
+
+## Usage
+
+```tsx
+import {
+  Menubar,
+  MenubarMenu,
+  MenubarTrigger,
+  MenubarContent,
+  MenubarItem,
+  MenubarSeparator,
+  MenubarShortcut,
+} from "@aliveui/ui";
+
+export function MenubarDemo() {
+  return (
+    <Menubar>
+      <MenubarMenu>
+        <MenubarTrigger>File</MenubarTrigger>
+        <MenubarContent>
+          <MenubarItem>
+            New Tab <MenubarShortcut>⌘T</MenubarShortcut>
+          </MenubarItem>
+          <MenubarItem>
+            New Window <MenubarShortcut>⌘N</MenubarShortcut>
+          </MenubarItem>
+          <MenubarSeparator />
+          <MenubarItem>
+            Print <MenubarShortcut>⌘P</MenubarShortcut>
+          </MenubarItem>
+        </MenubarContent>
+      </MenubarMenu>
+      <MenubarMenu>
+        <MenubarTrigger>Edit</MenubarTrigger>
+        <MenubarContent>
+          <MenubarItem>
+            Undo <MenubarShortcut>⌘Z</MenubarShortcut>
+          </MenubarItem>
+          <MenubarItem>
+            Redo <MenubarShortcut>⇧⌘Z</MenubarShortcut>
+          </MenubarItem>
+          <MenubarSeparator />
+          <MenubarItem>
+            Cut <MenubarShortcut>⌘X</MenubarShortcut>
+          </MenubarItem>
+          <MenubarItem>
+            Copy <MenubarShortcut>⌘C</MenubarShortcut>
+          </MenubarItem>
+          <MenubarItem>
+            Paste <MenubarShortcut>⌘V</MenubarShortcut>
+          </MenubarItem>
+        </MenubarContent>
+      </MenubarMenu>
+      <MenubarMenu>
+        <MenubarTrigger>View</MenubarTrigger>
+        <MenubarContent>
+          <MenubarItem>
+            Zoom In <MenubarShortcut>⌘+</MenubarShortcut>
+          </MenubarItem>
+          <MenubarItem>
+            Zoom Out <MenubarShortcut>⌘-</MenubarShortcut>
+          </MenubarItem>
+          <MenubarSeparator />
+          <MenubarItem>
+            Toggle Fullscreen <MenubarShortcut>F11</MenubarShortcut>
+          </MenubarItem>
+        </MenubarContent>
+      </MenubarMenu>
+    </Menubar>
+  );
+}
+```
+
+## API Reference
+
+The Menubar component is built on top of Radix UI's Menubar primitive and consists of several parts.
+
+### Menubar
+
+The root component that contains the menubar items.
+
+| Property    | Type     | Default | Description            |
+| ----------- | -------- | ------- | ---------------------- |
+| `className` | `string` | -       | Additional CSS classes |
+
+### MenubarMenu
+
+A container for a single menu and its content.
+
+### MenubarTrigger
+
+The button that opens a menu.
+
+| Property    | Type     | Default | Description            |
+| ----------- | -------- | ------- | ---------------------- |
+| `className` | `string` | -       | Additional CSS classes |
+
+### MenubarContent
+
+The component that contains menu items.
+
+| Property      | Type     | Default   | Description                                   |
+| ------------- | -------- | --------- | --------------------------------------------- |
+| `align`       | `string` | `"start"` | Alignment of the menu relative to the trigger |
+| `alignOffset` | `number` | `-4`      | Offset in pixels from the aligned edge        |
+| `sideOffset`  | `number` | `8`       | Distance in pixels from the trigger           |
+| `className`   | `string` | -         | Additional CSS classes                        |
+
+### MenubarItem
+
+A clickable menu item.
+
+| Property    | Type      | Default | Description                                      |
+| ----------- | --------- | ------- | ------------------------------------------------ |
+| `inset`     | `boolean` | `false` | Whether the item should have padding on the left |
+| `disabled`  | `boolean` | `false` | Whether the item is disabled                     |
+| `className` | `string`  | -       | Additional CSS classes                           |
+
+### MenubarCheckboxItem
+
+A menu item with a checkbox.
+
+| Property          | Type       | Default | Description                                     |
+| ----------------- | ---------- | ------- | ----------------------------------------------- |
+| `checked`         | `boolean`  | -       | The controlled checked state of the checkbox    |
+| `onCheckedChange` | `function` | -       | Event handler called when checked state changes |
+| `className`       | `string`   | -       | Additional CSS classes                          |
+
+### MenubarRadioGroup
+
+A group of radio items where only one can be selected.
+
+| Property        | Type       | Default | Description                                     |
+| --------------- | ---------- | ------- | ----------------------------------------------- |
+| `value`         | `string`   | -       | The controlled value of the selected radio item |
+| `onValueChange` | `function` | -       | Event handler called when value changes         |
+
+### MenubarRadioItem
+
+A menu item that can be selected from a group of radio items.
+
+| Property    | Type     | Default | Description                        |
+| ----------- | -------- | ------- | ---------------------------------- |
+| `value`     | `string` | -       | The unique value of the radio item |
+| `className` | `string` | -       | Additional CSS classes             |
+
+### MenubarSubTrigger
+
+The trigger for a submenu.
+
+| Property    | Type      | Default | Description                                         |
+| ----------- | --------- | ------- | --------------------------------------------------- |
+| `inset`     | `boolean` | `false` | Whether the trigger should have padding on the left |
+| `className` | `string`  | -       | Additional CSS classes                              |
+
+### MenubarSubContent
+
+The content for a submenu.
+
+| Property    | Type     | Default | Description            |
+| ----------- | -------- | ------- | ---------------------- |
+| `className` | `string` | -       | Additional CSS classes |
+
+### MenubarSeparator
+
+A visual separator between menu items.
+
+| Property    | Type     | Default | Description            |
+| ----------- | -------- | ------- | ---------------------- |
+| `className` | `string` | -       | Additional CSS classes |
+
+### MenubarLabel
+
+A non-interactive label for a group of items.
+
+| Property    | Type      | Default | Description                                       |
+| ----------- | --------- | ------- | ------------------------------------------------- |
+| `inset`     | `boolean` | `false` | Whether the label should have padding on the left |
+| `className` | `string`  | -       | Additional CSS classes                            |
+
+### MenubarShortcut
+
+Displays keyboard shortcut hints.
+
+| Property    | Type     | Default | Description            |
+| ----------- | -------- | ------- | ---------------------- |
+| `className` | `string` | -       | Additional CSS classes |
+
+## Examples
+
+### Basic Menubar
+
+```tsx
+<Menubar>
+  <MenubarMenu>
+    <MenubarTrigger>File</MenubarTrigger>
+    <MenubarContent>
+      <MenubarItem>New</MenubarItem>
+      <MenubarItem>Open</MenubarItem>
+      <MenubarItem>Save</MenubarItem>
+      <MenubarSeparator />
+      <MenubarItem>Exit</MenubarItem>
+    </MenubarContent>
+  </MenubarMenu>
+  <MenubarMenu>
+    <MenubarTrigger>Edit</MenubarTrigger>
+    <MenubarContent>
+      <MenubarItem>Undo</MenubarItem>
+      <MenubarItem>Redo</MenubarItem>
+      <MenubarSeparator />
+      <MenubarItem>Cut</MenubarItem>
+      <MenubarItem>Copy</MenubarItem>
+      <MenubarItem>Paste</MenubarItem>
+    </MenubarContent>
+  </MenubarMenu>
+</Menubar>
+```
+
+### With Checkboxes
+
+```tsx
+import { useState } from "react";
+
+function CheckboxMenubarExample() {
+  const [showStatusBar, setShowStatusBar] = useState(true);
+  const [showActivityBar, setShowActivityBar] = useState(false);
+  const [showPanel, setShowPanel] = useState(false);
+
+  return (
+    <Menubar>
+      <MenubarMenu>
+        <MenubarTrigger>View</MenubarTrigger>
+        <MenubarContent>
+          <MenubarCheckboxItem
+            checked={showStatusBar}
+            onCheckedChange={setShowStatusBar}
+          >
+            Status Bar
+          </MenubarCheckboxItem>
+          <MenubarCheckboxItem
+            checked={showActivityBar}
+            onCheckedChange={setShowActivityBar}
+          >
+            Activity Bar
+          </MenubarCheckboxItem>
+          <MenubarCheckboxItem
+            checked={showPanel}
+            onCheckedChange={setShowPanel}
+          >
+            Panel
+          </MenubarCheckboxItem>
+        </MenubarContent>
+      </MenubarMenu>
+    </Menubar>
+  );
+}
+```
+
+### With Radio Groups
+
+```tsx
+import { useState } from "react";
+
+function RadioMenubarExample() {
+  const [position, setPosition] = useState("bottom");
+
+  return (
+    <Menubar>
+      <MenubarMenu>
+        <MenubarTrigger>Options</MenubarTrigger>
+        <MenubarContent>
+          <MenubarRadioGroup value={position} onValueChange={setPosition}>
+            <MenubarRadioItem value="top">Top</MenubarRadioItem>
+            <MenubarRadioItem value="right">Right</MenubarRadioItem>
+            <MenubarRadioItem value="bottom">Bottom</MenubarRadioItem>
+            <MenubarRadioItem value="left">Left</MenubarRadioItem>
+          </MenubarRadioGroup>
+        </MenubarContent>
+      </MenubarMenu>
+    </Menubar>
+  );
+}
+```
+
+### With Submenus
+
+```tsx
+<Menubar>
+  <MenubarMenu>
+    <MenubarTrigger>File</MenubarTrigger>
+    <MenubarContent>
+      <MenubarItem>New File</MenubarItem>
+      <MenubarSub>
+        <MenubarSubTrigger>Open Recent</MenubarSubTrigger>
+        <MenubarSubContent>
+          <MenubarItem>Document 1.txt</MenubarItem>
+          <MenubarItem>Document 2.txt</MenubarItem>
+          <MenubarItem>Document 3.txt</MenubarItem>
+        </MenubarSubContent>
+      </MenubarSub>
+      <MenubarSeparator />
+      <MenubarItem>Save</MenubarItem>
+      <MenubarItem>Save As</MenubarItem>
+    </MenubarContent>
+  </MenubarMenu>
+</Menubar>
+```
+
+### With Inset Items
+
+```tsx
+<Menubar>
+  <MenubarMenu>
+    <MenubarTrigger>Options</MenubarTrigger>
+    <MenubarContent>
+      <MenubarLabel>Interface</MenubarLabel>
+      <MenubarSeparator />
+      <MenubarItem>Normal Item</MenubarItem>
+      <MenubarItem inset>Inset Item</MenubarItem>
+      <MenubarItem inset>Another Inset Item</MenubarItem>
+      <MenubarSeparator />
+      <MenubarItem>Another Normal Item</MenubarItem>
+    </MenubarContent>
+  </MenubarMenu>
+</Menubar>
+```
+
+### With Keyboard Shortcuts
+
+```tsx
+<Menubar>
+  <MenubarMenu>
+    <MenubarTrigger>File</MenubarTrigger>
+    <MenubarContent>
+      <MenubarItem>
+        New <MenubarShortcut>⌘N</MenubarShortcut>
+      </MenubarItem>
+      <MenubarItem>
+        Open <MenubarShortcut>⌘O</MenubarShortcut>
+      </MenubarItem>
+      <MenubarSeparator />
+      <MenubarItem>
+        Save <MenubarShortcut>⌘S</MenubarShortcut>
+      </MenubarItem>
+      <MenubarItem>
+        Save As <MenubarShortcut>⇧⌘S</MenubarShortcut>
+      </MenubarItem>
+    </MenubarContent>
+  </MenubarMenu>
+  <MenubarMenu>
+    <MenubarTrigger>Edit</MenubarTrigger>
+    <MenubarContent>
+      <MenubarItem>
+        Undo <MenubarShortcut>⌘Z</MenubarShortcut>
+      </MenubarItem>
+      <MenubarItem>
+        Redo <MenubarShortcut>⇧⌘Z</MenubarShortcut>
+      </MenubarItem>
+      <MenubarSeparator />
+      <MenubarItem>
+        Cut <MenubarShortcut>⌘X</MenubarShortcut>
+      </MenubarItem>
+      <MenubarItem>
+        Copy <MenubarShortcut>⌘C</MenubarShortcut>
+      </MenubarItem>
+      <MenubarItem>
+        Paste <MenubarShortcut>⌘V</MenubarShortcut>
+      </MenubarItem>
+    </MenubarContent>
+  </MenubarMenu>
+</Menubar>
+```
+
+### With Disabled Items
+
+```tsx
+<Menubar>
+  <MenubarMenu>
+    <MenubarTrigger>File</MenubarTrigger>
+    <MenubarContent>
+      <MenubarItem>New Document</MenubarItem>
+      <MenubarItem>New Folder</MenubarItem>
+      <MenubarSeparator />
+      <MenubarItem disabled>Print</MenubarItem>
+      <MenubarItem disabled>Export</MenubarItem>
+    </MenubarContent>
+  </MenubarMenu>
+</Menubar>
+```
+
+### Application-Style Menubar
+
+```tsx
+<Menubar className="rounded-none border-b border-none px-2 lg:px-4">
+  <MenubarMenu>
+    <MenubarTrigger className="font-bold">App</MenubarTrigger>
+    <MenubarContent>
+      <MenubarItem>About</MenubarItem>
+      <MenubarSeparator />
+      <MenubarItem>Preferences</MenubarItem>
+      <MenubarSeparator />
+      <MenubarItem>Quit</MenubarItem>
+    </MenubarContent>
+  </MenubarMenu>
+  <MenubarMenu>
+    <MenubarTrigger>File</MenubarTrigger>
+    <MenubarContent>
+      <MenubarItem>
+        New <MenubarShortcut>⌘N</MenubarShortcut>
+      </MenubarItem>
+      <MenubarItem>
+        Open <MenubarShortcut>⌘O</MenubarShortcut>
+      </MenubarItem>
+      <MenubarSeparator />
+      <MenubarSub>
+        <MenubarSubTrigger>Share</MenubarSubTrigger>
+        <MenubarSubContent>
+          <MenubarItem>Email</MenubarItem>
+          <MenubarItem>Twitter</MenubarItem>
+          <MenubarItem>Facebook</MenubarItem>
+        </MenubarSubContent>
+      </MenubarSub>
+      <MenubarSeparator />
+      <MenubarItem>
+        Print <MenubarShortcut>⌘P</MenubarShortcut>
+      </MenubarItem>
+    </MenubarContent>
+  </MenubarMenu>
+  <MenubarMenu>
+    <MenubarTrigger>Edit</MenubarTrigger>
+    <MenubarContent>
+      <MenubarItem>
+        Undo <MenubarShortcut>⌘Z</MenubarShortcut>
+      </MenubarItem>
+      <MenubarItem>
+        Redo <MenubarShortcut>⇧⌘Z</MenubarShortcut>
+      </MenubarItem>
+      <MenubarSeparator />
+      <MenubarSub>
+        <MenubarSubTrigger>Find</MenubarSubTrigger>
+        <MenubarSubContent>
+          <MenubarItem>
+            Find <MenubarShortcut>⌘F</MenubarShortcut>
+          </MenubarItem>
+          <MenubarItem>
+            Find and Replace <MenubarShortcut>⌘⇧F</MenubarShortcut>
+          </MenubarItem>
+        </MenubarSubContent>
+      </MenubarSub>
+    </MenubarContent>
+  </MenubarMenu>
+  <MenubarMenu>
+    <MenubarTrigger>View</MenubarTrigger>
+    <MenubarContent>
+      <MenubarCheckboxItem>Show Toolbar</MenubarCheckboxItem>
+      <MenubarCheckboxItem>Show Statusbar</MenubarCheckboxItem>
+      <MenubarSeparator />
+      <MenubarItem>
+        Zoom In <MenubarShortcut>⌘+</MenubarShortcut>
+      </MenubarItem>
+      <MenubarItem>
+        Zoom Out <MenubarShortcut>⌘-</MenubarShortcut>
+      </MenubarItem>
+      <MenubarSeparator />
+      <MenubarRadioGroup value="medium">
+        <MenubarRadioItem value="small">Small</MenubarRadioItem>
+        <MenubarRadioItem value="medium">Medium</MenubarRadioItem>
+        <MenubarRadioItem value="large">Large</MenubarRadioItem>
+      </MenubarRadioGroup>
+    </MenubarContent>
+  </MenubarMenu>
+</Menubar>
+```
+
+## Accessibility
+
+The Menubar component follows these accessibility best practices:
+
+- Keyboard navigable: can be operated with arrows, tab, space, enter, and escape keys
+- Focus management: focus is trapped inside open menus
+- Supports typeahead for quick keyboard navigation
+- Proper ARIA roles, states, and properties
+- Clear visual indication of focus and selected states
+- Follows WAI-ARIA design patterns for menus
+- Submenus properly indicate their parent relationships
+- Keyboard shortcuts are visible and accessible
+- Disabled states appropriately prevent interaction
+
+## Implementation Details
+
+The Menubar component is built on top of Radix UI's Menubar primitive, providing a robust and accessible menubar implementation. It is styled with Tailwind CSS and includes features like:
+
+- Multiple menu types (standard, checkbox, radio)
+- Submenu support for hierarchical navigation
+- Keyboard shortcuts display
+- Disabled state styling
+- Focus and hover states
+- Proper animation for opening and closing menus
+
+Menubars are ideal for applications with multiple features that need to be organized in a hierarchical structure. They're commonly used in desktop-style applications, content editors, and administrative interfaces.

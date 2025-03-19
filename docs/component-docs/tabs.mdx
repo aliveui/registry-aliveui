@@ -1,0 +1,333 @@
+# Tabs
+
+The Tabs component is a molecule in the AliveUI component library. It provides a tabbed interface for switching between different sections of content, allowing users to navigate through multiple panes within a compact space.
+
+## Usage
+
+```tsx
+import { Tabs, TabsList, TabsTrigger, TabsContent } from "@aliveui/ui";
+
+export function TabsDemo() {
+  return (
+    <Tabs defaultValue="account" className="w-[400px]">
+      <TabsList>
+        <TabsTrigger value="account">Account</TabsTrigger>
+        <TabsTrigger value="password">Password</TabsTrigger>
+      </TabsList>
+      <TabsContent value="account">
+        <p>Account settings tab content</p>
+      </TabsContent>
+      <TabsContent value="password">
+        <p>Password settings tab content</p>
+      </TabsContent>
+    </Tabs>
+  );
+}
+```
+
+## API Reference
+
+### Tabs
+
+The root component that manages the tab state.
+
+```tsx
+<Tabs defaultValue="account">{/* TabsList and TabsContent */}</Tabs>
+```
+
+**Props**
+
+- `defaultValue`: The initial value of the selected tab.
+- `value`: The controlled value of the selected tab.
+- `onValueChange`: A callback function called when the selected tab changes.
+
+### TabsList
+
+The container for the tab triggers.
+
+```tsx
+<TabsList>{/* TabsTrigger components */}</TabsList>
+```
+
+### TabsTrigger
+
+The button that activates a specific tab.
+
+```tsx
+<TabsTrigger value="account">Account</TabsTrigger>
+```
+
+**Props**
+
+- `value`: A unique identifier for the tab. This should match the `value` of the corresponding `TabsContent`.
+
+### TabsContent
+
+The content that is displayed when the corresponding tab is active.
+
+```tsx
+<TabsContent value="account">
+  <p>Account settings tab content</p>
+</TabsContent>
+```
+
+**Props**
+
+- `value`: A unique identifier for the tab content. This should match the `value` of the corresponding `TabsTrigger`.
+
+## Examples
+
+### Basic Tabs
+
+```tsx
+<Tabs defaultValue="account" className="w-[400px]">
+  <TabsList>
+    <TabsTrigger value="account">Account</TabsTrigger>
+    <TabsTrigger value="password">Password</TabsTrigger>
+  </TabsList>
+  <TabsContent value="account">
+    <Card>
+      <CardHeader>
+        <CardTitle>Account</CardTitle>
+        <CardDescription>
+          Make changes to your account settings here.
+        </CardDescription>
+      </CardHeader>
+      <CardContent className="space-y-2">
+        <div className="space-y-1">
+          <Label htmlFor="name">Name</Label>
+          <Input id="name" defaultValue="John Doe" />
+        </div>
+        <div className="space-y-1">
+          <Label htmlFor="username">Username</Label>
+          <Input id="username" defaultValue="@johndoe" />
+        </div>
+      </CardContent>
+      <CardFooter>
+        <Button>Save changes</Button>
+      </CardFooter>
+    </Card>
+  </TabsContent>
+  <TabsContent value="password">
+    <Card>
+      <CardHeader>
+        <CardTitle>Password</CardTitle>
+        <CardDescription>
+          Change your password here. After saving, you'll be logged out.
+        </CardDescription>
+      </CardHeader>
+      <CardContent className="space-y-2">
+        <div className="space-y-1">
+          <Label htmlFor="current">Current password</Label>
+          <Input id="current" type="password" />
+        </div>
+        <div className="space-y-1">
+          <Label htmlFor="new">New password</Label>
+          <Input id="new" type="password" />
+        </div>
+      </CardContent>
+      <CardFooter>
+        <Button>Save password</Button>
+      </CardFooter>
+    </Card>
+  </TabsContent>
+</Tabs>
+```
+
+### Tabs with Icons
+
+```tsx
+<Tabs defaultValue="music" className="w-[400px]">
+  <TabsList className="grid w-full grid-cols-3">
+    <TabsTrigger value="music">
+      <Music className="mr-2 h-4 w-4" />
+      Music
+    </TabsTrigger>
+    <TabsTrigger value="photos">
+      <Image className="mr-2 h-4 w-4" />
+      Photos
+    </TabsTrigger>
+    <TabsTrigger value="videos">
+      <Video className="mr-2 h-4 w-4" />
+      Videos
+    </TabsTrigger>
+  </TabsList>
+  <TabsContent value="music">
+    <Card>
+      <CardHeader>
+        <CardTitle>Music</CardTitle>
+        <CardDescription>
+          View and manage your music collection.
+        </CardDescription>
+      </CardHeader>
+      <CardContent>
+        <p>Your music content here.</p>
+      </CardContent>
+    </Card>
+  </TabsContent>
+  <TabsContent value="photos">
+    <Card>
+      <CardHeader>
+        <CardTitle>Photos</CardTitle>
+        <CardDescription>Browse your photo gallery.</CardDescription>
+      </CardHeader>
+      <CardContent>
+        <p>Your photos content here.</p>
+      </CardContent>
+    </Card>
+  </TabsContent>
+  <TabsContent value="videos">
+    <Card>
+      <CardHeader>
+        <CardTitle>Videos</CardTitle>
+        <CardDescription>Manage your video library.</CardDescription>
+      </CardHeader>
+      <CardContent>
+        <p>Your videos content here.</p>
+      </CardContent>
+    </Card>
+  </TabsContent>
+</Tabs>
+```
+
+### Responsive Tabs
+
+```tsx
+<Tabs defaultValue="tab1" className="w-full">
+  <TabsList className="w-full sm:w-auto">
+    <TabsTrigger value="tab1" className="flex-1 sm:flex-none">
+      Tab 1
+    </TabsTrigger>
+    <TabsTrigger value="tab2" className="flex-1 sm:flex-none">
+      Tab 2
+    </TabsTrigger>
+    <TabsTrigger value="tab3" className="flex-1 sm:flex-none">
+      Tab 3
+    </TabsTrigger>
+  </TabsList>
+  <TabsContent value="tab1">
+    <div className="p-4 rounded-md border mt-4">
+      <h3 className="text-lg font-medium">Tab 1 Content</h3>
+      <p>This content is displayed when Tab 1 is active.</p>
+    </div>
+  </TabsContent>
+  <TabsContent value="tab2">
+    <div className="p-4 rounded-md border mt-4">
+      <h3 className="text-lg font-medium">Tab 2 Content</h3>
+      <p>This content is displayed when Tab 2 is active.</p>
+    </div>
+  </TabsContent>
+  <TabsContent value="tab3">
+    <div className="p-4 rounded-md border mt-4">
+      <h3 className="text-lg font-medium">Tab 3 Content</h3>
+      <p>This content is displayed when Tab 3 is active.</p>
+    </div>
+  </TabsContent>
+</Tabs>
+```
+
+### Tabs in Card
+
+```tsx
+<Card>
+  <CardHeader>
+    <CardTitle>Settings</CardTitle>
+    <CardDescription>
+      Manage your account settings and preferences.
+    </CardDescription>
+  </CardHeader>
+  <CardContent>
+    <Tabs defaultValue="general">
+      <TabsList>
+        <TabsTrigger value="general">General</TabsTrigger>
+        <TabsTrigger value="privacy">Privacy</TabsTrigger>
+        <TabsTrigger value="notifications">Notifications</TabsTrigger>
+      </TabsList>
+      <TabsContent value="general">
+        <div className="space-y-4 py-4">
+          <div className="space-y-2">
+            <Label htmlFor="language">Language</Label>
+            <Select>
+              <SelectTrigger id="language">
+                <SelectValue placeholder="Select language" />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="en">English</SelectItem>
+                <SelectItem value="fr">French</SelectItem>
+                <SelectItem value="de">German</SelectItem>
+                <SelectItem value="es">Spanish</SelectItem>
+              </SelectContent>
+            </Select>
+          </div>
+          <div className="space-y-2">
+            <Label htmlFor="theme">Theme</Label>
+            <Select>
+              <SelectTrigger id="theme">
+                <SelectValue placeholder="Select theme" />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="light">Light</SelectItem>
+                <SelectItem value="dark">Dark</SelectItem>
+                <SelectItem value="system">System</SelectItem>
+              </SelectContent>
+            </Select>
+          </div>
+        </div>
+      </TabsContent>
+      <TabsContent value="privacy">
+        <div className="space-y-4 py-4">
+          <div className="flex items-center space-x-2">
+            <Switch id="public-profile" />
+            <Label htmlFor="public-profile">Public Profile</Label>
+          </div>
+          <div className="flex items-center space-x-2">
+            <Switch id="show-email" />
+            <Label htmlFor="show-email">Show Email</Label>
+          </div>
+        </div>
+      </TabsContent>
+      <TabsContent value="notifications">
+        <div className="space-y-4 py-4">
+          <div className="flex items-center space-x-2">
+            <Switch id="email-notifications" defaultChecked />
+            <Label htmlFor="email-notifications">Email Notifications</Label>
+          </div>
+          <div className="flex items-center space-x-2">
+            <Switch id="push-notifications" />
+            <Label htmlFor="push-notifications">Push Notifications</Label>
+          </div>
+        </div>
+      </TabsContent>
+    </Tabs>
+  </CardContent>
+</Card>
+```
+
+## Accessibility
+
+The Tabs component is built on top of [Radix UI's Tabs primitive](https://www.radix-ui.com/primitives/docs/components/tabs), which ensures excellent accessibility:
+
+- Follows the [WAI-ARIA Tabs Pattern](https://www.w3.org/WAI/ARIA/apg/patterns/tabpanel/)
+- Keyboard navigation with arrow keys to switch between tabs
+- Tab and Shift+Tab for navigating through the tabbed interface
+- Screen reader announcements when tabs change
+- Proper ARIA roles, states, and properties
+
+## Implementation Details
+
+The Tabs component is built using Radix UI's Tabs primitive and Tailwind CSS for styling. It provides a simple yet powerful way to organize content into tabbed sections, improving the user experience when dealing with multiple sections of related content.
+
+The component supports:
+
+- Controlled and uncontrolled modes
+- Keyboard navigation
+- Customizable styling
+- Screen reader accessibility
+- Responsive layouts
+
+Tabs are useful for:
+
+- Settings pages with multiple categories
+- Product details with different sections
+- Dashboard widgets with multiple data views
+- Form wizards and multi-step processes

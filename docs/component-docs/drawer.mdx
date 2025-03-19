@@ -1,0 +1,392 @@
+# Drawer
+
+The Drawer component is a molecule in the AliveUI component library. It provides a panel that slides in from the edge of the screen, typically from the bottom on mobile devices and from the sides on larger screens.
+
+## Usage
+
+```tsx
+import {
+  Drawer,
+  DrawerContent,
+  DrawerDescription,
+  DrawerFooter,
+  DrawerHeader,
+  DrawerTitle,
+  DrawerTrigger,
+} from "@aliveui/ui";
+import { Button } from "@aliveui/ui";
+
+export default function DrawerExample() {
+  return (
+    <Drawer>
+      <DrawerTrigger asChild>
+        <Button variant="outline">Open Drawer</Button>
+      </DrawerTrigger>
+      <DrawerContent>
+        <DrawerHeader>
+          <DrawerTitle>Add to Cart</DrawerTitle>
+          <DrawerDescription>
+            Select options for this product.
+          </DrawerDescription>
+        </DrawerHeader>
+        <div className="p-4">
+          <div className="grid gap-4">
+            <div className="grid grid-cols-3 gap-4">
+              <div className="flex flex-col items-center justify-center rounded-md border border-muted p-2">
+                <span className="text-sm">Small</span>
+              </div>
+              <div className="flex flex-col items-center justify-center rounded-md border border-muted bg-accent p-2">
+                <span className="text-sm">Medium</span>
+              </div>
+              <div className="flex flex-col items-center justify-center rounded-md border border-muted p-2">
+                <span className="text-sm">Large</span>
+              </div>
+            </div>
+            <div className="grid gap-2">
+              <label htmlFor="quantity" className="text-sm font-medium">
+                Quantity
+              </label>
+              <select
+                id="quantity"
+                className="rounded-md border border-muted px-3 py-2"
+              >
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+              </select>
+            </div>
+          </div>
+        </div>
+        <DrawerFooter>
+          <Button>Add to Cart</Button>
+          <DrawerClose asChild>
+            <Button variant="outline">Cancel</Button>
+          </DrawerClose>
+        </DrawerFooter>
+      </DrawerContent>
+    </Drawer>
+  );
+}
+```
+
+## API Reference
+
+The Drawer component is built on top of the Vaul library and consists of several parts.
+
+### Drawer
+
+The root component that wraps the drawer trigger and content.
+
+| Property                | Type       | Default  | Description                                                                            |
+| ----------------------- | ---------- | -------- | -------------------------------------------------------------------------------------- |
+| `shouldScaleBackground` | `boolean`  | `true`   | Whether to scale the background when the drawer is open                                |
+| `open`                  | `boolean`  | -        | The controlled open state of the drawer                                                |
+| `onOpenChange`          | `function` | -        | Event handler called when the open state of the drawer changes                         |
+| `direction`             | `string`   | `bottom` | The direction from which the drawer appears (bottom, top, left, right)                 |
+| `modal`                 | `boolean`  | `true`   | Whether the drawer is modal (prevents interaction with the rest of the page when open) |
+| `snapPoints`            | `number[]` | -        | An array of points to snap to, each represented by a percentage from 0-100             |
+| `activeSnapPoint`       | `number`   | -        | The active snap point                                                                  |
+| `setActiveSnapPoint`    | `function` | -        | Event handler called when the active snap point changes                                |
+
+### DrawerTrigger
+
+The button that opens the drawer.
+
+### DrawerContent
+
+The container for the drawer content. This is where you put the content of your drawer.
+
+### DrawerHeader
+
+Container for the drawer title and description.
+
+### DrawerTitle
+
+The title of the drawer, usually displayed at the top.
+
+### DrawerDescription
+
+A description for the drawer, usually displayed below the title.
+
+### DrawerFooter
+
+The footer of the drawer, usually contains actions like buttons.
+
+### DrawerClose
+
+A button that closes the drawer.
+
+## Examples
+
+### Basic Drawer
+
+```tsx
+import { Button } from "@aliveui/ui";
+
+<Drawer>
+  <DrawerTrigger asChild>
+    <Button variant="outline">Open Drawer</Button>
+  </DrawerTrigger>
+  <DrawerContent>
+    <DrawerHeader>
+      <DrawerTitle>Basic Drawer</DrawerTitle>
+      <DrawerDescription>
+        This is a simple drawer with basic content.
+      </DrawerDescription>
+    </DrawerHeader>
+    <div className="p-4">
+      <p>This is the main content of the drawer.</p>
+    </div>
+    <DrawerFooter>
+      <Button>Save</Button>
+      <DrawerClose asChild>
+        <Button variant="outline">Cancel</Button>
+      </DrawerClose>
+    </DrawerFooter>
+  </DrawerContent>
+</Drawer>;
+```
+
+### Controlled Drawer
+
+```tsx
+import { useState } from "react";
+import { Button } from "@aliveui/ui";
+
+function ControlledDrawer() {
+  const [open, setOpen] = useState(false);
+
+  return (
+    <>
+      <Button onClick={() => setOpen(true)}>Open Drawer</Button>
+      <Drawer open={open} onOpenChange={setOpen}>
+        <DrawerContent>
+          <DrawerHeader>
+            <DrawerTitle>Controlled Drawer</DrawerTitle>
+            <DrawerDescription>
+              This drawer's state is controlled externally.
+            </DrawerDescription>
+          </DrawerHeader>
+          <div className="p-4">
+            <p>You can control the open state programmatically.</p>
+          </div>
+          <DrawerFooter>
+            <Button onClick={() => setOpen(false)}>Close</Button>
+          </DrawerFooter>
+        </DrawerContent>
+      </Drawer>
+    </>
+  );
+}
+```
+
+### Drawer with Form
+
+```tsx
+import { Button } from "@aliveui/ui";
+import { Label } from "@aliveui/ui";
+import { Input } from "@aliveui/ui";
+
+<Drawer>
+  <DrawerTrigger asChild>
+    <Button>Contact Us</Button>
+  </DrawerTrigger>
+  <DrawerContent>
+    <DrawerHeader>
+      <DrawerTitle>Contact Form</DrawerTitle>
+      <DrawerDescription>
+        Fill out this form to send us a message.
+      </DrawerDescription>
+    </DrawerHeader>
+    <div className="p-4">
+      <form className="grid gap-4">
+        <div className="grid gap-2">
+          <Label htmlFor="name">Name</Label>
+          <Input id="name" placeholder="Enter your name" />
+        </div>
+        <div className="grid gap-2">
+          <Label htmlFor="email">Email</Label>
+          <Input id="email" type="email" placeholder="Enter your email" />
+        </div>
+        <div className="grid gap-2">
+          <Label htmlFor="message">Message</Label>
+          <textarea
+            id="message"
+            className="h-20 rounded-md border border-input bg-background px-3 py-2"
+            placeholder="Enter your message"
+          />
+        </div>
+      </form>
+    </div>
+    <DrawerFooter>
+      <Button>Submit</Button>
+      <DrawerClose asChild>
+        <Button variant="outline">Cancel</Button>
+      </DrawerClose>
+    </DrawerFooter>
+  </DrawerContent>
+</Drawer>;
+```
+
+### Drawer with Snap Points
+
+```tsx
+import { Button } from "@aliveui/ui";
+
+<Drawer snapPoints={[0.4, 0.6, 0.9]}>
+  <DrawerTrigger asChild>
+    <Button variant="outline">Open Drawer with Snap Points</Button>
+  </DrawerTrigger>
+  <DrawerContent>
+    <div className="mx-auto w-full max-w-sm">
+      <DrawerHeader>
+        <DrawerTitle>Snap Points</DrawerTitle>
+        <DrawerDescription>
+          This drawer has three snap points at 40%, 60%, and 90%. Drag the
+          drawer to snap to different heights.
+        </DrawerDescription>
+      </DrawerHeader>
+      <div className="p-4">
+        <div className="grid gap-4">
+          <p>
+            Snap points are useful for providing multiple states for a drawer,
+            like a minimized, default, and maximized state.
+          </p>
+          <p>
+            Try dragging this drawer to different heights to see how it snaps to
+            40%, 60%, or 90% of the screen height.
+          </p>
+        </div>
+      </div>
+      <DrawerFooter>
+        <DrawerClose asChild>
+          <Button>Close</Button>
+        </DrawerClose>
+      </DrawerFooter>
+    </div>
+  </DrawerContent>
+</Drawer>;
+```
+
+### Drawer with Image Preview
+
+```tsx
+import { Button } from "@aliveui/ui";
+import { AspectRatio } from "@aliveui/ui";
+import Image from "next/image";
+
+<Drawer>
+  <DrawerTrigger asChild>
+    <Button variant="outline">Preview Image</Button>
+  </DrawerTrigger>
+  <DrawerContent className="sm:max-w-xl">
+    <DrawerHeader>
+      <DrawerTitle>Image Preview</DrawerTitle>
+      <DrawerDescription>Examine this image in more detail.</DrawerDescription>
+    </DrawerHeader>
+    <div className="p-4">
+      <AspectRatio ratio={16 / 9}>
+        <Image
+          src="https://images.unsplash.com/photo-1500835556837-99ac94a94552"
+          alt="Landscape"
+          fill
+          className="rounded-md object-cover"
+        />
+      </AspectRatio>
+      <div className="mt-4">
+        <h4 className="text-sm font-medium">Mountain Landscape</h4>
+        <p className="text-sm text-muted-foreground">
+          A beautiful mountain landscape with snow-capped peaks and lush green
+          valleys.
+        </p>
+      </div>
+    </div>
+    <DrawerFooter>
+      <Button variant="outline">Download</Button>
+      <DrawerClose asChild>
+        <Button variant="outline">Close</Button>
+      </DrawerClose>
+    </DrawerFooter>
+  </DrawerContent>
+</Drawer>;
+```
+
+### Drawer for Mobile Navigation
+
+```tsx
+import { useState } from "react";
+import { Button } from "@aliveui/ui";
+import { Menu, X } from "lucide-react";
+
+function MobileNavigationDrawer() {
+  const [open, setOpen] = useState(false);
+
+  return (
+    <div className="flex items-center justify-between p-4 border-b">
+      <div className="text-lg font-semibold">My App</div>
+      <Drawer open={open} onOpenChange={setOpen}>
+        <DrawerTrigger asChild>
+          <Button variant="ghost" size="icon">
+            <Menu className="h-5 w-5" />
+          </Button>
+        </DrawerTrigger>
+        <DrawerContent>
+          <DrawerHeader>
+            <div className="flex items-center justify-between">
+              <DrawerTitle>Navigation</DrawerTitle>
+              <DrawerClose asChild>
+                <Button variant="ghost" size="icon">
+                  <X className="h-5 w-5" />
+                </Button>
+              </DrawerClose>
+            </div>
+          </DrawerHeader>
+          <div className="p-4">
+            <nav className="grid gap-2">
+              {[
+                "Home",
+                "Products",
+                "Features",
+                "Pricing",
+                "About",
+                "Contact",
+              ].map((item) => (
+                <Button
+                  key={item}
+                  variant="ghost"
+                  className="justify-start"
+                  onClick={() => setOpen(false)}
+                >
+                  {item}
+                </Button>
+              ))}
+            </nav>
+          </div>
+          <DrawerFooter>
+            <Button className="w-full">Sign In</Button>
+          </DrawerFooter>
+        </DrawerContent>
+      </Drawer>
+    </div>
+  );
+}
+```
+
+## Accessibility
+
+The Drawer component follows these accessibility best practices:
+
+- Keyboard navigable: can be closed with the Escape key
+- Focus management: focus is trapped inside the drawer when open
+- Proper ARIA attributes for screen readers
+- Ensures content outside the drawer is not accessible when modal
+- Properly announces open/close state to screen readers
+- Backdrop prevents interaction with background content when modal
+
+## Implementation Details
+
+The Drawer component is built on top of the Vaul library, providing a smooth and accessible drawer experience. It is styled with Tailwind CSS and includes features like snap points and direction options. The component is highly customizable and can be used in various scenarios, from mobile navigation menus to product detail panels, form inputs, or filter controls.
+
+The drawer appears from the bottom of the screen by default, which is optimal for mobile devices, but can be configured to appear from other directions for desktop layouts.

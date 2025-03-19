@@ -53,9 +53,9 @@
   }
 
   [data-theme="orange"] {
-    --primary: 24 95% 53%;
+    --primary: 24 100% 55%;
     --primary-foreground: 0 0% 98%;
-    --ring: 24 95% 53%;
+    --ring: 24 100% 55%;
   }
 
   [data-theme="red"] {

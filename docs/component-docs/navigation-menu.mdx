@@ -1,0 +1,301 @@
+# Navigation Menu
+
+The Navigation Menu component is a molecule in the AliveUI component library. It provides a responsive navigation menu system with dropdown menus, flyout menus, and keyboard navigation support.
+
+## Usage
+
+```tsx
+import {
+  NavigationMenu,
+  NavigationMenuContent,
+  NavigationMenuItem,
+  NavigationMenuLink,
+  NavigationMenuList,
+  NavigationMenuTrigger,
+  navigationMenuTriggerStyle,
+} from "@aliveui/ui";
+
+export function NavigationMenuDemo() {
+  return (
+    <NavigationMenu>
+      <NavigationMenuList>
+        <NavigationMenuItem>
+          <NavigationMenuTrigger>Getting started</NavigationMenuTrigger>
+          <NavigationMenuContent>
+            {/* Content for the dropdown */}
+          </NavigationMenuContent>
+        </NavigationMenuItem>
+
+        <NavigationMenuItem>
+          <NavigationMenuLink
+            className={navigationMenuTriggerStyle()}
+            href="/docs"
+          >
+            Documentation
+          </NavigationMenuLink>
+        </NavigationMenuItem>
+      </NavigationMenuList>
+    </NavigationMenu>
+  );
+}
+```
+
+## API Reference
+
+### NavigationMenu
+
+The root component of the navigation menu.
+
+```tsx
+<NavigationMenu>{/* NavigationMenuList */}</NavigationMenu>
+```
+
+### NavigationMenuList
+
+Contains the list of navigation items.
+
+```tsx
+<NavigationMenuList>{/* NavigationMenuItems */}</NavigationMenuList>
+```
+
+### NavigationMenuItem
+
+An item in the navigation menu.
+
+```tsx
+<NavigationMenuItem>
+  {/* NavigationMenuTrigger or NavigationMenuLink */}
+</NavigationMenuItem>
+```
+
+### NavigationMenuTrigger
+
+A trigger button that opens a dropdown menu.
+
+```tsx
+<NavigationMenuTrigger>Label</NavigationMenuTrigger>
+```
+
+### NavigationMenuContent
+
+The content of a dropdown menu.
+
+```tsx
+<NavigationMenuContent>{/* Dropdown content */}</NavigationMenuContent>
+```
+
+### NavigationMenuLink
+
+A link in the navigation menu.
+
+```tsx
+<NavigationMenuLink href="/path">Label</NavigationMenuLink>
+```
+
+### navigationMenuTriggerStyle
+
+A style function for links that should look like triggers.
+
+```tsx
+<NavigationMenuLink className={navigationMenuTriggerStyle()}>
+  Label
+</NavigationMenuLink>
+```
+
+### NavigationMenuIndicator
+
+An indicator that shows which item is active.
+
+```tsx
+<NavigationMenuIndicator />
+```
+
+### NavigationMenuViewport
+
+The viewport for displaying dropdown content.
+
+```tsx
+<NavigationMenuViewport />
+```
+
+## Examples
+
+### Basic Navigation Menu
+
+```tsx
+<NavigationMenu>
+  <NavigationMenuList>
+    <NavigationMenuItem>
+      <NavigationMenuTrigger>Getting Started</NavigationMenuTrigger>
+      <NavigationMenuContent>
+        <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px]">
+          <li>
+            <NavigationMenuLink href="/docs/introduction">
+              Introduction
+            </NavigationMenuLink>
+          </li>
+          <li>
+            <NavigationMenuLink href="/docs/installation">
+              Installation
+            </NavigationMenuLink>
+          </li>
+        </ul>
+      </NavigationMenuContent>
+    </NavigationMenuItem>
+    <NavigationMenuItem>
+      <NavigationMenuTrigger>Components</NavigationMenuTrigger>
+      <NavigationMenuContent>
+        <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px]">
+          <li>
+            <NavigationMenuLink href="/docs/components/button">
+              Button
+            </NavigationMenuLink>
+          </li>
+          <li>
+            <NavigationMenuLink href="/docs/components/dropdown">
+              Dropdown
+            </NavigationMenuLink>
+          </li>
+        </ul>
+      </NavigationMenuContent>
+    </NavigationMenuItem>
+    <NavigationMenuItem>
+      <NavigationMenuLink className={navigationMenuTriggerStyle()} href="/docs">
+        Documentation
+      </NavigationMenuLink>
+    </NavigationMenuItem>
+  </NavigationMenuList>
+</NavigationMenu>
+```
+
+### With Custom Content and Cards
+
+```tsx
+<NavigationMenu>
+  <NavigationMenuList>
+    <NavigationMenuItem>
+      <NavigationMenuTrigger>Features</NavigationMenuTrigger>
+      <NavigationMenuContent>
+        <div className="grid w-[600px] grid-cols-2 gap-4 p-6">
+          <div className="rounded-md border p-4">
+            <h4 className="text-sm font-medium leading-none mb-2">Analytics</h4>
+            <p className="text-sm text-muted-foreground">
+              Detailed analytics and reporting features.
+            </p>
+          </div>
+          <div className="rounded-md border p-4">
+            <h4 className="text-sm font-medium leading-none mb-2">
+              Automation
+            </h4>
+            <p className="text-sm text-muted-foreground">
+              Automate workflows and save time.
+            </p>
+          </div>
+          <div className="rounded-md border p-4">
+            <h4 className="text-sm font-medium leading-none mb-2">
+              Integration
+            </h4>
+            <p className="text-sm text-muted-foreground">
+              Connect with your favorite tools.
+            </p>
+          </div>
+          <div className="rounded-md border p-4">
+            <h4 className="text-sm font-medium leading-none mb-2">Security</h4>
+            <p className="text-sm text-muted-foreground">
+              Enterprise-grade security features.
+            </p>
+          </div>
+        </div>
+      </NavigationMenuContent>
+    </NavigationMenuItem>
+    <NavigationMenuItem>
+      <NavigationMenuLink
+        className={navigationMenuTriggerStyle()}
+        href="/pricing"
+      >
+        Pricing
+      </NavigationMenuLink>
+    </NavigationMenuItem>
+    <NavigationMenuItem>
+      <NavigationMenuLink
+        className={navigationMenuTriggerStyle()}
+        href="/contact"
+      >
+        Contact
+      </NavigationMenuLink>
+    </NavigationMenuItem>
+  </NavigationMenuList>
+</NavigationMenu>
+```
+
+### Responsive Navigation Menu
+
+```tsx
+<NavigationMenu className="hidden md:flex">
+  <NavigationMenuList>
+    {/* Menu items for desktop */}
+  </NavigationMenuList>
+</NavigationMenu>
+<MobileMenu className="md:hidden">
+  {/* Mobile navigation alternative */}
+</MobileMenu>
+```
+
+### With Icons
+
+```tsx
+import { Home, Settings, User } from "lucide-react";
+
+<NavigationMenu>
+  <NavigationMenuList>
+    <NavigationMenuItem>
+      <NavigationMenuLink className={navigationMenuTriggerStyle()} href="/">
+        <Home className="mr-2 h-4 w-4" />
+        Home
+      </NavigationMenuLink>
+    </NavigationMenuItem>
+    <NavigationMenuItem>
+      <NavigationMenuLink
+        className={navigationMenuTriggerStyle()}
+        href="/settings"
+      >
+        <Settings className="mr-2 h-4 w-4" />
+        Settings
+      </NavigationMenuLink>
+    </NavigationMenuItem>
+    <NavigationMenuItem>
+      <NavigationMenuLink
+        className={navigationMenuTriggerStyle()}
+        href="/profile"
+      >
+        <User className="mr-2 h-4 w-4" />
+        Profile
+      </NavigationMenuLink>
+    </NavigationMenuItem>
+  </NavigationMenuList>
+</NavigationMenu>;
+```
+
+## Accessibility
+
+The Navigation Menu component is built on top of Radix UI's NavigationMenu primitive, ensuring excellent accessibility:
+
+- Follows the [WAI-ARIA Navigation Menu Pattern](https://www.w3.org/WAI/ARIA/apg/patterns/menubar/)
+- Full keyboard navigation support
+- Proper ARIA attributes for screen readers
+- Focus management for dropdown content
+- Properly labeled menu items
+
+## Implementation Details
+
+The Navigation Menu component is built on Radix UI's NavigationMenu primitive, providing a solid foundation for building accessible navigation systems.
+
+The component supports:
+
+- Dropdowns with rich content
+- Keyboard navigation
+- Responsive layouts
+- Custom styling
+- Animated transitions
+
+The styling is handled with Tailwind CSS, making it easy to customize to match your design system. The `navigationMenuTriggerStyle` function provides consistent styling for links that should look like triggers.

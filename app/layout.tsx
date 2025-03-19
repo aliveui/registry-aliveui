@@ -1,3 +1,5 @@
+"use client";
+
 import type { Metadata } from "next";
 import { GeistSans } from "geist/font/sans";
 import { GeistMono } from "geist/font/mono";
@@ -6,11 +8,12 @@ import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
 import { Navbar } from "@/components/navbar";
 import { TailwindIndicator } from "@/components/tailwind-indicator";
+import { Toaster } from "@/registry/molecules";
 
-export const metadata: Metadata = {
-  title: "Registry UI Components",
-  description: "A custom registry for UI components with theme support",
-};
+// export const metadata: Metadata = {
+//   title: "Registry UI Components",
+//   description: "A custom registry for UI components with theme support",
+// };
 
 export default function RootLayout({
   children,
@@ -26,6 +29,7 @@ export default function RootLayout({
             <main className="flex-1">{children}</main>
           </div>
           <TailwindIndicator />
+          <Toaster />
         </ThemeProvider>
       </body>
     </html>

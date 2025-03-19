@@ -1,0 +1,218 @@
+# Popover
+
+The Popover component is a molecule in the AliveUI component library. It provides a floating content panel that appears when a trigger element is clicked, displaying additional information or controls.
+
+## Usage
+
+```tsx
+import { Popover, PopoverContent, PopoverTrigger } from "@aliveui/ui";
+
+export function PopoverDemo() {
+  return (
+    <Popover>
+      <PopoverTrigger>Open Popover</PopoverTrigger>
+      <PopoverContent>
+        <p>This is the content of the popover.</p>
+      </PopoverContent>
+    </Popover>
+  );
+}
+```
+
+## API Reference
+
+### Popover
+
+The root component for the popover.
+
+```tsx
+<Popover>{/* PopoverTrigger and PopoverContent */}</Popover>
+```
+
+### PopoverTrigger
+
+The element that triggers the popover when clicked.
+
+```tsx
+<PopoverTrigger>Open Popover</PopoverTrigger>
+```
+
+### PopoverContent
+
+The content that appears when the popover is open.
+
+```tsx
+<PopoverContent>{/* Popover content */}</PopoverContent>
+```
+
+**Props**
+
+- `align`: The alignment of the popover relative to the trigger. Options: `"start"`, `"center"`, `"end"`. Default: `"center"`.
+- `sideOffset`: The distance between the trigger and the popover. Default: `4`.
+- All other props are passed to the underlying radix-ui component.
+
+## Examples
+
+### Basic Popover
+
+```tsx
+<Popover>
+  <PopoverTrigger asChild>
+    <Button variant="outline">Open Popover</Button>
+  </PopoverTrigger>
+  <PopoverContent className="w-80">
+    <div className="grid gap-4">
+      <div className="space-y-2">
+        <h4 className="font-medium leading-none">Dimensions</h4>
+        <p className="text-sm text-muted-foreground">
+          Set the dimensions for the layer.
+        </p>
+      </div>
+      <div className="grid gap-2">
+        <div className="grid grid-cols-3 items-center gap-4">
+          <Label htmlFor="width">Width</Label>
+          <Input id="width" defaultValue="100%" className="col-span-2 h-8" />
+        </div>
+        <div className="grid grid-cols-3 items-center gap-4">
+          <Label htmlFor="height">Height</Label>
+          <Input id="height" defaultValue="25px" className="col-span-2 h-8" />
+        </div>
+      </div>
+    </div>
+  </PopoverContent>
+</Popover>
+```
+
+### Popover with Form
+
+```tsx
+<Popover>
+  <PopoverTrigger asChild>
+    <Button variant="outline">Edit Profile</Button>
+  </PopoverTrigger>
+  <PopoverContent className="w-80">
+    <div className="grid gap-4">
+      <div className="space-y-2">
+        <h4 className="font-medium leading-none">Profile</h4>
+        <p className="text-sm text-muted-foreground">
+          Update your profile information.
+        </p>
+      </div>
+      <div className="grid gap-2">
+        <div className="grid grid-cols-3 items-center gap-4">
+          <Label htmlFor="name">Name</Label>
+          <Input id="name" defaultValue="John Doe" className="col-span-2 h-8" />
+        </div>
+        <div className="grid grid-cols-3 items-center gap-4">
+          <Label htmlFor="email">Email</Label>
+          <Input
+            id="email"
+            defaultValue="john@example.com"
+            className="col-span-2 h-8"
+          />
+        </div>
+      </div>
+      <Button className="w-full">Save Changes</Button>
+    </div>
+  </PopoverContent>
+</Popover>
+```
+
+### Popover with Custom Positioning
+
+```tsx
+<Popover>
+  <PopoverTrigger asChild>
+    <Button variant="outline">Show at Bottom Start</Button>
+  </PopoverTrigger>
+  <PopoverContent align="start" sideOffset={8}>
+    <p>This popover is aligned to the start and has a side offset of 8px.</p>
+  </PopoverContent>
+</Popover>
+```
+
+### Popover with Icon
+
+```tsx
+import { Settings } from "lucide-react";
+
+<Popover>
+  <PopoverTrigger asChild>
+    <Button variant="ghost" size="icon">
+      <Settings className="h-4 w-4" />
+      <span className="sr-only">Settings</span>
+    </Button>
+  </PopoverTrigger>
+  <PopoverContent>
+    <div className="grid gap-4">
+      <div className="space-y-2">
+        <h4 className="font-medium leading-none">Settings</h4>
+        <p className="text-sm text-muted-foreground">
+          Manage your preferences.
+        </p>
+      </div>
+      <div className="grid gap-2">
+        <div className="flex items-center space-x-2">
+          <Checkbox id="notifications" />
+          <Label htmlFor="notifications">Enable notifications</Label>
+        </div>
+        <div className="flex items-center space-x-2">
+          <Checkbox id="newsletter" defaultChecked />
+          <Label htmlFor="newsletter">Subscribe to newsletter</Label>
+        </div>
+      </div>
+    </div>
+  </PopoverContent>
+</Popover>;
+```
+
+### Popover with Close Button
+
+```tsx
+import { X } from "lucide-react";
+
+<Popover>
+  <PopoverTrigger asChild>
+    <Button variant="outline">Open Message</Button>
+  </PopoverTrigger>
+  <PopoverContent className="w-80">
+    <div className="flex justify-between items-center">
+      <h4 className="font-medium leading-none">Message</h4>
+      <PopoverClose asChild>
+        <Button variant="ghost" size="icon" className="h-4 w-4 p-0">
+          <X className="h-4 w-4" />
+          <span className="sr-only">Close</span>
+        </Button>
+      </PopoverClose>
+    </div>
+    <div className="mt-4">
+      <p>This is an important message that requires your attention.</p>
+    </div>
+  </PopoverContent>
+</Popover>;
+```
+
+## Accessibility
+
+The Popover component is built on top of Radix UI's Popover primitive, ensuring excellent accessibility features:
+
+- Follows the [WAI-ARIA Design Pattern for Popover](https://www.w3.org/WAI/ARIA/apg/patterns/dialogmodal/)
+- Manages focus correctly, trapping it within the popover when open
+- Proper ARIA attributes for screen readers
+- Keyboard navigable
+- Closes when pressing Escape
+- Implements proper click-outside behavior
+
+## Implementation Details
+
+The Popover component is built with Radix UI's Popover primitive and Tailwind CSS. It provides a consistent way to display additional content that doesn't fit within the main flow of a page.
+
+The component supports:
+
+- Custom positioning
+- Animations
+- Various styling options
+- Focus management
+- Keyboard interactions
+
+The `PopoverContent` component uses Portal to render outside the DOM hierarchy, ensuring proper stacking context.

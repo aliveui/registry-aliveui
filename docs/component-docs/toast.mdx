@@ -1,0 +1,227 @@
+# Toast
+
+The Toast component is a molecule in the AliveUI component library. It provides a way to show brief, non-intrusive notifications to the user, displayed as a small popup at the edge of the screen.
+
+## Usage
+
+```tsx
+import { useToast } from "@aliveui/ui";
+
+export function ToastDemo() {
+  const { toast } = useToast();
+
+  return (
+    <Button
+      onClick={() => {
+        toast({
+          title: "Scheduled: Catch up",
+          description: "Friday, February 10, 2023 at 5:57 PM",
+        });
+      }}
+    >
+      Show Toast
+    </Button>
+  );
+}
+```
+
+## Setup
+
+To use toasts in your application, you need to add the `Toaster` component to your application. This component is responsible for rendering toasts.
+
+```tsx
+// In your layout component
+import { Toaster } from "@aliveui/ui";
+
+export default function RootLayout({ children }) {
+  return (
+    <html>
+      <head />
+      <body>
+        {children}
+        <Toaster />
+      </body>
+    </html>
+  );
+}
+```
+
+## API Reference
+
+### useToast
+
+The `useToast` hook returns methods for creating and managing toasts.
+
+```tsx
+const { toast } = useToast();
+
+// Show a toast
+toast({
+  title: "Success",
+  description: "Your action was completed successfully",
+});
+```
+
+**Toast Options**
+
+- `title`: Optional title for the toast.
+- `description`: Optional description for the toast.
+- `action`: Optional action component to display in the toast.
+- `variant`: Optional variant for styling ("default" or "destructive").
+- `duration`: Optional duration in milliseconds before automatically dismissing the toast.
+
+### Toaster
+
+The component responsible for rendering toasts.
+
+```tsx
+<Toaster />
+```
+
+### Toast
+
+The individual toast component.
+
+```tsx
+<Toast>
+  <ToastTitle>Title</ToastTitle>
+  <ToastDescription>Description</ToastDescription>
+  <ToastClose />
+</Toast>
+```
+
+### ToastAction
+
+A button displayed in the toast that can be used for actions like "Undo" or "Dismiss".
+
+```tsx
+<ToastAction altText="Undo">Undo</ToastAction>
+```
+
+### ToastClose
+
+A button that closes the toast when clicked.
+
+```tsx
+<ToastClose />
+```
+
+### ToastTitle
+
+The title of the toast.
+
+```tsx
+<ToastTitle>Title</ToastTitle>
+```
+
+### ToastDescription
+
+The description of the toast.
+
+```tsx
+<ToastDescription>Description</ToastDescription>
+```
+
+## Examples
+
+### Basic Toast
+
+```tsx
+const { toast } = useToast();
+
+toast({
+  title: "Toast Title",
+  description: "Toast description goes here.",
+});
+```
+
+### Toast with Action
+
+```tsx
+const { toast } = useToast();
+
+toast({
+  title: "Uh oh! Something went wrong.",
+  description: "There was a problem with your request.",
+  action: <ToastAction altText="Try again">Try again</ToastAction>,
+});
+```
+
+### Destructive Toast
+
+```tsx
+const { toast } = useToast();
+
+toast({
+  title: "Error",
+  description: "Your action could not be completed.",
+  variant: "destructive",
+});
+```
+
+### Custom Duration
+
+```tsx
+const { toast } = useToast();
+
+toast({
+  title: "Quick notification",
+  description: "This toast will disappear quickly.",
+  duration: 3000, // 3 seconds
+});
+```
+
+### Programmatic Dismissal
+
+```tsx
+const { toast } = useToast();
+
+const { dismiss } = toast({
+  title: "Download started",
+  description: "We've started downloading your file.",
+});
+
+// Later, when download completes
+dismiss();
+```
+
+### Toast with Custom Component
+
+```tsx
+const { toast } = useToast();
+
+toast({
+  title: "Download Status",
+  description: "Your download is in progress.",
+  action: (
+    <div className="w-full h-2 bg-secondary mt-2 rounded-full overflow-hidden">
+      <div className="bg-primary h-full w-1/2" />
+    </div>
+  ),
+});
+```
+
+## Accessibility
+
+The Toast component is built on top of Radix UI's Toast primitive, ensuring excellent accessibility:
+
+- Screen reader announcements for toast appearances
+- Automatically dismisses after a configurable duration
+- Can be dismissed manually
+- Keyboard accessible
+- ARIA attributes are automatically managed
+
+## Implementation Details
+
+The Toast component is built using Radix UI's Toast primitive and Tailwind CSS for styling. It provides a flexible way to show non-intrusive notifications to users.
+
+Key features:
+
+- Multiple toast types (default, destructive)
+- Customizable content
+- Action buttons
+- Automatic and manual dismissal
+- Screen-reader friendly
+- Swipe to dismiss on touch devices
+
+The implementation uses a context-based approach with a toast manager that handles the creation, updating, and dismissal of toasts. This creates a centralized system that can be accessed from anywhere in your application.
