@@ -1,7 +1,8 @@
+"use client";
+
 import React from "react";
 import { Metadata } from "next";
 import Link from "next/link";
-import { ArrowRight } from "lucide-react";
 import {
   Drawer,
   DrawerContent,
@@ -42,19 +43,10 @@ export default function DrawerPage() {
             navigating away from the current page, such as filtering options,
             product details, or forms that don't require the full screen.
           </p>
-          <div className="flex items-center mt-6">
-            <Link
-              href="/components/molecules/drawer/examples"
-              className="inline-flex items-center text-primary hover:underline"
-            >
-              View Examples
-              <ArrowRight className="ml-1 h-4 w-4" />
-            </Link>
-          </div>
         </div>
 
         <div>
-          <h2 className="text-xl font-semibold mb-4">Basic Usage</h2>
+          <h2 className="text-xl font-semibold mb-4">Basic Drawer</h2>
           <div className="p-4 border rounded-lg">
             <Drawer>
               <DrawerTrigger asChild>
@@ -74,6 +66,46 @@ export default function DrawerPage() {
                   <Button>Save</Button>
                   <Button variant="outline">Cancel</Button>
                 </DrawerFooter>
+              </DrawerContent>
+            </Drawer>
+          </div>
+        </div>
+
+        <div>
+          <h2 className="text-xl font-semibold mb-4">
+            Drawer with Snap Points
+          </h2>
+          <div className="p-4 border rounded-lg">
+            <Drawer snapPoints={[0.4, 0.6, 0.9]}>
+              <DrawerTrigger asChild>
+                <Button variant="outline">Open Drawer with Snap Points</Button>
+              </DrawerTrigger>
+              <DrawerContent>
+                <div className="mx-auto w-full max-w-sm">
+                  <DrawerHeader>
+                    <DrawerTitle>Snap Points</DrawerTitle>
+                    <DrawerDescription>
+                      This drawer has three snap points at 40%, 60%, and 90%.
+                      Drag the drawer to snap to different heights.
+                    </DrawerDescription>
+                  </DrawerHeader>
+                  <div className="p-4">
+                    <div className="grid gap-4">
+                      <p>
+                        Snap points are useful for providing multiple states for
+                        a drawer, like a minimized, default, and maximized
+                        state.
+                      </p>
+                      <p>
+                        Try dragging this drawer to different heights to see how
+                        it snaps to 40%, 60%, or 90% of the screen height.
+                      </p>
+                    </div>
+                  </div>
+                  <DrawerFooter>
+                    <Button>Close</Button>
+                  </DrawerFooter>
+                </div>
               </DrawerContent>
             </Drawer>
           </div>

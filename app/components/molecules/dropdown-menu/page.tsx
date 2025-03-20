@@ -1,7 +1,21 @@
+"use client";
+
 import React from "react";
 import { Metadata } from "next";
 import Link from "next/link";
-import { ArrowRight, User, CreditCard, Settings, LogOut } from "lucide-react";
+import {
+  User,
+  CreditCard,
+  Settings,
+  LogOut,
+  Cloud,
+  LifeBuoy,
+  Shield,
+  FileText,
+  Save,
+  Printer,
+  FileUp,
+} from "lucide-react";
 import {
   DropdownMenu,
   DropdownMenuTrigger,
@@ -49,108 +63,198 @@ export default function DropdownMenuPage() {
             robust and accessible dropdown implementation with features like
             keyboard navigation, submenu support, and checkbox/radio selection.
           </p>
-          <div className="flex items-center mt-6">
-            <Link
-              href="/components/molecules/dropdown-menu/examples"
-              className="inline-flex items-center text-primary hover:underline"
-            >
-              View Examples
-              <ArrowRight className="ml-1 h-4 w-4" />
-            </Link>
+        </div>
+
+        <div className="border rounded-md p-6">
+          <h2 className="text-xl font-semibold mb-4">Basic Dropdown Menu</h2>
+          <div className="flex flex-wrap gap-4">
+            <DropdownMenu>
+              <DropdownMenuTrigger asChild>
+                <Button variant="outline">Options</Button>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent className="w-56">
+                <DropdownMenuItem>New File</DropdownMenuItem>
+                <DropdownMenuItem>New Folder</DropdownMenuItem>
+                <DropdownMenuSeparator />
+                <DropdownMenuItem>Settings</DropdownMenuItem>
+              </DropdownMenuContent>
+            </DropdownMenu>
+          </div>
+          <div className="mt-4 text-sm text-muted-foreground">
+            A simple dropdown menu with basic options.
           </div>
         </div>
 
-        <div>
-          <h2 className="text-xl font-semibold mb-4">Basic Usage</h2>
-          <div className="p-4 border rounded-lg flex flex-col gap-8">
-            <div>
-              <h3 className="text-lg font-medium mb-3">Simple Dropdown</h3>
-              <DropdownMenu>
-                <DropdownMenuTrigger asChild>
-                  <Button variant="outline">Open Menu</Button>
-                </DropdownMenuTrigger>
-                <DropdownMenuContent className="w-56">
-                  <DropdownMenuLabel>My Account</DropdownMenuLabel>
-                  <DropdownMenuSeparator />
+        <div className="border rounded-md p-6">
+          <h2 className="text-xl font-semibold mb-4">Dropdown with Icons</h2>
+          <div className="flex flex-wrap gap-4">
+            <DropdownMenu>
+              <DropdownMenuTrigger asChild>
+                <Button variant="outline">My Account</Button>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent className="w-56">
+                <DropdownMenuLabel>My Account</DropdownMenuLabel>
+                <DropdownMenuSeparator />
+                <DropdownMenuGroup>
                   <DropdownMenuItem>
-                    Profile
-                    <DropdownMenuShortcut>⇧⌘P</DropdownMenuShortcut>
+                    <User className="mr-2 h-4 w-4" />
+                    <span>Profile</span>
                   </DropdownMenuItem>
                   <DropdownMenuItem>
-                    Billing
-                    <DropdownMenuShortcut>⌘B</DropdownMenuShortcut>
+                    <CreditCard className="mr-2 h-4 w-4" />
+                    <span>Billing</span>
                   </DropdownMenuItem>
                   <DropdownMenuItem>
-                    Settings
-                    <DropdownMenuShortcut>⌘S</DropdownMenuShortcut>
+                    <Settings className="mr-2 h-4 w-4" />
+                    <span>Settings</span>
                   </DropdownMenuItem>
-                  <DropdownMenuSeparator />
-                  <DropdownMenuItem>
-                    Logout
-                    <DropdownMenuShortcut>⇧⌘Q</DropdownMenuShortcut>
-                  </DropdownMenuItem>
-                </DropdownMenuContent>
-              </DropdownMenu>
-            </div>
+                </DropdownMenuGroup>
+                <DropdownMenuSeparator />
+                <DropdownMenuItem>
+                  <LogOut className="mr-2 h-4 w-4" />
+                  <span>Logout</span>
+                </DropdownMenuItem>
+              </DropdownMenuContent>
+            </DropdownMenu>
+          </div>
+          <div className="mt-4 text-sm text-muted-foreground">
+            Enhance visual cues with icons alongside menu items.
+          </div>
+        </div>
 
-            <div>
-              <h3 className="text-lg font-medium mb-3">Dropdown with Icons</h3>
-              <DropdownMenu>
-                <DropdownMenuTrigger asChild>
-                  <Button variant="outline">My Account</Button>
-                </DropdownMenuTrigger>
-                <DropdownMenuContent className="w-56">
-                  <DropdownMenuLabel>My Account</DropdownMenuLabel>
-                  <DropdownMenuSeparator />
-                  <DropdownMenuGroup>
-                    <DropdownMenuItem>
-                      <User className="mr-2 h-4 w-4" />
-                      <span>Profile</span>
-                    </DropdownMenuItem>
-                    <DropdownMenuItem>
-                      <CreditCard className="mr-2 h-4 w-4" />
-                      <span>Billing</span>
-                    </DropdownMenuItem>
-                    <DropdownMenuItem>
-                      <Settings className="mr-2 h-4 w-4" />
-                      <span>Settings</span>
-                    </DropdownMenuItem>
-                  </DropdownMenuGroup>
-                  <DropdownMenuSeparator />
-                  <DropdownMenuItem>
-                    <LogOut className="mr-2 h-4 w-4" />
-                    <span>Logout</span>
-                  </DropdownMenuItem>
-                </DropdownMenuContent>
-              </DropdownMenu>
-            </div>
+        <div className="border rounded-md p-6">
+          <h2 className="text-xl font-semibold mb-4">
+            Dropdown with Shortcuts
+          </h2>
+          <div className="flex flex-wrap gap-4">
+            <DropdownMenu>
+              <DropdownMenuTrigger asChild>
+                <Button variant="outline">Open Menu</Button>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent className="w-56">
+                <DropdownMenuLabel>My Account</DropdownMenuLabel>
+                <DropdownMenuSeparator />
+                <DropdownMenuItem>
+                  Profile
+                  <DropdownMenuShortcut>⇧⌘P</DropdownMenuShortcut>
+                </DropdownMenuItem>
+                <DropdownMenuItem>
+                  Billing
+                  <DropdownMenuShortcut>⌘B</DropdownMenuShortcut>
+                </DropdownMenuItem>
+                <DropdownMenuItem>
+                  Settings
+                  <DropdownMenuShortcut>⌘S</DropdownMenuShortcut>
+                </DropdownMenuItem>
+                <DropdownMenuSeparator />
+                <DropdownMenuItem>
+                  Logout
+                  <DropdownMenuShortcut>⇧⌘Q</DropdownMenuShortcut>
+                </DropdownMenuItem>
+              </DropdownMenuContent>
+            </DropdownMenu>
+          </div>
+          <div className="mt-4 text-sm text-muted-foreground">
+            Display keyboard shortcuts for power users.
+          </div>
+        </div>
 
-            <div>
-              <h3 className="text-lg font-medium mb-3">
-                Dropdown with Submenu
-              </h3>
-              <DropdownMenu>
-                <DropdownMenuTrigger asChild>
-                  <Button variant="outline">Edit</Button>
-                </DropdownMenuTrigger>
-                <DropdownMenuContent className="w-56">
-                  <DropdownMenuItem>Cut</DropdownMenuItem>
-                  <DropdownMenuItem>Copy</DropdownMenuItem>
-                  <DropdownMenuItem>Paste</DropdownMenuItem>
-                  <DropdownMenuSeparator />
-                  <DropdownMenuSub>
-                    <DropdownMenuSubTrigger>
-                      More Options
-                    </DropdownMenuSubTrigger>
-                    <DropdownMenuSubContent>
-                      <DropdownMenuItem>Save As...</DropdownMenuItem>
-                      <DropdownMenuItem>Export</DropdownMenuItem>
-                      <DropdownMenuItem>Print</DropdownMenuItem>
-                    </DropdownMenuSubContent>
-                  </DropdownMenuSub>
-                </DropdownMenuContent>
-              </DropdownMenu>
-            </div>
+        <div className="border rounded-md p-6">
+          <h2 className="text-xl font-semibold mb-4">Dropdown with Submenu</h2>
+          <div className="flex flex-wrap gap-4">
+            <DropdownMenu>
+              <DropdownMenuTrigger asChild>
+                <Button variant="outline">Edit</Button>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent className="w-56">
+                <DropdownMenuItem>Cut</DropdownMenuItem>
+                <DropdownMenuItem>Copy</DropdownMenuItem>
+                <DropdownMenuItem>Paste</DropdownMenuItem>
+                <DropdownMenuSeparator />
+                <DropdownMenuSub>
+                  <DropdownMenuSubTrigger>
+                    <FileText className="mr-2 h-4 w-4" />
+                    <span>More Options</span>
+                  </DropdownMenuSubTrigger>
+                  <DropdownMenuSubContent>
+                    <DropdownMenuItem>
+                      <Save className="mr-2 h-4 w-4" />
+                      <span>Save As...</span>
+                    </DropdownMenuItem>
+                    <DropdownMenuItem>
+                      <FileUp className="mr-2 h-4 w-4" />
+                      <span>Export</span>
+                    </DropdownMenuItem>
+                    <DropdownMenuItem>
+                      <Printer className="mr-2 h-4 w-4" />
+                      <span>Print</span>
+                    </DropdownMenuItem>
+                  </DropdownMenuSubContent>
+                </DropdownMenuSub>
+              </DropdownMenuContent>
+            </DropdownMenu>
+          </div>
+          <div className="mt-4 text-sm text-muted-foreground">
+            Create hierarchical menus with submenu support.
+          </div>
+        </div>
+
+        <div className="border rounded-md p-6">
+          <h2 className="text-xl font-semibold mb-4">
+            Dropdown with Checkbox Items
+          </h2>
+          <div className="flex flex-wrap gap-4">
+            <DropdownMenu>
+              <DropdownMenuTrigger asChild>
+                <Button variant="outline">View Options</Button>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent className="w-56">
+                <DropdownMenuLabel>Appearance</DropdownMenuLabel>
+                <DropdownMenuSeparator />
+                <DropdownMenuCheckboxItem checked>
+                  Status Bar
+                </DropdownMenuCheckboxItem>
+                <DropdownMenuCheckboxItem>
+                  Activity Bar
+                </DropdownMenuCheckboxItem>
+                <DropdownMenuCheckboxItem>Panel</DropdownMenuCheckboxItem>
+              </DropdownMenuContent>
+            </DropdownMenu>
+          </div>
+          <div className="mt-4 text-sm text-muted-foreground">
+            Allow multi-selection with checkbox items.
+          </div>
+        </div>
+
+        <div className="border rounded-md p-6">
+          <h2 className="text-xl font-semibold mb-4">
+            Dropdown with Radio Items
+          </h2>
+          <div className="flex flex-wrap gap-4">
+            <DropdownMenu>
+              <DropdownMenuTrigger asChild>
+                <Button variant="outline">Panel Position</Button>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent className="w-56">
+                <DropdownMenuLabel>Panel Position</DropdownMenuLabel>
+                <DropdownMenuSeparator />
+                <DropdownMenuRadioGroup value="bottom">
+                  <DropdownMenuRadioItem value="top">Top</DropdownMenuRadioItem>
+                  <DropdownMenuRadioItem value="right">
+                    Right
+                  </DropdownMenuRadioItem>
+                  <DropdownMenuRadioItem value="bottom">
+                    Bottom
+                  </DropdownMenuRadioItem>
+                  <DropdownMenuRadioItem value="left">
+                    Left
+                  </DropdownMenuRadioItem>
+                </DropdownMenuRadioGroup>
+              </DropdownMenuContent>
+            </DropdownMenu>
+          </div>
+          <div className="mt-4 text-sm text-muted-foreground">
+            Enable single-selection from a list of options with radio items.
           </div>
         </div>
 
